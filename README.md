@@ -8,6 +8,7 @@
 - `src/`：C 生产代码，目前仅有未实现占位程序。
 - `include/`：后续需要的头文件。
 - `tests/`：CLI 测试入口和用例说明。
+- [examples/minimal_agent.py](examples/minimal_agent.py)：演示“模型→工具→反馈→模型→输出”的最小 Agent 循环，运行方法见 [examples/README.md](examples/README.md)。
 
 在目标 Linux 环境准备 GCC 或 Clang、Make、Git 和 POSIX shell，然后执行：
 
