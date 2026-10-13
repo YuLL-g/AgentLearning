@@ -1,12 +1,24 @@
-# 最小 Agent 演示
+# 交互式最小 Agent 演示
 
-运行环境：Python 3.10+，仅使用标准库。此文件与 `myls` 的 C 实现、测试互不依赖。
+运行环境：Python 3.10+，仅使用标准库；不参与 `myls` 的 C 构建。
 
 ```sh
 export DEEPSEEK_API_KEY='你的 API Key'
 python3 examples/minimal_agent.py
 ```
 
-程序首轮要求模型调用 `count_outline_lines`；Python 读取 `Outline.md` 并返回行数；模型收到工具结果后再次判断，最后向用户输出答案。代码中的 `for` 循环就是流程图的反馈循环，`if not calls` 是输出分支。最多请求模型 5 次，防止演示时意外反复调用。
+离线检查（不调用 API）：`python3 -m unittest discover -s examples -p 'test_*.py'`。
 
-API 格式参考 [DeepSeek Tool Calls](https://api-docs.deepseek.com/guides/tool_calls/) 与 [Chat Completions](https://api-docs.deepseek.com/api/create-chat-completion/)。这里关闭思考模式，使工具调用的上下文结构保持简短。
+在 `你 >` 后连续输入问题；输入 `退出`、`exit` 或 `quit` 结束。可先问“请调用工具，统计 Outline.md 行数”，再问“刚才的行数是多少？”来展示记忆。程序保留最近 **5 轮用户输入**，每轮连同模型回复和工具结果一起保存；关闭程序后记忆清空。单轮最多进行 5 次模型判断。
+
+| 工具 | 作用 |
+| --- | --- |
+| `count_outline_lines` | 保留原示例中的行数统计 |
+| `read_file` | 读取仓库内的 UTF-8 文本文件 |
+| `write_file` | 写入仓库内的 UTF-8 文本文件 |
+| `run_program` | 直接运行仓库内的可执行文件，不经过 shell |
+| `run_shell` | 在仓库目录通过 `/bin/sh` 执行命令 |
+
+终端会显示“输入、模型判断、工具请求、工具执行、观察结果、上下文更新、输出”各阶段。写入、直接执行和 shell 执行前必须在本机输入 `y` 确认；默认拒绝。文件路径限于仓库内（排除 `.git`），命令执行超时为 15 秒，且不会继承 `DEEPSEEK_API_KEY`。shell 命令经用户确认后仍能访问当前用户有权访问的其他路径，因此课堂演示应看清命令再确认。
+
+API 格式参考 [DeepSeek Tool Calls](https://api-docs.deepseek.com/guides/tool_calls/) 与 [Chat Completions](https://api-docs.deepseek.com/api/create-chat-completion/)。示例关闭思考模式，减少需要维护的消息字段。
