@@ -1,22 +1,27 @@
-flowchart TB
-    U[用户输入] --> A[Agent 组装请求]
-    C[(会话上下文<br/>历史与本轮记录)] --> A
-    F[工具清单] --> A
+sequenceDiagram
+    actor U as 用户
+    participant A as Agent
+    participant C as 会话上下文
+    participant L as LLM
+    participant T as 工具
 
-    A --> L[LLM 判断下一步]
-    L -->|请求调用工具| D[Agent 调用工具]
-    D --> T[工具执行]
-    T -->|结果或错误| D
-    D -->|更新上下文| C
+    U->>A: 输入本轮问题
+    A->>C: 读取历史，加入本轮输入
+    C-->>A: 当前上下文
 
-    L -->|返回最终答复| O[Agent 输出给用户]
-    O -.保存本轮记录，供下一轮使用.-> C
+    loop 本轮：直到得到最终答复
+        A->>L: 指令 + 当前上下文 + 可用工具
+        alt LLM 请求调用工具
+            L-->>A: 工具调用请求
+            A->>T: 执行工具
+            T-->>A: 结果或错误
+            A->>C: 记录工具调用与结果
+            C-->>A: 更新后的上下文
+        else LLM 给出最终答复
+            L-->>A: 最终答复
+            A-->>U: 输出答复，结束本轮
+            A->>C: 保存本轮记录
+        end
+    end
 
-    classDef input fill:#EAF4FF,stroke:#4A90E2,color:#17365D
-    classDef agent fill:#E8F7F1,stroke:#23A67A,color:#164936
-    classDef model fill:#F4EDFF,stroke:#9162D8,color:#3D236A
-    classDef tool fill:#FFF3E7,stroke:#E39A36,color:#65400D
-    class U,C,F input
-    class A,D,O agent
-    class L model
-    class T tool
+    Note over C: 已保存的上下文供下一轮使用
