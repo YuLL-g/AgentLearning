@@ -1,5 +1,4 @@
 """交互式最小 Agent：输入 → 模型 → 工具 → 观察 → 更新上下文 → 输出。"""
-
 import json
 import os
 import subprocess
@@ -7,11 +6,9 @@ from collections import deque
 from pathlib import Path
 from urllib.request import Request, urlopen
 
-
 ROOT = Path(__file__).resolve().parents[1]
 API_URL = "https://api.deepseek.com/chat/completions"
 MAX_TOOL_TEXT = 10_000
-
 
 def tool(name, description, properties, required=()):
     return {"type": "function", "function": {
@@ -20,10 +17,8 @@ def tool(name, description, properties, required=()):
                        "required": list(required), "additionalProperties": False},
     }}
 
-
 TEXT = {"type": "string"}
 TOOLS = [
-    tool("count_outline_lines", "统计仓库 Outline.md 的行数", {}),
     tool("read_file", "读取仓库内的 UTF-8 文本文件", {"path": TEXT}, ("path",)),
     tool("write_file", "写入仓库内的 UTF-8 文本文件，需用户确认",
          {"path": TEXT, "content": TEXT}, ("path", "content")),
@@ -32,7 +27,6 @@ TOOLS = [
     tool("run_shell", "在仓库目录执行 shell 命令，需用户确认",
          {"command": TEXT}, ("command",)),
 ]
-
 
 def ask_model(messages, api_key):
     body = {"model": "deepseek-flash", "messages": messages, "tools": TOOLS,
@@ -44,7 +38,6 @@ def ask_model(messages, api_key):
     with urlopen(request, timeout=30) as response:
         return json.load(response)["choices"][0]["message"]
 
-
 def local_path(name):
     if not isinstance(name, str) or Path(name).is_absolute():
         raise ValueError("路径必须是仓库内的相对路径")
@@ -53,10 +46,8 @@ def local_path(name):
         raise ValueError("路径超出允许范围")
     return path
 
-
 def confirm(action):
     return input(f"[确认] 允许{action}？[y/N] ").strip().lower() in ("y", "yes")
-
 
 def run_command(argv):
     environment = os.environ.copy()
@@ -66,19 +57,12 @@ def run_command(argv):
     return (f"exit_code={done.returncode}\nstdout:\n{done.stdout}"
             f"stderr:\n{done.stderr}")[:MAX_TOOL_TEXT]
 
-
 def execute_tool(call):
     try:
         name = call["function"]["name"]
         args = json.loads(call["function"]["arguments"])
         if not isinstance(args, dict):
             raise ValueError("工具参数必须是 JSON 对象")
-
-        if name == "count_outline_lines":
-            if args:
-                raise ValueError("该工具不接受参数")
-            with (ROOT / "Outline.md").open(encoding="utf-8") as file:
-                return str(sum(1 for _ in file))
         if name == "read_file":
             path = local_path(args["path"])
             with path.open(encoding="utf-8") as file:
@@ -111,12 +95,10 @@ def execute_tool(call):
     except (KeyError, TypeError, ValueError, OSError, subprocess.TimeoutExpired) as error:
         return f"工具错误：{error}"
 
-
 def main():
     api_key = os.environ.get("DEEPSEEK_API_KEY")
     if not api_key:
         raise SystemExit("请先设置 DEEPSEEK_API_KEY 环境变量")
-
     turns = deque(maxlen=5)  # 每项是一轮的用户输入、模型回复和工具结果
     while True:
         try:
@@ -127,7 +109,6 @@ def main():
             break
         if not user_text:
             continue
-
         current = [{"role": "user", "content": user_text}]
         turns.append(current)
         print(f"[记忆] 保留最近 {len(turns)} 轮用户输入")
@@ -150,7 +131,6 @@ def main():
                 print("[上下文更新] 工具结果已加入消息")
         else:
             print("[输出] 已达到单轮 5 次模型判断上限")
-
 
 if __name__ == "__main__":
     main()
