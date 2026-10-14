@@ -1,0 +1,41 @@
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant A as Agent 主循环
+    participant M as 会话记忆<br/>最近 5 轮
+    participant L as DeepSeek LLM
+    participant T as 本地工具执行器
+
+    Note over A,T: 对应 examples/minimal_agent.py：4 个本地工具；未加载 AGENTS.md、Skill 或 MCP 工具
+
+    U->>A: 输入本轮问题
+    A->>M: 新建本轮消息，并加入 turns
+    Note over M: turns 是 deque(maxlen=5)，保存最近 5 轮完整消息
+
+    loop 本轮最多 5 次模型判断；无工具调用时提前退出
+        A->>M: 展开保留的各轮消息
+        M-->>A: 历史消息 + 本轮消息
+        A->>L: chat/completions(messages, tools=TOOLS)
+        L-->>A: assistant 回复：文本和/或 tool_calls
+        A->>M: 追加完整 assistant 回复（含 tool_calls）
+
+        alt 有 tool_calls
+            loop 依次处理本次回复中的每个工具调用
+                A->>T: execute_tool(call)
+                opt 写入文件、运行程序或 Shell 命令
+                    T->>U: 请求执行确认
+                    U-->>T: 允许或拒绝
+                end
+                T-->>A: 执行结果、错误或拒绝信息
+                A->>M: 追加 role=tool 消息，关联 tool_call_id
+            end
+            Note over A,L: 下一次判断会看到工具请求与对应结果
+        else 无 tool_calls
+            A-->>U: 输出回复内容，本轮结束
+        end
+    end
+
+    opt 5 次判断后仍未得到最终回复
+        A-->>U: 提示已达到本轮判断次数上限
+    end
+    Note over M: 本轮消息保留在 turns 中，供下一轮使用
