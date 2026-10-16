@@ -1,5 +1,5 @@
 # Claude Code 项目入口
 
-开始任务时请先阅读 `AGENTS.md` 和 `Outline.md`。前者说明仓库协作与 TDD 节奏，后者是 myls 的最终行为契约。`BrainStroming.md` 是讲师的教学草稿。
+先阅读 `AGENTS.md`，按其中的资料关系和验证要求处理当前任务。此仓库用于研究编码 Agent 与准备课程材料，不是 `myls` 的实现仓库。
 
-不要在没有当轮任务和测试的情况下提前实现完整 myls。
+任务涉及课程案例的具体行为时再阅读 `Outline.md`；涉及讲解路线时再阅读 `BrainStroming.md`。文档中的 `myls` 构建、测试和 TDD 命令指向拟开展的独立练习项目，不应默认在本仓库执行。

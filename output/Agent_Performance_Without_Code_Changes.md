@@ -35,15 +35,15 @@
 
 [OpenAI Docs 的提示设计指南](https://developers.openai.com/api/docs/guides/prompt-engineering)强调提供清晰指令和相关上下文；[Codex 关于 Skill 与 `AGENTS.md` 的建议](https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra)提醒避免积累冗长、互相冲突的说明。工具定义可按需加载，但是否支持及如何配置取决于具体产品；“只开相关工具”也不等于关闭完成任务必需的工具。[OpenAI Docs：Tool search](https://developers.openai.com/api/docs/guides/tools-tool-search)
 
-## 一个适合本仓库的任务描述
+## 一个适合独立 `myls` 练习仓库的任务描述
 
-下面的模板强调**结果和验证**，不要求使用者了解 Agent 的内部实现：
+下面的模板供另行准备的 `myls` 练习仓库使用，强调**结果和验证**，不要求使用者了解 Agent 的内部实现；不要在当前课程资料仓库执行其中的构建命令：
 
 ```text
 目标：只完成本轮 myls 的 [功能点]，不要提前实现下一轮选项。
 
 依据：先读 Outline.md 中该功能的输入、输出、错误和验收规则；
-      按 AGENTS.md 的仓库约定工作。如果两者有歧义，指出具体位置。
+      按练习仓库自己的 AGENTS.md 工作。如果两者有歧义，指出具体位置。
 
 范围：只修改与本轮功能及其测试有关的文件；保留已有的其他改动。
 

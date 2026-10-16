@@ -1,6 +1,6 @@
 # 交互式最小 Agent 演示
 
-运行环境：Python 3.10+，仅使用标准库；不参与 `myls` 的 C 构建。
+运行环境：Python 3.10+，仅使用标准库。本示例独立于课程中的 `myls` 练习项目。
 
 ```sh
 export DEEPSEEK_API_KEY='你的 API Key'
@@ -9,11 +9,10 @@ python3 examples/minimal_agent.py
 
 离线检查（不调用 API）：`python3 -m unittest discover -s examples -p 'test_*.py'`。
 
-在 `你 >` 后连续输入问题；输入 `退出`、`exit` 或 `quit` 结束。可先问“请调用工具，统计 Outline.md 行数”，再问“刚才的行数是多少？”来展示记忆。程序保留最近 **5 轮用户输入**，每轮连同模型回复和工具结果一起保存；关闭程序后记忆清空。单轮最多进行 5 次模型判断。
+在 `你 >` 后连续输入问题；输入 `退出`、`exit` 或 `quit` 结束。可先问“请用 read_file 工具读取 README.md 并概括仓库用途”，再问“刚才的仓库用途是什么？”来展示记忆。程序保留最近 **5 轮用户输入**，每轮连同模型回复和工具结果一起保存；关闭程序后记忆清空。单轮最多进行 5 次模型判断。
 
 | 工具 | 作用 |
 | --- | --- |
-| `count_outline_lines` | 保留原示例中的行数统计 |
 | `read_file` | 读取仓库内的 UTF-8 文本文件 |
 | `write_file` | 写入仓库内的 UTF-8 文本文件 |
 | `run_program` | 直接运行仓库内的可执行文件，不经过 shell |

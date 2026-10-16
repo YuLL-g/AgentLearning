@@ -40,7 +40,7 @@ class MinimalAgentTests(unittest.TestCase):
     def test_tool_result_returns_to_model_before_output(self):
         replies = iter([
             {"role": "assistant", "content": None,
-             "tool_calls": [call("count_outline_lines")]},
+             "tool_calls": [call("read_file", path="README.md")]},
             {"role": "assistant", "content": "已完成"},
         ])
         requests = []
@@ -65,7 +65,7 @@ class MinimalAgentTests(unittest.TestCase):
 
         self.assertEqual(requests[1][-1]["role"], "tool")
         self.assertEqual(requests[1][-1]["content"],
-                         str(len((agent.ROOT / "Outline.md").read_text(encoding="utf-8").splitlines())))
+                         (agent.ROOT / "README.md").read_text(encoding="utf-8"))
         self.assertIn("[输入]", prompts[0])
         for stage in ("[模型判断]", "[工具请求]", "[工具执行]",
                       "[观察结果]", "[上下文更新]", "[输出]"):

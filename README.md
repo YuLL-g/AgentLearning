@@ -1,22 +1,25 @@
-# myls 教学仓库
+# AI 编码课程资料库
 
-本仓库用于练习把需求拆成可验证任务，并按 Red→Green→Review 用 AI 辅助开发一个精简版 `myls`。
+本仓库用于分析编码 Agent 的工作方式、整理授课思路并制作课程材料。`myls` 是课程中讨论需求拆解和 TDD 的**练习案例**；本仓库不提供它的可构建实现。课堂若要实际开发 `myls`，应另备独立的练习仓库或环境。
 
-- [Outline.md](Outline.md)：最终行为契约与课程大纲。
-- [BrainStroming.md](BrainStroming.md)：讲师讲解和带做草稿。
-- [AGENTS.md](AGENTS.md)：仓库内 AI 协作规则；Claude Code 另有 [CLAUDE.md](CLAUDE.md) 入口。
-- `src/`：C 生产代码，目前仅有未实现占位程序。
-- `include/`：后续需要的头文件。
-- `tests/`：CLI 测试入口和用例说明。
-- [examples/minimal_agent.py](examples/minimal_agent.py)：演示“模型→工具→反馈→模型→输出”的最小 Agent 循环，运行方法见 [examples/README.md](examples/README.md)。
+## 从哪里开始
 
-在目标 Linux 环境准备 GCC 或 Clang、Make、Git 和 POSIX shell，然后执行：
+- [Outline.md](Outline.md)：课程目标及 `myls` 练习项目的行为契约。
+- [BrainStroming.md](BrainStroming.md)：讲师讲解路线与带做草稿。
+- [Opening_AI_History.md](Opening_AI_History.md)：开场内容。
+- [Agent_Framework_Notes.md](Agent_Framework_Notes.md)：Agent 组成与运行流程。
+- [AGENTS.md](AGENTS.md)：本资料仓库的 AI 协作规则；[CLAUDE.md](CLAUDE.md) 是 Claude Code 的入口。
+
+## 资料目录
+
+- [`output/`](output/)：整理后的讲义、流程图、动画和幻灯片。
+- [`assets/`](assets/)：课程图片素材。
+- [`examples/`](examples/)：演示 Agent 工具调用与循环的小型 Python 程序，运行方法见 [示例说明](examples/README.md)。
+
+检查示例代码可运行：
 
 ```sh
-make all
-make test
-make sanitize
-make clean
+python3 -m unittest discover -s examples -p 'test_*.py'
 ```
 
-基线 `make test` 只验证工程能构建，并提示尚无行为测试。第一轮实践先在 `tests/cases/` 加测试，确认它因功能缺失而失败，再实现最小功能。
+此命令不调用模型 API。`Outline.md` 中出现的 `make all`、`make test` 等命令属于拟开展的 `myls` 练习项目，不是本资料仓库的命令。
