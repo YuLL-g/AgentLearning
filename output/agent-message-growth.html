@@ -1,0 +1,195 @@
+<section id="agent-message-growth" aria-label="Agent 会话消息逐步追加示意">
+  <div class="amg-header">
+    <h2>会话消息如何增长</h2>
+    <span class="text-muted tabular-nums" data-count>1 / 7 条</span>
+  </div>
+
+  <div class="amg-controls" aria-label="动画控制">
+    <button type="button" class="btn btn-primary" data-play>暂停</button>
+  </div>
+
+  <div class="amg-array" aria-label="按时间顺序排列的消息数组">
+    <div class="amg-bracket" aria-hidden="true">[</div>
+    <div class="amg-list" role="list" data-list></div>
+    <div class="amg-bracket" aria-hidden="true">]</div>
+  </div>
+  <div class="text-muted" aria-live="polite" data-status>会话开始 · 加入固定规则</div>
+</section>
+
+<style>
+  #agent-message-growth {
+    color: var(--foreground);
+    width: 100%;
+  }
+
+  #agent-message-growth h2 { margin: 0; }
+  #agent-message-growth .amg-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding-right: 96px;
+  }
+  #agent-message-growth .amg-controls {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 12px 0 10px;
+  }
+  #agent-message-growth .amg-array {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    min-width: 0;
+  }
+  #agent-message-growth .amg-bracket {
+    color: var(--muted-foreground);
+    padding-left: 5px;
+  }
+  #agent-message-growth .amg-list { min-height: 60px; }
+  #agent-message-growth .amg-message {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+    min-width: 0;
+    padding: 10px 5px;
+    border-bottom: 1px solid var(--border);
+  }
+  #agent-message-growth .amg-message:last-child { border-bottom: 0; }
+  #agent-message-growth .amg-message.amg-new {
+    animation: amg-append 420ms ease-out both;
+  }
+  #agent-message-growth .amg-index { color: var(--muted-foreground); }
+  #agent-message-growth .amg-json {
+    display: block;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-all;
+    white-space: normal;
+  }
+  #agent-message-growth .amg-role { font-weight: 500; }
+  #agent-message-growth .amg-system { color: var(--foreground); }
+  #agent-message-growth .amg-user { color: var(--viz-series-2); }
+  #agent-message-growth .amg-assistant { color: var(--viz-series-1); }
+  #agent-message-growth .amg-tool { color: var(--viz-series-3); }
+  #agent-message-growth .amg-punctuation { color: var(--muted-foreground); }
+  #agent-message-growth [data-status] { margin-top: 10px; }
+
+  @keyframes amg-append {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 480px) {
+    #agent-message-growth .amg-header { padding-right: 0; }
+    #agent-message-growth .amg-part-role,
+    #agent-message-growth .amg-part-body { display: block; }
+    #agent-message-growth .amg-part-body { padding-left: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #agent-message-growth .amg-message.amg-new { animation: none; }
+  }
+</style>
+
+<script>
+(() => {
+  const root = document.getElementById('agent-message-growth');
+  const list = root.querySelector('[data-list]');
+  const count = root.querySelector('[data-count]');
+  const status = root.querySelector('[data-status]');
+  const play = root.querySelector('[data-play]');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const messages = [
+    { role: 'system', field: 'content', value: '固定规则：按工具结果回答', phase: '会话开始 · 加入固定规则' },
+    { role: 'user', field: 'content', value: '列出 demo 目录中的文件', phase: '第 1 轮 · 用户输入追加' },
+    { role: 'assistant', field: 'tool_calls', value: 'read_dir(demo)', phase: '第 1 轮 · 模型请求调用工具' },
+    { role: 'tool', field: 'content', value: 'b.txt、a.txt', phase: '第 1 轮 · 工具结果追加' },
+    { role: 'assistant', field: 'content', value: 'demo 有 b.txt 和 a.txt', phase: '第 1 轮 · 模型答复追加' },
+    { role: 'user', field: 'content', value: '请按名称排序后再说一遍', phase: '第 2 轮 · 用户新输入追加' },
+    { role: 'assistant', field: 'content', value: 'a.txt、b.txt', phase: '第 2 轮 · 利用已有上下文答复' }
+  ];
+  let shown = 0;
+  let timer = null;
+
+  function appendMessage() {
+    if (shown >= messages.length) {
+      pause();
+      return;
+    }
+    const message = messages[shown];
+    const row = document.createElement('div');
+    row.className = 'amg-message amg-new';
+    row.setAttribute('role', 'listitem');
+    row.setAttribute('aria-label', `${shown + 1}. ${message.role}：${message.value}`);
+
+    const index = document.createElement('span');
+    index.className = 'amg-index tabular-nums';
+    index.textContent = String(shown + 1).padStart(2, '0');
+
+    const json = document.createElement('span');
+    json.className = 'amg-json';
+    const rolePart = document.createElement('span');
+    rolePart.className = 'amg-part-role';
+    const prefix = document.createElement('span');
+    prefix.className = 'amg-punctuation';
+    prefix.textContent = '{ "role": ';
+    const role = document.createElement('span');
+    role.className = `amg-role amg-${message.role}`;
+    role.textContent = JSON.stringify(message.role);
+    const comma = document.createElement('span');
+    comma.className = 'amg-punctuation';
+    comma.textContent = ', ';
+    rolePart.append(prefix, role, comma);
+    const bodyPart = document.createElement('span');
+    bodyPart.className = 'amg-part-body';
+    const field = document.createElement('span');
+    field.className = 'amg-punctuation';
+    field.textContent = `"${message.field}": `;
+    const value = document.createElement('span');
+    value.textContent = JSON.stringify(message.value);
+    const end = document.createElement('span');
+    end.className = 'amg-punctuation';
+    end.textContent = ' }';
+    const trailing = document.createElement('span');
+    trailing.className = 'amg-punctuation amg-trailing';
+    bodyPart.append(field, value, end, trailing);
+    json.append(rolePart, bodyPart);
+
+    const previous = list.lastElementChild;
+    if (previous) previous.querySelector('.amg-trailing').textContent = ',';
+    row.append(index, json);
+    list.append(row);
+    shown += 1;
+    count.textContent = `${shown} / ${messages.length} 条`;
+    status.textContent = message.phase;
+    if (shown === messages.length) pause();
+  }
+
+  function pause() {
+    if (timer !== null) window.clearInterval(timer);
+    timer = null;
+    play.textContent = shown === messages.length ? '重播' : '播放';
+  }
+
+  function start() {
+    if (shown === messages.length) reset();
+    if (timer !== null) return;
+    play.textContent = '暂停';
+    timer = window.setInterval(appendMessage, 1400);
+  }
+
+  function reset() {
+    pause();
+    list.replaceChildren();
+    shown = 0;
+    appendMessage();
+  }
+
+  play.addEventListener('click', () => timer === null ? start() : pause());
+
+  reset();
+  if (reducedMotion) {
+    while (shown < messages.length) appendMessage();
+  } else {
+    start();
+  }
+})();
+</script>
