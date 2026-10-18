@@ -112,7 +112,7 @@ def main():
         if not user_text:
             continue
         current = [{"role": "user", "content": user_text}]
-        print("[记忆] 无记忆模式：本轮不携带任何历史输入")
+        # print("[记忆] 无记忆模式：本轮不携带任何历史输入")
         for _ in range(5):  # 单轮最多 5 次模型判断，避免无限调用
             messages = list(current)  # 上下文只有本轮消息
             print("[模型判断] 正在请求 DeepSeek...")
