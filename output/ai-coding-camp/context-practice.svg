@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="practice-title practice-desc">
+  <title id="practice-title">四步把上下文变成可执行线索</title>
+  <desc id="practice-desc">明确每轮目标与完成标准，指向权威资料并按需读取，将任务拆成可验收的小轮，最后把失败命令、实际与期望结果及审查结论反馈给 Agent。带着已验证状态和未解决问题进入下一轮。必要工具、权限和验证环境仍需真实具备。</desc>
+  <defs>
+    <radialGradient id="practice-glow" cx="91%" cy="8%" r="90%">
+      <stop offset="0" stop-color="#174260" stop-opacity=".65"/>
+      <stop offset=".55" stop-color="#0a283f" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#071423" stop-opacity="0"/>
+    </radialGradient>
+    <marker id="step-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M1 1 9 5 1 9Z" fill="#72d2ff"/></marker>
+    <marker id="loop-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M1 1 9 5 1 9Z" fill="#ffc17b"/></marker>
+    <style>
+      .sans{font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif}
+      .kicker{fill:#72d2ff;font-size:19px;font-weight:650;letter-spacing:3px}
+      .title{fill:#f5f8fc;font-size:64px;font-weight:760;letter-spacing:-2px}
+      .subtitle{fill:#b8cadb;font-size:25px}
+      .step-tag{font-size:20px;font-weight:750;letter-spacing:1px}
+      .step-title{fill:#f5f8fc;font-size:43px;font-weight:750}
+      .step-copy{fill:#c5d5e2;font-size:23px}
+      .step-note{fill:#e3eef5;font-size:22px;font-weight:580}
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#071423"/>
+  <rect width="1920" height="1080" fill="url(#practice-glow)"/>
+  <text x="116" y="95" class="sans kicker">第一部分 · CONTEXT MANAGEMENT</text>
+  <text x="116" y="174" class="sans title">四步把上下文变成可执行线索</text>
+  <text x="116" y="220" class="sans subtitle">限定本轮目标，提供可信资料，用真实结果修正下一步</text>
+
+  <rect x="116" y="265" width="1688" height="668" rx="25" fill="#0a2034" fill-opacity=".76" stroke="#35546c" stroke-opacity=".78" stroke-width="2"/>
+
+  <!-- 01 定目标 -->
+  <rect x="145" y="334" width="365" height="467" rx="24" fill="#112e42" stroke="#72d2ff" stroke-width="2.4"/>
+  <rect x="145" y="334" width="365" height="9" rx="5" fill="#72d2ff"/>
+  <text x="171" y="386" class="sans step-tag" fill="#72d2ff">01  任务</text>
+  <circle cx="450" cy="379" r="27" fill="none" stroke="#72d2ff" stroke-width="2.5"/>
+  <circle cx="450" cy="379" r="13" fill="none" stroke="#72d2ff" stroke-width="2.5"/>
+  <circle cx="450" cy="379" r="3.5" fill="#72d2ff"/>
+  <text x="171" y="469" class="sans step-title">定目标</text>
+  <text x="171" y="529" class="sans step-copy">范围与交付物</text>
+  <text x="171" y="567" class="sans step-copy">完成标准</text>
+  <rect x="170" y="670" width="315" height="104" rx="15" fill="#173f56"/>
+  <text x="191" y="715" class="sans step-note">把“完成”的样子</text>
+  <text x="191" y="748" class="sans step-note">说清楚</text>
+
+  <path d="M510 566 H550" fill="none" stroke="#72d2ff" stroke-width="3.5" marker-end="url(#step-arrow)"/>
+
+  <!-- 02 给线索 -->
+  <rect x="555" y="334" width="365" height="467" rx="24" fill="#252d46" stroke="#c9a2f1" stroke-width="2.4"/>
+  <rect x="555" y="334" width="365" height="9" rx="5" fill="#c9a2f1"/>
+  <text x="581" y="386" class="sans step-tag" fill="#c9a2f1">02  资料</text>
+  <path d="M840 354 H868 L884 370 V407 H840 Z M868 354 V370 H884" fill="none" stroke="#c9a2f1" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M849 381 H876 M849 391 H875" fill="none" stroke="#c9a2f1" stroke-width="2.5"/>
+  <text x="581" y="469" class="sans step-title">给线索</text>
+  <text x="581" y="529" class="sans step-copy">权威文件与章节</text>
+  <text x="581" y="567" class="sans step-copy">长资料按需读取</text>
+  <rect x="580" y="670" width="315" height="104" rx="15" fill="#343550"/>
+  <text x="601" y="715" class="sans step-note">长期规则简短保留</text>
+  <text x="601" y="748" class="sans step-note">本轮要求放在本轮</text>
+
+  <path d="M920 566 H960" fill="none" stroke="#72d2ff" stroke-width="3.5" marker-end="url(#step-arrow)"/>
+
+  <!-- 03 控轮次 -->
+  <rect x="965" y="334" width="365" height="467" rx="24" fill="#14373f" stroke="#68dfcf" stroke-width="2.4"/>
+  <rect x="965" y="334" width="365" height="9" rx="5" fill="#68dfcf"/>
+  <text x="991" y="386" class="sans step-tag" fill="#68dfcf">03  轮次</text>
+  <circle cx="1269" cy="379" r="25" fill="none" stroke="#68dfcf" stroke-width="2.5"/>
+  <path d="M1269 354 V379 H1294" fill="none" stroke="#68dfcf" stroke-width="2.5"/>
+  <text x="991" y="469" class="sans step-title">控轮次</text>
+  <text x="991" y="529" class="sans step-copy">每轮有可验收交付物</text>
+  <text x="991" y="567" class="sans step-copy">交接当前状态</text>
+  <rect x="990" y="670" width="315" height="104" rx="15" fill="#1d4a4d"/>
+  <text x="1011" y="715" class="sans step-note">已完成 · 已验证</text>
+  <text x="1011" y="748" class="sans step-note">待解决</text>
+
+  <path d="M1330 566 H1370" fill="none" stroke="#72d2ff" stroke-width="3.5" marker-end="url(#step-arrow)"/>
+
+  <!-- 04 用证据 -->
+  <rect x="1375" y="334" width="365" height="467" rx="24" fill="#3a3028" stroke="#ffc17b" stroke-width="2.4"/>
+  <rect x="1375" y="334" width="365" height="9" rx="5" fill="#ffc17b"/>
+  <text x="1401" y="386" class="sans step-tag" fill="#ffc17b">04  反馈</text>
+  <path d="M1663 355 H1709 V404 H1663 Z M1674 370 H1698 M1674 382 H1698 M1674 394 H1689" fill="none" stroke="#ffc17b" stroke-width="2.5" stroke-linejoin="round"/>
+  <text x="1401" y="469" class="sans step-title">用证据</text>
+  <text x="1401" y="529" class="sans step-copy">失败命令与实际输出</text>
+  <text x="1401" y="567" class="sans step-copy">期望结果与相关约束</text>
+  <rect x="1400" y="670" width="315" height="104" rx="15" fill="#504032"/>
+  <text x="1421" y="715" class="sans step-note">修复后重跑</text>
+  <text x="1421" y="748" class="sans step-note">受影响的验证</text>
+
+  <path d="M1557 803 V858 H327 V803" fill="none" stroke="#ffc17b" stroke-width="2.8" stroke-dasharray="9 8" marker-end="url(#loop-arrow)"/>
+  <rect x="690" y="833" width="505" height="52" rx="15" fill="#0a2034"/>
+  <text x="942" y="868" class="sans" fill="#ffc17b" font-size="24" font-weight="690" text-anchor="middle">下一轮：带着已验证的事实继续</text>
+
+  <text x="116" y="991" class="sans" fill="#ffc17b" font-size="28" font-weight="700">真实反馈进入上下文，为下一步提供新依据</text>
+  <text x="116" y="1036" class="sans" fill="#89a4ba" font-size="20">必要工具、权限和可执行的验证环境仍需真实具备；说明文字不能代替运行结果。</text>
+</svg>

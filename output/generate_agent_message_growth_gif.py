@@ -1,13 +1,14 @@
-"""Render a slide-sized animated GIF for the Agent message history lesson.
+"""Render the Agent message history animation and its HTML deck assets.
 
 Run with the bundled workspace Python (Pillow required). The GIF and poster PNG
-are written next to this script; no application or repository files are changed.
+are written next to this script and copied into ``ai-coding-camp`` when present.
 """
 
 from __future__ import annotations
 
 from math import cos, pi, sin
 from pathlib import Path
+from shutil import copyfile
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -15,6 +16,7 @@ from PIL import Image, ImageDraw, ImageFont
 HERE = Path(__file__).resolve().parent
 GIF_PATH = HERE / "Agent_Message_Growth.gif"
 POSTER_PATH = HERE / "Agent_Message_Growth_Poster.png"
+DECK_DIR = HERE / "ai-coding-camp"
 W, H = 1280, 720
 
 BG = (10, 18, 33)
@@ -36,10 +38,16 @@ MESSAGES = [
     ("system", "content", "固定规则：依据工具结果回答"),
     ("user", "content", "列出 demo 目录中的文件"),
     ("assistant", "tool_calls", "read_dir(demo)"),
-    ("tool", "content", "b.txt、a.txt"),
-    ("assistant", "content", "demo 中有 b.txt 和 a.txt"),
+    ("tool", "content", "b.txt、a.txt、notes.md"),
+    ("assistant", "content", "demo 中有 b.txt、a.txt、notes.md"),
     ("user", "content", "请按名称排序后再说一遍"),
-    ("assistant", "content", "a.txt、b.txt"),
+    ("assistant", "content", "a.txt、b.txt、notes.md"),
+    ("user", "content", "再检查目录里有 .md 文件吗？"),
+    ("assistant", "tool_calls", "read_dir(demo)"),
+    ("tool", "content", "a.txt、b.txt、notes.md"),
+    ("assistant", "content", "有，notes.md"),
+    ("user", "content", "只给出 .md 文件名"),
+    ("assistant", "content", "notes.md"),
 ]
 
 STAGES = [
@@ -50,6 +58,12 @@ STAGES = [
     ("模型形成答复", "assistant 的答复也进入历史"),
     ("用户发起第 2 轮", "前一轮消息成为本轮上下文"),
     ("沿用已有上下文", "模型依据历史结果回答新问题"),
+    ("用户发起第 3 轮", "新问题继续接在已有记录后"),
+    ("再次请求工具", "新的 tool_calls 也进入记录"),
+    ("新的工具结果", "第二次工具输出继续追加"),
+    ("回复第 3 轮", "模型答复成为又一条消息"),
+    ("用户发起第 4 轮", "同一会话继续增长"),
+    ("依据已有结果答复", "消息不会在第 7 条停止"),
 ]
 
 FONT_CN = "/System/Library/Fonts/STHeiti Medium.ttc"
@@ -66,11 +80,13 @@ F_SUB = font(FONT_CN, 19)
 F_HEAD = font(FONT_CN, 21)
 F_STAGE = font(FONT_CN, 27)
 F_BODY = font(FONT_CN, 19)
-F_CARD = font(FONT_CN, 23)
-F_META = font(FONT_LATIN, 20)
-F_MONO = font(FONT_MONO, 19)
-F_NUM = font(FONT_MONO, 18)
+F_CARD = font(FONT_CN, 19)
+F_META = font(FONT_LATIN, 17)
+F_MONO = font(FONT_MONO, 17)
+F_NUM = font(FONT_MONO, 16)
 F_ICON = font(FONT_LATIN, 34)
+
+CARD_STEP = 47
 
 
 def text_center(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int],
@@ -109,18 +125,37 @@ def draw_icon(draw: ImageDraw.ImageDraw, role: str, cx: int, cy: int, color: tup
 def draw_card(index: int, active: bool) -> Image.Image:
     role, field, value = MESSAGES[index]
     accent = COLORS[role]
-    layer = Image.new("RGBA", (786, 70), (0, 0, 0, 0))
+    layer = Image.new("RGBA", (786, CARD_STEP), (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
-    rounded(d, (4, 5, 782, 68), 15, (0, 0, 0, 60))
-    rounded(d, (1, 1, 778, 64), 15, CARD_ACTIVE if active else CARD,
+    rounded(d, (4, 4, 782, 46), 10, (0, 0, 0, 60))
+    rounded(d, (1, 1, 778, 44), 10, CARD_ACTIVE if active else CARD,
             accent if active else BORDER, width=2 if active else 1)
-    rounded(d, (1, 12, 6, 53), 3, accent)
-    d.text((27, 19), f"{index + 1:02d}", font=F_NUM, fill=FAINT)
-    rounded(d, (79, 13, 220, 52), 11, (*accent, 36), accent, 1)
-    text_center(d, (79, 13, 220, 52), role, F_META, accent)
-    d.text((245, 20), field, font=F_MONO, fill=MUTED)
-    d.text((400, 17), value, font=F_CARD, fill=TEXT)
+    rounded(d, (1, 8, 6, 37), 3, accent)
+    d.text((25, 12), f"{index + 1:02d}", font=F_NUM, fill=FAINT)
+    rounded(d, (79, 8, 216, 37), 8, (*accent, 36), accent, 1)
+    text_center(d, (79, 8, 216, 37), role, F_META, accent)
+    d.text((238, 13), field, font=F_MONO, fill=MUTED)
+    d.text((393, 10), value, font=F_CARD, fill=TEXT)
     return layer
+
+
+def draw_ellipsis(kind: str) -> Image.Image:
+    """Draw a non-message row for omitted history or future additions."""
+    layer = Image.new("RGBA", (786, CARD_STEP), (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer)
+    rounded(d, (1, 1, 778, 44), 10, (17, 30, 49), BORDER, 1)
+    d.text((28, 8), "…", font=F_STAGE, fill=FAINT)
+    label = "中间消息仍保留在会话记录中" if kind == "middle" else "下一轮消息继续追加 …"
+    d.text((96, 11), label, font=F_CARD, fill=MUTED)
+    return layer
+
+
+def visible_items(step: int) -> list[int | str]:
+    """Keep eight real records visible after the history grows past the panel."""
+    count = step + 1
+    if count <= 9:
+        return [*range(count), "future"]
+    return [0, 1, "middle", *range(count - 6, count), "future"]
 
 
 def draw_base() -> Image.Image:
@@ -133,8 +168,8 @@ def draw_base() -> Image.Image:
             if xx < 60 or xx > 1220 or yy < 138:
                 d.ellipse((xx, yy, xx + 1, yy + 1), fill=(37, 55, 80))
 
-    d.text((68, 38), "Agent 会话中的消息如何累积", font=F_TITLE, fill=TEXT)
-    d.text((70, 98), "固定规则  →  第一轮任务  →  工具调用  →  工具结果  →  下一轮输入",
+    d.text((68, 38), "Agent 会话中的消息持续累积", font=F_TITLE, fill=TEXT)
+    d.text((70, 98), "固定规则  →  用户输入  →  工具调用  →  工具结果  →  模型答复  →  …",
            font=F_SUB, fill=MUTED)
 
     d.text((113, 139), "messages[]", font=F_MONO, fill=MUTED)
@@ -145,12 +180,12 @@ def draw_base() -> Image.Image:
     rounded(d, (902, 151, 1214, 647), 22, PANEL, BORDER, 1)
     d.text((930, 178), "当前追加", font=F_HEAD, fill=MUTED)
     d.line((930, 460, 1186, 460), fill=BORDER, width=2)
-    d.text((930, 479), "消息历史", font=F_HEAD, fill=MUTED)
+    d.text((930, 479), "已保存的消息", font=F_HEAD, fill=MUTED)
     rounded(d, (958, 565, 1157, 616), 13, (33, 53, 82), BORDER, 1)
-    text_center(d, (958, 565, 1157, 616), "LLM 下一次调用", F_BODY, TEXT)
+    text_center(d, (958, 565, 1157, 616), "下次按策略取用", F_BODY, TEXT)
     d.line((1058, 538, 1058, 558), fill=FAINT, width=3)
     d.polygon([(1052, 552), (1064, 552), (1058, 560)], fill=FAINT)
-    d.text((70, 678), "示意结构 · 工具调用字段与上下文保留方式因 Agent 而异",
+    d.text((70, 678), "会话记录持续追加；送入模型的可见上下文可能截取或摘要",
            font=F_SUB, fill=FAINT)
     return image
 
@@ -161,28 +196,32 @@ def draw_stage(step: int, progress: float) -> Image.Image:
     role = MESSAGES[step][0]
     accent = COLORS[role]
 
-    # Earlier messages stay in place. The newest card slides into the array.
-    for index in range(step + 1):
-        y = 167 + 69 * index
-        if index == step:
+    # The oldest and newest messages remain visible when the panel needs room.
+    items = visible_items(step)
+    for slot, item in enumerate(items):
+        y = 167 + CARD_STEP * slot
+        if isinstance(item, str):
+            image.alpha_composite(draw_ellipsis(item), (110, y))
+            continue
+        if item == step:
             x = 110 + round(56 * (1 - progress))
-            card = draw_card(index, active=True)
+            card = draw_card(item, active=True)
             alpha = card.getchannel("A").point(lambda v: round(v * progress))
             card.putalpha(alpha)
         else:
             x = 110
-            card = draw_card(index, active=False)
+            card = draw_card(item, active=False)
         image.alpha_composite(card, (x, y))
         d = ImageDraw.Draw(image)
 
     # Moving dot and arrow show the current item entering the message array.
-    y_mid = 200 + 69 * step
+    y_mid = 189 + CARD_STEP * items.index(step)
     d.line((878, y_mid, 901, y_mid), fill=accent, width=3)
     d.polygon([(878, y_mid), (889, y_mid - 6), (889, y_mid + 6)], fill=accent)
     dot_x = 900 - round(20 * progress)
     d.ellipse((dot_x - 5, y_mid - 5, dot_x + 5, y_mid + 5), fill=accent)
 
-    d.text((1130, 180), f"{step + 1:02d}/07", font=F_MONO, fill=TEXT)
+    d.text((1090, 180), f"累计 {step + 1:02d} 条", font=F_BODY, fill=TEXT)
     cx, cy = 1058, 279
     pulse = 3 * (1 - cos(pi * progress)) / 2
     r = round(58 + pulse)
@@ -194,13 +233,10 @@ def draw_stage(step: int, progress: float) -> Image.Image:
     title, detail = STAGES[step]
     d.text((930, 365), title, font=F_STAGE, fill=TEXT)
     d.text((930, 407), detail, font=F_BODY, fill=MUTED)
-    for idx, (message_role, _, _) in enumerate(MESSAGES):
-        x0 = 930 + idx * 37
-        if idx <= step:
-            fill = COLORS[message_role]
-        else:
-            fill = (58, 75, 102)
-        rounded(d, (x0, 515, x0 + 28, 526), 5, fill)
+    for idx, (message_role, _, _) in enumerate(MESSAGES[:step + 1]):
+        x0 = 930 + idx * 18
+        rounded(d, (x0, 515, x0 + 14, 526), 5, COLORS[message_role])
+    d.text((935 + 18 * (step + 1), 504), "…", font=F_BODY, fill=FAINT)
 
     return image.convert("RGB")
 
@@ -211,7 +247,7 @@ def main() -> None:
     for step in range(len(MESSAGES)):
         for progress in (0.25, 0.50, 0.75, 1.0):
             frames.append(draw_stage(step, progress))
-            durations.append(90 if progress < 1 else (1900 if step == 6 else 900))
+            durations.append(75 if progress < 1 else (1700 if step == len(MESSAGES) - 1 else 650))
 
     frames[-1].save(POSTER_PATH, optimize=True)
     palette = frames[-1].quantize(colors=128, method=Image.Quantize.MEDIANCUT)
@@ -226,8 +262,13 @@ def main() -> None:
         disposal=2,
         optimize=True,
     )
+    if DECK_DIR.is_dir():
+        copyfile(GIF_PATH, DECK_DIR / "agent-message-growth.gif")
+        copyfile(POSTER_PATH, DECK_DIR / "agent-message-growth-poster.png")
     print(f"{GIF_PATH} ({len(frames)} frames, {W}×{H})")
     print(POSTER_PATH)
+    if DECK_DIR.is_dir():
+        print(DECK_DIR / "agent-message-growth.gif")
 
 
 if __name__ == "__main__":

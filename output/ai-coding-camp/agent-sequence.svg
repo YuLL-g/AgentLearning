@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">最小 Agent 的运行时序</title>
+  <desc id="svg-desc">用户输入问题后，Agent 读取并更新会话上下文，请求 LLM。若 LLM 请求工具，Agent 执行工具，把结果或错误写回上下文，并再次请求 LLM。若 LLM 不再需要调用工具，便给出最终答复；Agent 回复用户并保存本轮记录。</desc>
+  <defs>
+    <radialGradient id="glow" cx="92%" cy="10%" r="90%">
+      <stop offset="0" stop-color="#174260" stop-opacity=".64"/>
+      <stop offset=".45" stop-color="#0b263f" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#071423" stop-opacity="0"/>
+    </radialGradient>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M1 1 9 5 1 9Z" fill="#72d2ff"/>
+    </marker>
+    <marker id="arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M1 1 9 5 1 9Z" fill="#ffc17b"/>
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M1 1 9 5 1 9Z" fill="#b8cadb"/>
+    </marker>
+    <style>
+      .sans{font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif}
+      .mono{font-family:'JetBrains Mono',Menlo,monospace}
+      .title{fill:#f5f8fc;font-size:66px;font-weight:760;letter-spacing:-2px}
+      .kicker{fill:#72d2ff;font-size:19px;font-weight:650;letter-spacing:3px}
+      .subtitle{fill:#b8cadb;font-size:24px}
+      .lane{stroke:#6b8aa3;stroke-opacity:.44;stroke-width:2;stroke-dasharray:7 9}
+      .lane-title{fill:#f5f8fc;font-size:27px;font-weight:690}
+      .msg{fill:#e2edf5;font-size:23px;font-weight:560;text-anchor:middle;paint-order:stroke fill;stroke:#0b2034;stroke-width:8;stroke-linejoin:round}
+      .msg-gold{fill:#ffc17b}
+      .request{stroke:#72d2ff;stroke-width:3;fill:none;marker-end:url(#arrow-cyan)}
+      .write{stroke:#ffc17b;stroke-width:3;fill:none;marker-end:url(#arrow-gold)}
+      .response{stroke:#b8cadb;stroke-width:2.5;stroke-dasharray:8 7;fill:none;marker-end:url(#arrow-muted)}
+      .loop-arrow{stroke:#ffc17b;stroke-width:2.5;stroke-dasharray:7 6;fill:none;marker-end:url(#arrow-gold)}
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#071423"/>
+  <rect width="1920" height="1080" fill="url(#glow)"/>
+
+  <text x="116" y="95" class="sans kicker">第一部分 · AI AGENT 最小框架</text>
+  <text x="116" y="174" class="sans title">最小 Agent 的运行时序</text>
+  <text x="116" y="219" class="sans subtitle">课堂示意：Agent 维护上下文并驱动模型与工具，直到得到最终答复</text>
+  <line x1="1465" y1="197" x2="1523" y2="197" class="request"/>
+  <text x="1538" y="204" class="sans" fill="#b8cadb" font-size="19">请求</text>
+  <line x1="1634" y1="197" x2="1692" y2="197" class="response"/>
+  <text x="1707" y="204" class="sans" fill="#b8cadb" font-size="19">返回</text>
+
+  <rect x="116" y="253" width="1688" height="682" rx="25" fill="#0b2034" fill-opacity=".94" stroke="#35546c" stroke-opacity=".76" stroke-width="2"/>
+  <rect x="140" y="273" width="160" height="68" rx="13" fill="#10283f" stroke="#607f99" stroke-width="2"/>
+  <rect x="450" y="273" width="180" height="68" rx="13" fill="#0e3548" stroke="#72d2ff" stroke-width="2.5"/>
+  <rect x="754" y="273" width="212" height="68" rx="13" fill="#3c2d25" stroke="#ffc17b" stroke-width="2.5"/>
+  <rect x="1090" y="273" width="180" height="68" rx="13" fill="#10283f" stroke="#607f99" stroke-width="2"/>
+  <rect x="1480" y="273" width="160" height="68" rx="13" fill="#10283f" stroke="#607f99" stroke-width="2"/>
+  <text x="220" y="317" class="sans lane-title" text-anchor="middle">用户</text>
+  <text x="540" y="317" class="sans lane-title" text-anchor="middle">Agent</text>
+  <text x="860" y="317" class="sans lane-title" text-anchor="middle">会话上下文</text>
+  <text x="1180" y="317" class="sans lane-title" text-anchor="middle">LLM</text>
+  <text x="1560" y="317" class="sans lane-title" text-anchor="middle">工具</text>
+
+  <line x1="220" y1="341" x2="220" y2="916" class="lane"/>
+  <line x1="540" y1="341" x2="540" y2="916" class="lane"/>
+  <line x1="860" y1="341" x2="860" y2="916" class="lane"/>
+  <line x1="1180" y1="341" x2="1180" y2="916" class="lane"/>
+  <line x1="1560" y1="341" x2="1560" y2="916" class="lane"/>
+
+  <text x="380" y="375" class="sans msg">输入本轮问题</text>
+  <line x1="220" y1="388" x2="540" y2="388" class="request"/>
+  <text x="700" y="422" class="sans msg">读取历史，加入本轮输入</text>
+  <line x1="540" y1="435" x2="860" y2="435" class="write"/>
+  <text x="700" y="462" class="sans msg">当前上下文</text>
+  <line x1="860" y1="475" x2="540" y2="475" class="response"/>
+
+  <rect x="358" y="500" width="1320" height="405" rx="18" fill="#0b2b3d" fill-opacity=".29" stroke="#72d2ff" stroke-opacity=".55" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="380" y="530" class="sans" fill="#72d2ff" font-size="20" font-weight="650">本轮循环 · 直到最终答复</text>
+
+  <text x="860" y="548" class="sans msg">指令 + 当前上下文 + 可用工具</text>
+  <line x1="540" y1="561" x2="1180" y2="561" class="request"/>
+  <text x="860" y="594" class="sans msg">工具调用请求</text>
+  <line x1="1180" y1="607" x2="540" y2="607" class="response"/>
+  <text x="1050" y="637" class="sans msg">执行工具</text>
+  <line x1="540" y1="650" x2="1560" y2="650" class="request"/>
+  <text x="1050" y="678" class="sans msg">结果或错误</text>
+  <line x1="1560" y1="691" x2="540" y2="691" class="response"/>
+  <text x="700" y="718" class="sans msg msg-gold">记录工具调用与结果</text>
+  <line x1="540" y1="731" x2="860" y2="731" class="write"/>
+  <text x="700" y="759" class="sans msg">更新后的上下文</text>
+  <line x1="860" y1="772" x2="540" y2="772" class="response"/>
+  <path d="M540 780 H391 V561 H540" class="loop-arrow"/>
+  <text x="407" y="704" class="sans" fill="#ffc17b" font-size="18" font-weight="650" transform="rotate(-90 407 704)">更新后再请求 LLM</text>
+
+  <line x1="567" y1="797" x2="1649" y2="797" stroke="#59758c" stroke-opacity=".4" stroke-width="1.5"/>
+  <text x="860" y="817" class="sans msg msg-gold">不再需要调用工具，给出最终答复</text>
+  <line x1="1180" y1="830" x2="540" y2="830" class="response"/>
+  <text x="380" y="858" class="sans msg">输出答复，结束本轮</text>
+  <line x1="540" y1="871" x2="220" y2="871" class="response"/>
+  <text x="700" y="858" class="sans msg msg-gold">保存本轮记录</text>
+  <line x1="540" y1="871" x2="860" y2="871" class="write"/>
+
+  <circle cx="127" cy="988" r="6" fill="#ffc17b"/>
+  <text x="146" y="996" class="sans" fill="#b8cadb" font-size="23">已保存的上下文供下一轮使用</text>
+  <text x="116" y="1042" class="sans" fill="#88a1b8" font-size="15">AI 编码训练营 · Agent 最小框架</text>
+</svg>

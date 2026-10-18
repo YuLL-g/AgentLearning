@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="flow-title flow-desc">
+  <title id="flow-title">AI Agent 的最小运行框架</title>
+  <desc id="flow-desc">输入与上下文由 Agent 组装成请求，LLM 判断下一步。若不再需要工具调用，给出最终答复；若需要，Agent 校验权限与参数后执行工具、观察结果、更新上下文并再次请求 LLM。完整记录供下一轮使用。拒绝、超时或达到上限时应停止并说明。</desc>
+  <defs>
+    <radialGradient id="flow-glow" cx="92%" cy="5%" r="85%">
+      <stop offset="0" stop-color="#123d59" stop-opacity=".7"/>
+      <stop offset=".55" stop-color="#0a273e" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#071423" stop-opacity="0"/>
+    </radialGradient>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M1 1 9 5 1 9Z" fill="#72d2ff"/></marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M1 1 9 5 1 9Z" fill="#68dfcf"/></marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M1 1 9 5 1 9Z" fill="#c9a2f1"/></marker>
+    <marker id="arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M1 1 9 5 1 9Z" fill="#ffc17b"/></marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M1 1 9 5 1 9Z" fill="#ffa779"/></marker>
+    <style>
+      .sans{font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif}
+      .kicker{fill:#72d2ff;font-size:19px;font-weight:650;letter-spacing:3px}
+      .title{fill:#f5f8fc;font-size:64px;font-weight:760;letter-spacing:-2px}
+      .subtitle{fill:#b8cadb;font-size:25px}
+      .tag{font-size:18px;font-weight:700}
+      .card-title{fill:#f5f8fc;font-size:29px;font-weight:730}
+      .card-detail{fill:#b8cadb;font-size:20px}
+      .input-row{fill:#eef7fb;font-size:20px;font-weight:520}
+      .link{fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+      .memory{fill:none;stroke:#c9a2f1;stroke-width:2.7;stroke-dasharray:13 10;marker-end:url(#arrow-purple)}
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#071423"/>
+  <rect width="1920" height="1080" fill="url(#flow-glow)"/>
+  <rect x="116" y="75" width="8" height="130" rx="4" fill="#68dfcf"/>
+  <text x="147" y="93" class="sans kicker">第一部分 · AI AGENT 最小框架</text>
+  <text x="145" y="163" class="sans title">AI Agent 的最小运行框架</text>
+  <text x="147" y="211" class="sans subtitle">模型决定下一步 · Agent 运行时执行工具与维护上下文</text>
+
+  <rect x="116" y="252" width="1688" height="702" rx="25" fill="#0a2034" fill-opacity=".73" stroke="#35546c" stroke-opacity=".75" stroke-width="2"/>
+  <path d="M1620 445 V301 H290 V385" class="memory"/>
+  <rect x="550" y="276" width="810" height="46" rx="12" fill="#0a2034"/>
+  <text x="955" y="307" class="sans" fill="#c9a2f1" font-size="21" font-weight="650" text-anchor="middle">下一轮：保存输入、工具调用与结果、最终答复 → 会话记忆</text>
+
+  <!-- 01 输入与上下文 -->
+  <rect x="135" y="385" width="315" height="522" rx="28" fill="#103641" stroke="#68dfcf" stroke-width="2.5"/>
+  <text x="160" y="418" class="sans tag" fill="#68dfcf">01  输入</text>
+  <text x="160" y="459" class="sans card-title">输入与上下文</text>
+  <rect x="158" y="484" width="269" height="47" rx="7" fill="#1a4b5b"/>
+  <rect x="158" y="540" width="269" height="47" rx="7" fill="#1a4b5b"/>
+  <rect x="158" y="596" width="269" height="47" rx="7" fill="#1a4b5b"/>
+  <rect x="158" y="652" width="269" height="47" rx="7" fill="#1a4b5b"/>
+  <rect x="158" y="708" width="269" height="47" rx="7" fill="#1a4b5b"/>
+  <rect x="158" y="764" width="269" height="47" rx="7" fill="#1a4b5b"/>
+  <rect x="158" y="820" width="269" height="47" rx="7" fill="#1a4b5b"/>
+  <text x="175" y="515" class="sans input-row">系统提示词</text>
+  <text x="175" y="571" class="sans input-row">可选规则 / 项目约束</text>
+  <text x="175" y="627" class="sans input-row">系统工具</text>
+  <text x="175" y="683" class="sans input-row">SKILL 描述</text>
+  <text x="175" y="739" class="sans input-row">MCP 工具表</text>
+  <text x="175" y="795" class="sans input-row">会话历史（窗口或摘要）</text>
+  <text x="175" y="851" class="sans input-row">本轮用户输入</text>
+
+  <!-- 主线：组装请求、模型判断、分流、答复 -->
+  <path d="M450 528 H515" class="link" stroke="#68dfcf" marker-end="url(#arrow-teal)"/>
+  <rect x="515" y="440" width="270" height="175" rx="23" fill="#12334b" stroke="#72bfff" stroke-width="2.5"/>
+  <text x="538" y="475" class="sans tag" fill="#72bfff">02  运行时</text>
+  <text x="538" y="521" class="sans card-title">Agent 组装请求</text>
+  <text x="538" y="559" class="sans card-detail">会话消息 + 工具说明</text>
+  <text x="538" y="586" class="sans card-detail">只传入当前可见信息</text>
+  <path d="M785 528 H855" class="link" stroke="#72bfff" marker-end="url(#arrow-cyan)"/>
+
+  <rect x="855" y="440" width="280" height="175" rx="23" fill="#332448" stroke="#bd95e8" stroke-width="2.5"/>
+  <text x="879" y="475" class="sans tag" fill="#c9a2f1">03  模型</text>
+  <text x="879" y="521" class="sans card-title">LLM 判断下一步</text>
+  <text x="879" y="560" class="sans card-detail">生成答复或工具调用请求</text>
+  <path d="M1135 528 H1180" class="link" stroke="#c9a2f1" marker-end="url(#arrow-purple)"/>
+
+  <path d="M1277 425 L1374 528 L1277 631 L1180 528 Z" fill="#47321f" stroke="#ffc17b" stroke-width="3"/>
+  <text x="1277" y="479" class="sans tag" fill="#ffc17b" text-anchor="middle">04  分流</text>
+  <text x="1277" y="528" class="sans card-title" text-anchor="middle">需要调用</text>
+  <text x="1277" y="565" class="sans card-title" text-anchor="middle">工具？</text>
+
+  <path d="M1374 528 H1475" class="link" stroke="#7be6b7" marker-end="url(#arrow-teal)"/>
+  <text x="1425" y="486" class="sans" fill="#7be6b7" font-size="20" font-weight="700" text-anchor="middle">否</text>
+  <text x="1425" y="511" class="sans" fill="#7be6b7" font-size="17" text-anchor="middle">无需工具</text>
+  <rect x="1475" y="440" width="285" height="175" rx="23" fill="#153a2e" stroke="#7be6b7" stroke-width="2.5"/>
+  <text x="1499" y="475" class="sans tag" fill="#7be6b7">08  结束本轮</text>
+  <text x="1499" y="525" class="sans card-title">最终答复</text>
+  <text x="1499" y="563" class="sans" fill="#c0edd7" font-size="19">LLM 不再需要调用工具</text>
+  <text x="1499" y="592" class="sans" fill="#b8cadb" font-size="19">结果 · 依据 · 限制</text>
+
+  <!-- 是：Agent 控制、工具执行、观察与回到模型 -->
+  <path d="M1277 631 V682" class="link" stroke="#ffc17b" marker-end="url(#arrow-gold)"/>
+  <text x="1299" y="661" class="sans" fill="#ffc17b" font-size="21" font-weight="700">是</text>
+  <text x="550" y="729" class="sans" fill="#ffc17b" font-size="26" font-weight="700">工具反馈循环 · 可重复 0～N 次</text>
+  <text x="550" y="767" class="sans" fill="#9fb8ca" font-size="20">Agent 执行工具，结果返回模型继续判断</text>
+
+  <rect x="1145" y="685" width="290" height="120" rx="20" fill="#3e2d28" stroke="#ffa779" stroke-width="2.2"/>
+  <text x="1169" y="717" class="sans tag" fill="#ffa779">05  Agent 控制</text>
+  <text x="1169" y="757" class="sans card-title" font-size="27">运行时校验</text>
+  <text x="1169" y="789" class="sans" fill="#d2d9de" font-size="19">解析参数 · 授权 · 上限</text>
+  <path d="M1435 745 H1485" class="link" stroke="#ffa779" marker-end="url(#arrow-orange)"/>
+
+  <rect x="1485" y="685" width="275" height="120" rx="20" fill="#3e2d28" stroke="#ffa779" stroke-width="2.2"/>
+  <text x="1508" y="717" class="sans tag" fill="#ffa779">06  外部动作</text>
+  <text x="1508" y="757" class="sans card-title">执行工具</text>
+  <text x="1508" y="789" class="sans" fill="#d2d9de" font-size="19">文件 / 命令 / API</text>
+  <path d="M1622 805 V826" class="link" stroke="#ffa779" marker-end="url(#arrow-orange)"/>
+
+  <rect x="1485" y="835" width="275" height="99" rx="19" fill="#123945" stroke="#68dfcf" stroke-width="2.2"/>
+  <text x="1508" y="862" class="sans tag" fill="#68dfcf">07  工具反馈</text>
+  <text x="1508" y="899" class="sans" fill="#f5f8fc" font-size="27" font-weight="700">观察结果</text>
+  <text x="1508" y="924" class="sans" fill="#b8cadb" font-size="18">输出 / 错误 / 状态</text>
+  <path d="M1485 884 H1135" class="link" stroke="#68dfcf" marker-end="url(#arrow-teal)"/>
+
+  <rect x="855" y="835" width="280" height="99" rx="19" fill="#153d3f" stroke="#79dfba" stroke-width="2.2"/>
+  <text x="879" y="862" class="sans tag" fill="#79dfba">回到模型</text>
+  <text x="879" y="899" class="sans" fill="#f5f8fc" font-size="27" font-weight="700">更新本轮上下文</text>
+  <text x="879" y="924" class="sans" fill="#b8cadb" font-size="18">追加调用请求 + 工具结果</text>
+  <path d="M995 835 V615" class="link" stroke="#79dfba" marker-end="url(#arrow-teal)"/>
+
+  <line x1="116" y1="974" x2="1510" y2="974" stroke="#4b657a" stroke-width="2"/>
+  <circle cx="126" cy="1008" r="5" fill="#72d2ff"/>
+  <text x="144" y="1016" class="sans" fill="#b8cadb" font-size="20">实线：本轮请求与工具循环</text>
+  <circle cx="518" cy="1008" r="5" fill="#c9a2f1"/>
+  <text x="536" y="1016" class="sans" fill="#b8cadb" font-size="20">虚线：跨轮记忆</text>
+  <text x="805" y="1017" class="sans" fill="#ffc17b" font-size="23" font-weight="650">拒绝 / 超时 / 达到上限 → 停止并说明，不等于任务完成</text>
+  <text x="116" y="1050" class="sans" fill="#88a1b8" font-size="15">AI 编码训练营 · Agent 最小框架</text>
+</svg>

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" class="play" role="img" aria-labelledby="rules-title rules-desc">
+  <title id="rules-title">CLAUDE.md 与 AGENTS.md 中应该写什么</title>
+  <desc id="rules-desc">项目指令速查图：四类稳定、项目特有、可执行的信息依次出现，分别是项目与权威依据、关键目录和真实命令、项目约束与修改边界、验证方式和交付证据。一次性任务及长篇规格应放在别处。</desc>
+  <defs>
+    <radialGradient id="rules-bg" cx="91%" cy="4%" r="96%">
+      <stop offset="0" stop-color="#194660" stop-opacity=".53"/>
+      <stop offset=".55" stop-color="#0b293f" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#071423" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rules-card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102d44"/>
+      <stop offset="1" stop-color="#0c2438"/>
+    </linearGradient>
+    <filter id="rules-shadow" x="-8%" y="-13%" width="116%" height="133%">
+      <feDropShadow dx="0" dy="14" stdDeviation="22" flood-color="#000" flood-opacity=".25"/>
+    </filter>
+    <style><![CDATA[
+      .sans{font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif}
+      .mono{font-family:'JetBrains Mono','SFMono-Regular',Menlo,monospace}
+      .kicker{fill:#72d2ff;font-size:19px;font-weight:650;letter-spacing:3px}
+      .title{fill:#f5f8fc;font-size:62px;font-weight:760;letter-spacing:-1.4px}
+      .subtitle{fill:#b8cadb;font-size:25px}
+      .file-label{fill:#e8f3fa;font-size:27px;font-weight:700}
+      .file-row{fill:#f5f8fc;font-size:29px;font-weight:690}
+      .card-title{fill:#f5f8fc;font-size:31px;font-weight:720}
+      .card-desc{fill:#b8cadb;font-size:24px}
+      .start .d1,.start .d2,.start .d3,.start .d4,.start .a1,.start .a2,.start .a3,.start .a4,.start .r1,.start .r2,.start .r3,.start .r4,.start .takeaway{opacity:0}
+      .play .d1{animation:rise .38s ease .45s both}.play .a1{animation:slide .27s ease .84s both}.play .r1{animation:rise .42s ease 1.11s both}
+      .play .d2{animation:rise .38s ease 1.45s both}.play .a2{animation:slide .27s ease 1.84s both}.play .r2{animation:rise .42s ease 2.11s both}
+      .play .d3{animation:rise .38s ease 2.45s both}.play .a3{animation:slide .27s ease 2.84s both}.play .r3{animation:rise .42s ease 3.11s both}
+      .play .d4{animation:rise .38s ease 3.45s both}.play .a4{animation:slide .27s ease 3.84s both}.play .r4{animation:rise .42s ease 4.11s both}
+      .play .takeaway{animation:rise .45s ease 4.66s both}
+      @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+      @keyframes slide{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:translateX(0)}}
+    ]]></style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#071423"/>
+  <rect width="1920" height="1080" fill="url(#rules-bg)"/>
+  <text x="116" y="96" class="sans kicker">第一部分 · PROJECT INSTRUCTIONS</text>
+  <text x="116" y="175" class="sans title">CLAUDE.md / AGENTS.md：写什么？</text>
+  <text x="116" y="222" class="sans subtitle">把稳定、项目特有、可执行的约定，写进适用的项目指令文件</text>
+
+  <!-- 左侧文件：名称是按工具和配置选用的项目指令入口。 -->
+  <rect x="116" y="287" width="565" height="600" rx="25" fill="#0a2034" stroke="#36566e" stroke-width="2" filter="url(#rules-shadow)"/>
+  <path d="M141 288 H656 Q681 288 681 313 V354 H116 V313 Q116 288 141 288Z" fill="#102b42"/>
+  <path d="M116 354 H681" stroke="#36566e" stroke-width="2"/>
+  <path d="M151 310 h22 l9 9 v23 h-31 z M173 310 v10 h9" fill="none" stroke="#72d2ff" stroke-width="2.5" stroke-linejoin="round"/>
+  <text x="196" y="333" class="mono file-label">CLAUDE.md / AGENTS.md</text>
+  <text x="146" y="373" class="sans" fill="#88a8be" font-size="18">按所用 Agent 与配置选择适用文件</text>
+
+  <g class="d1">
+    <rect x="144" y="389" width="509" height="103" rx="17" fill="#12344a" stroke="#47758c" stroke-width="1.5"/>
+    <rect x="162" y="413" width="56" height="55" rx="14" fill="#1b4c61" stroke="#72d2ff" stroke-opacity=".55"/>
+    <text x="190" y="451" class="mono" fill="#72d2ff" font-size="25" font-weight="700" text-anchor="middle">01</text>
+    <text x="241" y="452" class="sans file-row">项目与依据</text>
+  </g>
+  <g class="d2">
+    <rect x="144" y="515" width="509" height="103" rx="17" fill="#12344a" stroke="#47758c" stroke-width="1.5"/>
+    <rect x="162" y="539" width="56" height="55" rx="14" fill="#463b30" stroke="#ffc17b" stroke-opacity=".55"/>
+    <text x="190" y="577" class="mono" fill="#ffc17b" font-size="25" font-weight="700" text-anchor="middle">02</text>
+    <text x="241" y="578" class="sans file-row">目录与命令</text>
+  </g>
+  <g class="d3">
+    <rect x="144" y="641" width="509" height="103" rx="17" fill="#12344a" stroke="#47758c" stroke-width="1.5"/>
+    <rect x="162" y="665" width="56" height="55" rx="14" fill="#1b4c61" stroke="#72d2ff" stroke-opacity=".55"/>
+    <text x="190" y="703" class="mono" fill="#72d2ff" font-size="25" font-weight="700" text-anchor="middle">03</text>
+    <text x="241" y="704" class="sans file-row">关键约束</text>
+  </g>
+  <g class="d4">
+    <rect x="144" y="767" width="509" height="103" rx="17" fill="#12344a" stroke="#47758c" stroke-width="1.5"/>
+    <rect x="162" y="791" width="56" height="55" rx="14" fill="#463b30" stroke="#ffc17b" stroke-opacity=".55"/>
+    <text x="190" y="829" class="mono" fill="#ffc17b" font-size="25" font-weight="700" text-anchor="middle">04</text>
+    <text x="241" y="830" class="sans file-row">验证与交付</text>
+  </g>
+
+  <!-- 连接线依次指向每类规则的可执行含义。 -->
+  <g class="a1" fill="none" stroke="#72d2ff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M694 441 H745"/><path d="M735 432 l10 9 -10 9"/></g>
+  <g class="a2" fill="none" stroke="#ffc17b" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M694 567 H745"/><path d="M735 558 l10 9 -10 9"/></g>
+  <g class="a3" fill="none" stroke="#72d2ff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M694 693 H745"/><path d="M735 684 l10 9 -10 9"/></g>
+  <g class="a4" fill="none" stroke="#ffc17b" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M694 819 H745"/><path d="M735 810 l10 9 -10 9"/></g>
+
+  <g class="r1">
+    <rect x="760" y="389" width="1044" height="103" rx="19" fill="url(#rules-card)" stroke="#456981" stroke-width="1.5"/>
+    <rect x="760" y="389" width="9" height="103" rx="4" fill="#72d2ff"/>
+    <text x="819" y="431" class="sans card-title">项目与依据</text>
+    <text x="819" y="471" class="sans card-desc">项目做什么；规格和接口以哪个文件为准</text>
+    <circle cx="1735" cy="441" r="26" fill="#1a4559" stroke="#72d2ff" stroke-opacity=".65"/><circle cx="1735" cy="441" r="13" fill="none" stroke="#72d2ff" stroke-width="3"/><circle cx="1735" cy="441" r="4" fill="#72d2ff"/>
+  </g>
+  <g class="r2">
+    <rect x="760" y="515" width="1044" height="103" rx="19" fill="url(#rules-card)" stroke="#456981" stroke-width="1.5"/>
+    <rect x="760" y="515" width="9" height="103" rx="4" fill="#ffc17b"/>
+    <text x="819" y="557" class="sans card-title">目录与命令</text>
+    <text x="819" y="597" class="sans card-desc">关键代码与测试在哪；构建、测试怎样运行</text>
+    <circle cx="1735" cy="567" r="26" fill="#493c30" stroke="#ffc17b" stroke-opacity=".65"/><path d="M1719 556 h13 l5 5 h15 v17 h-33 z" fill="none" stroke="#ffc17b" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+  <g class="r3">
+    <rect x="760" y="641" width="1044" height="103" rx="19" fill="url(#rules-card)" stroke="#456981" stroke-width="1.5"/>
+    <rect x="760" y="641" width="9" height="103" rx="4" fill="#72d2ff"/>
+    <text x="819" y="683" class="sans card-title">关键约束</text>
+    <text x="819" y="723" class="sans card-desc">兼容性、错误处理，以及不应越过的边界</text>
+    <circle cx="1735" cy="693" r="26" fill="#1a4559" stroke="#72d2ff" stroke-opacity=".65"/><path d="M1735 676 l16 7 v10 c0 11 -7 19 -16 23 -9 -4 -16 -12 -16 -23 v-10 z" fill="none" stroke="#72d2ff" stroke-width="2.6" stroke-linejoin="round"/>
+  </g>
+  <g class="r4">
+    <rect x="760" y="767" width="1044" height="103" rx="19" fill="url(#rules-card)" stroke="#456981" stroke-width="1.5"/>
+    <rect x="760" y="767" width="9" height="103" rx="4" fill="#ffc17b"/>
+    <text x="819" y="809" class="sans card-title">验证与交付</text>
+    <text x="819" y="849" class="sans card-desc">按改动跑什么检查；报告结果和未验证项</text>
+    <circle cx="1735" cy="819" r="26" fill="#493c30" stroke="#ffc17b" stroke-opacity=".65"/><path d="M1721 819 l10 10 19 -21" fill="none" stroke="#ffc17b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g class="takeaway">
+    <text x="116" y="954" class="sans" fill="#ffc17b" font-size="35" font-weight="730">少量准确规则，减少猜测</text>
+    <text x="116" y="1005" class="sans" fill="#8faabd" font-size="21">本轮临时任务、完整规格和长教程，放在任务消息或专门文档。</text>
+  </g>
+</svg>

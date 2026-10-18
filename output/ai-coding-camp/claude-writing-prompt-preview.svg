@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="writing-title writing-desc">
+  <title id="writing-title">可复制的示例提示词预览</title>
+  <desc id="writing-desc">完整示例提示词的静态预览；实际幻灯片使用可选中、可复制的 HTML 文本呈现，右上角预留复制与返回按钮。</desc>
+  <defs>
+    <radialGradient id="writing-bg" cx="80%" cy="25%" r="85%">
+      <stop offset="0" stop-color="#17465e" stop-opacity=".45"/>
+      <stop offset=".58" stop-color="#0b2940" stop-opacity=".19"/>
+      <stop offset="1" stop-color="#071423" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="writing-panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12344b"/>
+      <stop offset="1" stop-color="#0a2033"/>
+    </linearGradient>
+    <filter id="writing-shadow" x="-15%" y="-18%" width="130%" height="145%">
+      <feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#000" flood-opacity=".27"/>
+    </filter>
+    <filter id="writing-glow" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+    <style><![CDATA[
+      .sans{font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif}
+      .mono{font-family:'JetBrains Mono','SFMono-Regular',Menlo,monospace}
+    ]]></style>
+  </defs>
+  <rect width="1920" height="1080" fill="#071423"/>
+  <rect width="1920" height="1080" fill="url(#writing-bg)"/>
+  <circle cx="1530" cy="590" r="532" fill="none" stroke="#72d2ff" stroke-opacity=".055" stroke-width="2"/>
+  <circle cx="1530" cy="590" r="375" fill="none" stroke="#72d2ff" stroke-opacity=".07" stroke-width="2"/>
+  <text x="116" y="105" class="sans" fill="#72d2ff" font-size="25" font-weight="700" letter-spacing="3">实践 05 · 写项目指令</text>
+  <rect x="116" y="128" width="107" height="5" rx="2.5" fill="#ffc17b"/>
+  <text x="116" y="204" class="sans" fill="#f5f8fc" font-size="71" font-weight="760" letter-spacing="-1.5">CLAUDE.md，该怎么写？</text>
+  
+  
+  <g filter="url(#writing-shadow)">
+    <rect x="116" y="228" width="1688" height="699" rx="26" fill="url(#writing-panel)" stroke="#557b8e" stroke-width="2"/>
+  </g>
+  <path d="M116 312H1804" stroke="#51768a" stroke-width="1.5"/>
+  <rect x="158" y="253" width="43" height="43" rx="11" fill="#173f53" stroke="#72d2ff" stroke-opacity=".45"/>
+  <path d="M171 266h17M171 274h13M171 282h16" stroke="#a6e5ff" stroke-width="2.3" stroke-linecap="round"/>
+  <text x="219" y="283" class="sans" fill="#f5f8fc" font-size="30" font-weight="710">给 Claude 的示例提示词</text>
+  <text x="164" y="742" class="sans" fill="#88a9bb" font-size="19">提示词仅提供初稿材料；生成后仍需按真实项目和验收契约逐条检查。</text>
+  <text x="165" y="350" class="sans" fill="#e4eff7" font-size="25">交付目标：使用 C 语言实现精简版 myls，支持默认目录列表以及 -a、-l、-h、-t 四个选项，无第三方运行时依赖。</text><text x="165" y="388" class="sans" fill="#e4eff7" font-size="25">运行环境为 Linux，使用 GCC 或 Clang 和 POSIX 目录接口。</text><text x="165" y="426" class="sans" fill="#e4eff7" font-size="25">默认每行输出一个文件名，不实现多列布局、颜色、递归和多个路径参数。</text><text x="165" y="464" class="sans" fill="#e4eff7" font-size="25">只接收零个或一个路径参数，默认路径为当前目录。</text><text x="165" y="502" class="sans" fill="#e4eff7" font-size="25">-h 必须与 -l 同用，否则报参数错误；非法选项和非法参数必须返回非零退出码。</text><text x="165" y="540" class="sans" fill="#e4eff7" font-size="25">输出字段、排序规则、时间格式和错误行为以验收契约为准。</text><text x="165" y="578" class="sans" fill="#e4eff7" font-size="25">系统 ls 只作为部分语义的参考实现，不把所有平台相关输出直接做字节级比较。</text><text x="165" y="616" class="sans" fill="#e4eff7" font-size="25"></text><text x="165" y="654" class="sans" fill="#e4eff7" font-size="25">开发原则：按已澄清的需求做最小实现，不自行扩展；一次只实现当前指派的一个任务；严格 TDD：Red → Green → Review；</text><text x="165" y="692" class="sans" fill="#e4eff7" font-size="25">构建与测试： make all：构建 myls、make test：构建并运行测试、make clean：清理构建产物</text>
+
+  <text x="116" y="1005" class="sans" fill="#88a1b8" font-size="21">AI 编码训练营 · 实践篇</text>
+</svg>

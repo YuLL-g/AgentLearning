@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" class="play" role="img" aria-labelledby="practice-title practice-desc">
+  <title id="practice-title">第二部分：从零实现精简版ls命令</title>
+  <desc id="practice-desc">课程进入简单实践。标题下方依次显示四条开发方法：需求澄清、按需求做最小实现、逐步增量开发并逐步验证、测试先行。右侧终端示意未来要实现的 myls 命令效果。</desc>
+  <defs>
+    <radialGradient id="practice-bg" cx="85%" cy="37%" r="85%">
+      <stop offset="0" stop-color="#164560" stop-opacity=".43"/>
+      <stop offset=".54" stop-color="#0b2940" stop-opacity=".21"/>
+      <stop offset="1" stop-color="#071423" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="practice-screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d263a"/>
+      <stop offset="1" stop-color="#081b2d"/>
+    </linearGradient>
+    <filter id="practice-shadow" x="-10%" y="-18%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#000" flood-opacity=".38"/>
+    </filter>
+    <style><![CDATA[
+      .sans{font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif}
+      .mono{font-family:'JetBrains Mono','SFMono-Regular',Menlo,monospace}
+      .start .headline,.start .rule1,.start .rule2,.start .rule3,.start .rule4,.start .command,.start .row1,.start .row2,.start .row3,.start .target{opacity:0}
+      .play .headline{animation:rise .72s cubic-bezier(.2,.78,.2,1) .28s both}
+      .play .rule1{animation:rise .4s ease 1.05s both}
+      .play .rule2{animation:rise .4s ease 1.33s both}
+      .play .rule3{animation:rise .4s ease 1.61s both}
+      .play .rule4{animation:rise .4s ease 1.89s both}
+      .play .command{animation:rise .46s ease 2.2s both}
+      .play .row1{animation:rise .45s ease 2.68s both}
+      .play .row2{animation:rise .45s ease 2.97s both}
+      .play .row3{animation:rise .45s ease 3.26s both}
+      .play .target{animation:rise .5s ease 3.72s both}
+      @keyframes rise{from{opacity:0;transform:translateY(19px)}to{opacity:1;transform:translateY(0)}}
+    ]]></style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#071423"/>
+  <rect width="1920" height="1080" fill="url(#practice-bg)"/>
+  <circle cx="1501" cy="552" r="520" fill="none" stroke="#72d2ff" stroke-opacity=".055" stroke-width="2"/>
+  <circle cx="1501" cy="552" r="410" fill="none" stroke="#72d2ff" stroke-opacity=".07" stroke-width="2"/>
+  <text x="96" y="978" class="mono" fill="#72d2ff" fill-opacity=".065" font-size="530" font-weight="800">02</text>
+
+  <text x="116" y="126" class="sans" fill="#72d2ff" font-size="27" font-weight="700" letter-spacing="4">第二部分 · 简单实践</text>
+  <rect x="116" y="159" width="104" height="5" rx="2.5" fill="#ffc17b"/>
+  <text x="116" y="212" class="mono" fill="#88a8be" font-size="20" letter-spacing="4">HANDS-ON PRACTICE</text>
+
+  <g class="headline">
+    <text x="116" y="471" class="sans" fill="#f5f8fc" font-size="110" font-weight="770" letter-spacing="-3">从零实现</text>
+    <text x="116" y="625" class="sans" fill="#f5f8fc" font-size="110" font-weight="770" letter-spacing="-3">精简版<tspan class="mono" fill="#72d2ff" letter-spacing="-6">ls</tspan>命令</text>
+  </g>
+  <g class="rule1">
+    <rect x="116" y="693" width="829" height="56" rx="14" fill="#102b40" stroke="#3c657c" stroke-width="1.5"/>
+    <rect x="130" y="702" width="40" height="38" rx="10" fill="#1c4b61"/>
+    <text x="150" y="729" class="mono" fill="#72d2ff" font-size="20" font-weight="700" text-anchor="middle">01</text>
+    <text x="191" y="733" class="sans" fill="#eaf4fb" font-size="29" font-weight="620">需求澄清</text>
+  </g>
+  <g class="rule2">
+    <rect x="116" y="759" width="829" height="56" rx="14" fill="#102b40" stroke="#3c657c" stroke-width="1.5"/>
+    <rect x="130" y="768" width="40" height="38" rx="10" fill="#493d31"/>
+    <text x="150" y="795" class="mono" fill="#ffc17b" font-size="20" font-weight="700" text-anchor="middle">02</text>
+    <text x="191" y="799" class="sans" fill="#eaf4fb" font-size="29" font-weight="620">按需求做最小实现</text>
+  </g>
+  <g class="rule3">
+    <rect x="116" y="825" width="829" height="56" rx="14" fill="#102b40" stroke="#3c657c" stroke-width="1.5"/>
+    <rect x="130" y="834" width="40" height="38" rx="10" fill="#1c4b61"/>
+    <text x="150" y="861" class="mono" fill="#72d2ff" font-size="20" font-weight="700" text-anchor="middle">03</text>
+    <text x="191" y="865" class="sans" fill="#eaf4fb" font-size="29" font-weight="620">逐步增量开发，每步验证</text>
+  </g>
+  <g class="rule4">
+    <rect x="116" y="891" width="829" height="56" rx="14" fill="#102b40" stroke="#3c657c" stroke-width="1.5"/>
+    <rect x="130" y="900" width="40" height="38" rx="10" fill="#493d31"/>
+    <text x="150" y="927" class="mono" fill="#ffc17b" font-size="20" font-weight="700" text-anchor="middle">04</text>
+    <text x="191" y="931" class="sans" fill="#eaf4fb" font-size="29" font-weight="620">测试先行（TDD）：先写测试再实现</text>
+  </g>
+
+  <!-- 右侧是目标效果的课堂示意，并非实际运行截图。 -->
+  <g filter="url(#practice-shadow)">
+    <rect x="1054" y="277" width="750" height="559" rx="28" fill="url(#practice-screen)" stroke="#466a83" stroke-width="2"/>
+    <path d="M1082 278 H1776 Q1804 278 1804 306 V354 H1054 V306 Q1054 278 1082 278Z" fill="#15354c"/>
+    <path d="M1054 354 H1804" stroke="#466a83" stroke-width="2"/>
+    <circle cx="1090" cy="316" r="9" fill="#ff7b72"/>
+    <circle cx="1122" cy="316" r="9" fill="#ffc17b"/>
+    <circle cx="1154" cy="316" r="9" fill="#72d2ff"/>
+    <text x="1429" y="324" class="mono" fill="#a9c1d1" font-size="20" text-anchor="middle">TERMINAL · 目标效果示意</text>
+    <path d="M1091 496 H1767" stroke="#35566d" stroke-width="2"/>
+  </g>
+
+  <g class="command">
+    <text x="1100" y="446" class="mono" fill="#ffc17b" font-size="43" font-weight="700">$</text>
+    <text x="1156" y="446" class="mono" fill="#f5f8fc" font-size="43" font-weight="680">./myls</text>
+    <rect x="1324" y="409" width="14" height="42" rx="2" fill="#72d2ff" opacity=".88"/>
+  </g>
+
+  <g class="row1">
+    <text x="1112" y="586" class="mono" fill="#d8eaf4" font-size="35">project</text>
+  </g>
+  <g class="row2">
+    <text x="1112" y="672" class="mono" fill="#d8eaf4" font-size="35">README.md</text>
+  </g>
+  <g class="row3">
+    <text x="1112" y="758" class="mono" fill="#d8eaf4" font-size="35">notes</text>
+  </g>
+
+  <g class="target">
+    <rect x="1455" y="861" width="349" height="50" rx="25" fill="#13344b" stroke="#4c7890" stroke-width="1.5"/>
+    <circle cx="1487" cy="886" r="7" fill="#ffc17b"/>
+    <text x="1512" y="895" class="sans" fill="#dcebf3" font-size="21" font-weight="600">实践目标 · 稍后动手</text>
+  </g>
+  <text x="116" y="1005" class="sans" fill="#88a1b8" font-size="21">AI 编码训练营 · 实践篇</text>
+</svg>

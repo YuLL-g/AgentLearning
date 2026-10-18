@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" class="final" role="img" aria-labelledby="startup-title startup-desc">
+  <title id="startup-title">Claude Code 启动时自动加载 CLAUDE.md</title>
+  <desc id="startup-desc">教学动画：终端逐字输入 claude，Claude Code 启动后自动发现适用的项目 CLAUDE.md；文件内容随后出现在右侧模型可见上下文窗口。画面只展示项目指令，其他启动信息省略。</desc>
+  <defs>
+    <radialGradient id="bg-glow" cx="88%" cy="8%" r="95%">
+      <stop offset="0" stop-color="#194660" stop-opacity=".55"/>
+      <stop offset=".55" stop-color="#0b293f" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#071423" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="context-card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#143c50"/>
+      <stop offset="1" stop-color="#0e2b42"/>
+    </linearGradient>
+    <filter id="window-shadow" x="-10%" y="-15%" width="120%" height="135%">
+      <feDropShadow dx="0" dy="18" stdDeviation="25" flood-color="#000" flood-opacity=".28"/>
+    </filter>
+    <style><![CDATA[
+      .sans{font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif}
+      .mono{font-family:'JetBrains Mono','SFMono-Regular',Menlo,monospace}
+      .kicker{fill:#72d2ff;font-size:19px;font-weight:650;letter-spacing:3px}
+      .title{fill:#f5f8fc;font-size:63px;font-weight:760;letter-spacing:-1.5px}
+      .subtitle{fill:#b8cadb;font-size:25px}
+      .toolbar{fill:#aac2d4;font-size:23px;font-weight:620}
+      .rule{fill:#dce9f4;font-size:27px}
+      .transfer{opacity:0}
+      .final .cursor{transform:translateX(126px)}
+      .starting{opacity:0}
+      .start .letter,.start .enter-key,.start .ready,.start .discovered,.start .arrow,.start .arrow-tip,.start .card-shell,.start .card-line,.start .loaded-badge,.start .takeaway{opacity:0}
+      .start .placeholder{opacity:1}
+      .play .letter{animation:letter-in .01s linear both}
+      .play .l1{animation-delay:.55s}.play .l2{animation-delay:.75s}.play .l3{animation-delay:.95s}
+      .play .l4{animation-delay:1.15s}.play .l5{animation-delay:1.35s}.play .l6{animation-delay:1.55s}
+      .play .enter-key{animation:fade-in .14s ease 1.83s both}
+      .play .cursor{animation:cursor-move 1.2s steps(6,end) .53s both,cursor-blink .58s step-end 0s infinite}
+      .play .starting{animation:starting-life 3.3s linear 2.08s both}
+      .play .ready{animation:rise-in .48s ease 5.65s both}
+      .play .discovered{animation:rise-in .48s ease 2.77s both}
+      .play .arrow{stroke-dasharray:132;animation:draw-arrow .65s ease 3.16s both}
+      .play .arrow-tip{animation:fade-in .18s ease 3.68s both}
+      .play .transfer{animation:travel .85s ease 3.42s both}
+      .play .placeholder{animation:wait-fade 4.29s linear 0s both}
+      .play .card-shell{animation:rise-in .52s ease 4.29s both}
+      .play .card-line.one{animation:rise-in .32s ease 4.84s both}
+      .play .card-line.two{animation:rise-in .32s ease 5.09s both}
+      .play .card-line.three{animation:rise-in .32s ease 5.34s both}
+      .play .loaded-badge{animation:rise-in .38s ease 5.63s both}
+      .play .takeaway{animation:rise-in .46s ease 5.85s both}
+      @keyframes letter-in{from{opacity:0}to{opacity:1}}
+      @keyframes fade-in{from{opacity:0}to{opacity:1}}
+      @keyframes rise-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+      @keyframes starting-life{0%{opacity:0}12%,88%{opacity:1}100%{opacity:0}}
+      @keyframes cursor-move{from{transform:translateX(0)}to{transform:translateX(126px)}}
+      @keyframes cursor-blink{0%,48%{opacity:1}49%,100%{opacity:0}}
+      @keyframes draw-arrow{from{stroke-dashoffset:132}to{stroke-dashoffset:0}}
+      @keyframes travel{0%{opacity:0;transform:translateX(0)}12%,78%{opacity:1}100%{opacity:0;transform:translateX(112px)}}
+      @keyframes wait-fade{0%,88%{opacity:1}100%{opacity:0}}
+    ]]></style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#071423"/>
+  <rect width="1920" height="1080" fill="url(#bg-glow)"/>
+  <text x="116" y="96" class="sans kicker">第一部分 · CONTEXT STARTUP</text>
+  <text x="116" y="175" class="sans title">CLAUDE.md：启动时自动进入上下文</text>
+  <text x="116" y="222" class="sans subtitle">终端输入 claude 后，适用的项目指令在提问前成为初始上下文的一部分</text>
+
+  <!-- 左侧：简化的终端画面。 -->
+  <rect x="116" y="286" width="760" height="580" rx="25" fill="#07111e" stroke="#36566e" stroke-width="2" filter="url(#window-shadow)"/>
+  <path d="M141 287 H851 Q876 287 876 312 V352 H116 V312 Q116 287 141 287Z" fill="#10263b"/>
+  <path d="M116 352 H876" stroke="#36566e" stroke-width="2"/>
+  <circle cx="153" cy="319" r="8" fill="#ff817e"/><circle cx="180" cy="319" r="8" fill="#ffc17b"/><circle cx="207" cy="319" r="8" fill="#72d2ff"/>
+  <text x="245" y="329" class="sans toolbar">终端 · 项目目录</text>
+  <text x="166" y="433" class="mono" fill="#72d2ff" font-size="34" font-weight="700">$</text>
+  <g class="mono" fill="#f5f8fc" font-size="34" font-weight="600">
+    <text x="218" y="433" class="letter l1">c</text><text x="239" y="433" class="letter l2">l</text>
+    <text x="260" y="433" class="letter l3">a</text><text x="281" y="433" class="letter l4">u</text>
+    <text x="302" y="433" class="letter l5">d</text><text x="323" y="433" class="letter l6">e</text>
+  </g>
+  <rect x="218" y="400" width="3" height="38" fill="#72d2ff" class="cursor"/>
+  <text x="374" y="433" class="mono enter-key" fill="#88a1b8" font-size="23">↵</text>
+  <g class="starting">
+    <circle cx="169" cy="502" r="10" fill="#ffc17b"/>
+    <text x="194" y="512" class="sans" fill="#e8f2fa" font-size="30" font-weight="690">Claude Code 启动中</text>
+    <text x="166" y="558" class="mono" fill="#8da9bc" font-size="21">loading project instructions...</text>
+  </g>
+  <g class="ready">
+    <circle cx="169" cy="502" r="10" fill="#72d2ff"/>
+    <text x="194" y="512" class="sans" fill="#e8f2fa" font-size="30" font-weight="690">Claude Code 已启动</text>
+    <text x="166" y="558" class="mono" fill="#8da9bc" font-size="21">session ready · waiting for a task</text>
+  </g>
+  <g class="discovered">
+    <rect x="152" y="619" width="688" height="177" rx="19" fill="#10263b" stroke="#36566e" stroke-width="1.5"/>
+    <path d="M180 647 h27 l10 11 v32 h-37 z M207 647 v12 h11" fill="none" stroke="#ffc17b" stroke-width="3" stroke-linejoin="round"/>
+    <text x="231" y="675" class="sans" fill="#b8cadb" font-size="22">自动发现项目指令</text>
+    <text x="180" y="735" class="mono" fill="#ffc17b" font-size="35" font-weight="710">./CLAUDE.md</text>
+    <text x="180" y="772" class="sans" fill="#91adc1" font-size="20">启动阶段读取，无需手动粘贴</text>
+  </g>
+
+  <!-- 中间：文件信息由启动阶段进入上下文。 -->
+  <text x="960" y="545" class="sans discovered" fill="#ffc17b" font-size="21" font-weight="680" text-anchor="middle">自动加载</text>
+  <path d="M897 579 H1026" class="arrow" fill="none" stroke="#72d2ff" stroke-width="5" stroke-linecap="round"/>
+  <path d="M1013 565 L1032 579 L1013 593" class="arrow-tip" fill="none" stroke="#72d2ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="907" cy="579" r="11" class="transfer" fill="#ffc17b"/>
+
+  <!-- 右侧：仅展示与本页主题有关的项目指令。 -->
+  <rect x="1044" y="286" width="760" height="580" rx="25" fill="#0a2034" stroke="#36566e" stroke-width="2" filter="url(#window-shadow)"/>
+  <path d="M1069 287 H1779 Q1804 287 1804 312 V352 H1044 V312 Q1044 287 1069 287Z" fill="#102c43"/>
+  <path d="M1044 352 H1804" stroke="#36566e" stroke-width="2"/>
+  <circle cx="1081" cy="319" r="9" fill="#72d2ff"/>
+  <text x="1109" y="329" class="sans toolbar">模型可见上下文</text>
+  <rect x="1586" y="301" width="181" height="36" rx="18" fill="#173e50" stroke="#4b829b"/>
+  <text x="1676" y="326" class="sans" fill="#9cdfff" font-size="18" font-weight="630" text-anchor="middle">项目指令示意</text>
+
+  <g class="placeholder">
+    <rect x="1080" y="405" width="688" height="393" rx="21" fill="#0c2235" stroke="#46677c" stroke-width="2" stroke-dasharray="9 10"/>
+    <text x="1424" y="579" class="sans" fill="#98adbf" font-size="30" text-anchor="middle">等待项目指令…</text>
+    <text x="1424" y="621" class="sans" fill="#6e91a9" font-size="21" text-anchor="middle">项目指令尚未显示</text>
+  </g>
+
+  <g class="card-shell">
+    <rect x="1080" y="405" width="688" height="393" rx="21" fill="url(#context-card)" stroke="#5b93aa" stroke-width="2"/>
+    <rect x="1110" y="432" width="69" height="48" rx="14" fill="#1b4c61" stroke="#72d2ff" stroke-opacity=".68"/>
+    <text x="1144" y="466" class="mono" fill="#72d2ff" font-size="27" font-weight="710" text-anchor="middle">01</text>
+    <text x="1197" y="464" class="sans" fill="#f5f8fc" font-size="36" font-weight="730">CLAUDE.md</text>
+    <text x="1113" y="518" class="sans" fill="#9dbbd0" font-size="20">首批加载的项目指令</text>
+    <path d="M1112 541 H1736" stroke="#477189" stroke-width="1.5"/>
+    <text x="1119" y="588" class="mono" fill="#ffc17b" font-size="27" font-weight="650"># 项目约定（示例）</text>
+    <path d="M1113 744 H1736" stroke="#477189" stroke-opacity=".75" stroke-width="1.5"/>
+    <text x="1119" y="774" class="mono" fill="#8bacc0" font-size="19">来源：./CLAUDE.md</text>
+  </g>
+  <text x="1119" y="635" class="sans rule card-line one">· 先阅读相关文件</text>
+  <text x="1119" y="680" class="sans rule card-line two">· 只改本轮任务范围</text>
+  <text x="1119" y="725" class="sans rule card-line three">· 修改后运行相关验证</text>
+  <g class="loaded-badge">
+    <rect x="1490" y="810" width="278" height="38" rx="19" fill="#173e50" stroke="#72d2ff" stroke-opacity=".5"/>
+    <circle cx="1515" cy="829" r="7" fill="#72d2ff"/>
+    <text x="1532" y="837" class="sans" fill="#a8e3ff" font-size="20" font-weight="680">已进入初始上下文</text>
+  </g>
+
+  <g class="takeaway">
+    <text x="116" y="951" class="sans" fill="#ffc17b" font-size="34" font-weight="730">有适用的 CLAUDE.md → 启动会话时自动加载</text>
+    <text x="116" y="1002" class="sans" fill="#8faabd" font-size="21">仅聚焦项目指令；系统提示词等其他启动信息未展示。</text>
+  </g>
+</svg>

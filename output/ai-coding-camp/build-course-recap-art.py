@@ -1,0 +1,110 @@
+"""Build slide 23: a four-part recap of the AI coding course."""
+
+from pathlib import Path
+
+
+HERE = Path(__file__).parent
+
+svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="recap-title recap-desc">
+  <title id="recap-title">课程回顾：从理解 Agent 到可验证交付</title>
+  <desc id="recap-desc">课程回顾四个要点：理解 Agent 的模型、工具、上下文与循环；用 CLAUDE.md 或 AGENTS.md 建立项目协作上下文；通过需求分析、需求澄清、Grill Me 与 Plan 模式把模糊需求变成可验证任务；以 Red、Green、Review 的测试驱动循环增量实现。</desc>
+  <defs>
+    <radialGradient id="bg-glow" cx="73%" cy="44%" r="86%">
+      <stop offset="0" stop-color="#16465e" stop-opacity=".43"/>
+      <stop offset=".58" stop-color="#0c2b41" stop-opacity=".19"/>
+      <stop offset="1" stop-color="#071423" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panel-fill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12354a"/>
+      <stop offset="1" stop-color="#0a2337"/>
+    </linearGradient>
+    <filter id="panel-shadow" x="-14%" y="-20%" width="136%" height="150%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000" flood-opacity=".25"/>
+    </filter>
+    <pattern id="dot-grid" x="0" y="0" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#72d2ff" opacity=".07"/>
+    </pattern>
+    <style><![CDATA[
+      .sans{font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif}
+      .mono{font-family:'JetBrains Mono','SFMono-Regular',Menlo,monospace}
+    ]]></style>
+  </defs>
+  <rect width="1920" height="1080" fill="#071423"/>
+  <rect width="1920" height="1080" fill="url(#bg-glow)"/>
+  <rect x="954" width="966" height="1080" fill="url(#dot-grid)"/>
+  <circle cx="1538" cy="655" r="486" fill="none" stroke="#72d2ff" stroke-opacity=".045" stroke-width="2"/>
+  <circle cx="1538" cy="655" r="350" fill="none" stroke="#72d2ff" stroke-opacity=".05" stroke-width="2"/>
+
+  <text x="116" y="105" class="sans" fill="#72d2ff" font-size="25" font-weight="700" letter-spacing="3">课程回顾 · 从理解到实践</text>
+  <rect x="116" y="128" width="107" height="5" rx="2.5" fill="#ffc17b"/>
+  <text x="116" y="206" class="sans" fill="#f6f9fc" font-size="67" font-weight="760" letter-spacing="-1.3">从理解 Agent，到可验证交付</text>
+  <text x="118" y="267" class="sans" fill="#c3d6e2" font-size="29">四个要点，串起本次 AI 编码训练营的方法路线</text>
+
+  <g filter="url(#panel-shadow)">
+    <rect x="116" y="330" width="815" height="282" rx="24" fill="url(#panel-fill)" stroke="#5c91a9" stroke-opacity=".78" stroke-width="2"/>
+    <rect x="989" y="330" width="815" height="282" rx="24" fill="url(#panel-fill)" stroke="#8b9dd4" stroke-opacity=".7" stroke-width="2"/>
+    <rect x="116" y="638" width="815" height="282" rx="24" fill="url(#panel-fill)" stroke="#d6a875" stroke-opacity=".7" stroke-width="2"/>
+    <rect x="989" y="638" width="815" height="282" rx="24" fill="url(#panel-fill)" stroke="#7fbe9b" stroke-opacity=".7" stroke-width="2"/>
+  </g>
+  <rect x="116" y="330" width="815" height="5" rx="2.5" fill="#72d2ff"/>
+  <rect x="989" y="330" width="815" height="5" rx="2.5" fill="#a6b8ff"/>
+  <rect x="116" y="638" width="815" height="5" rx="2.5" fill="#ffc17b"/>
+  <rect x="989" y="638" width="815" height="5" rx="2.5" fill="#9cdbb5"/>
+
+  <text x="153" y="384" class="mono" fill="#72d2ff" font-size="23" font-weight="760">01 / UNDERSTAND</text>
+  <text x="153" y="430" class="sans" fill="#f7fbff" font-size="38" font-weight="740">理解 Agent 如何工作</text>
+  <text x="154" y="476" class="sans" fill="#c3d6e2" font-size="24">模型、工具、上下文与运行循环</text>
+  <rect x="154" y="516" width="239" height="58" rx="13" fill="#174257" stroke="#72d2ff" stroke-opacity=".55"/>
+  <text x="273" y="554" class="sans" fill="#dff5ff" font-size="23" font-weight="670" text-anchor="middle">理解运行机制</text>
+  <circle cx="777" cy="475" r="83" fill="#123d53" fill-opacity=".72" stroke="#72d2ff" stroke-opacity=".42" stroke-width="2"/>
+  <circle cx="742" cy="449" r="22" fill="#1d5268" stroke="#72d2ff" stroke-width="1.6"/>
+  <circle cx="816" cy="489" r="22" fill="#1d5268" stroke="#72d2ff" stroke-width="1.6"/>
+  <text x="742" y="456" class="mono" fill="#e1f7ff" font-size="17" font-weight="760" text-anchor="middle">AI</text>
+  <text x="816" y="496" class="mono" fill="#e1f7ff" font-size="16" font-weight="760" text-anchor="middle">TOOL</text>
+  <path d="M768 439c21 1 35 10 42 24m-7-4 7 4 2-9M790 519c-21 0-36-9-44-23m8 4-8-4-2 9" fill="none" stroke="#92def4" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="1026" y="384" class="mono" fill="#a6b8ff" font-size="23" font-weight="760">02 / CONTEXT</text>
+  <text x="1026" y="430" class="sans" fill="#f7fbff" font-size="38" font-weight="740">建立项目协作上下文</text>
+  <text x="1027" y="478" class="mono" fill="#cad3ff" font-size="29" font-weight="680">CLAUDE.md / AGENTS.md</text>
+  <text x="1027" y="523" class="sans" fill="#c3d6e2" font-size="24">写清目标、约束与验证方式</text>
+  <rect x="1636" y="401" width="105" height="137" rx="10" fill="#243b64" stroke="#a6b8ff" stroke-opacity=".74" stroke-width="2" transform="rotate(7 1688 469)"/>
+  <rect x="1595" y="414" width="105" height="137" rx="10" fill="#233e62" stroke="#a6b8ff" stroke-opacity=".85" stroke-width="2" transform="rotate(-8 1647 483)"/>
+  <path d="M1618 450h53m-53 17h53m-53 17h39" stroke="#b9c8ff" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+
+  <text x="153" y="692" class="mono" fill="#ffc17b" font-size="23" font-weight="760">03 / CLARIFY</text>
+  <text x="153" y="738" class="sans" fill="#f7fbff" font-size="37" font-weight="740">把模糊需求变成可验证任务</text>
+  <text x="154" y="784" class="sans" fill="#c3d6e2" font-size="24">对齐“要什么”，明确行为与验收条件</text>
+  <rect x="153" y="818" width="146" height="55" rx="12" fill="#503c34" stroke="#ffc17b" stroke-opacity=".6"/>
+  <rect x="313" y="818" width="146" height="55" rx="12" fill="#503c34" stroke="#ffc17b" stroke-opacity=".6"/>
+  <rect x="473" y="818" width="146" height="55" rx="12" fill="#503c34" stroke="#ffc17b" stroke-opacity=".6"/>
+  <rect x="633" y="818" width="184" height="55" rx="12" fill="#503c34" stroke="#ffc17b" stroke-opacity=".6"/>
+  <g class="sans" fill="#ffdeba" font-size="21" font-weight="680" text-anchor="middle">
+    <text x="226" y="852">需求分析</text>
+    <text x="386" y="852">需求澄清</text>
+    <text x="546" y="852">Grill Me</text>
+    <text x="725" y="852">Plan 模式</text>
+  </g>
+
+  <text x="1026" y="692" class="mono" fill="#9cdbb5" font-size="23" font-weight="760">04 / BUILD</text>
+  <text x="1026" y="738" class="sans" fill="#f7fbff" font-size="38" font-weight="740">测试驱动，增量实现</text>
+  <text x="1027" y="784" class="sans" fill="#c3d6e2" font-size="24">先写测试，再做最小实现</text>
+  <rect x="1027" y="816" width="174" height="56" rx="12" fill="#273e46" stroke="#d89d9d" stroke-opacity=".7"/>
+  <rect x="1238" y="816" width="174" height="56" rx="12" fill="#234338" stroke="#9cdbb5" stroke-opacity=".7"/>
+  <rect x="1449" y="816" width="198" height="56" rx="12" fill="#234052" stroke="#8dcdea" stroke-opacity=".7"/>
+  <g class="mono" font-size="23" font-weight="750" text-anchor="middle">
+    <text x="1114" y="852" fill="#ffd3d3">Red</text>
+    <text x="1325" y="852" fill="#d6ffe4">Green</text>
+    <text x="1548" y="852" fill="#d7f2ff">Review</text>
+  </g>
+  <g fill="none" stroke="#9bc5b1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1210 844h18m-7-7 7 7-7 7"/>
+    <path d="M1421 844h18m-7-7 7 7-7 7"/>
+  </g>
+  <text x="1027" y="901" class="sans" fill="#a9d6bd" font-size="21">每步验证、审查后再继续</text>
+
+  <text x="116" y="1002" class="sans" fill="#8ca7b9" font-size="21">AI 编码训练营 · 课程回顾</text>
+</svg>
+'''
+
+(HERE / "course-recap.svg").write_text(svg, encoding="utf-8")
+print("Wrote course-recap.svg")

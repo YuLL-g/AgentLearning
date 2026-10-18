@@ -1,0 +1,832 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 编码训练营 · 课程放映</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="tpl-tech-sharing">
+  <main class="deck" data-w="1920" data-h="1080" aria-label="AI 编码训练营课程放映">
+    <!-- 封面取自课程大纲标题；后续正文页按讲师逐页提供的内容追加。 -->
+    <section class="slide cover-slide" data-title="AI 编码训练营" aria-label="封面">
+      <figure class="img-frame cover-image">
+        <img src="cover.png" alt="代码窗口和开发工作流的视觉插画">
+        <span class="cover-shade" aria-hidden="true"></span>
+      </figure>
+
+      <div class="cover-content">
+        <div class="cover-topline">
+          <span class="cover-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span>AI CODING CAMP</span>
+          <span class="cover-topline-separator" aria-hidden="true"></span>
+          <span>课程导览</span>
+        </div>
+
+        <div class="cover-heading">
+          <p class="cover-kicker anim-fade-up" data-anim="fade-up">从理解到实践</p>
+          <h1 class="anim-fade-up" data-anim="fade-up">AI 编码<br><span>训练营</span></h1>
+          <p class="cover-description anim-fade-up" data-anim="fade-up">了解 AI Agent 的工作方式，<br>再动手完成一次精简版 <code>ls</code> 的开发练习。</p>
+        </div>
+
+        <div class="cover-route" aria-label="课程的两个部分">
+          <div class="route-stop">
+            <span class="route-index">01</span>
+            <span class="route-copy"><small>第一部分</small><strong>了解 AI Agent</strong></span>
+          </div>
+          <span class="route-link" aria-hidden="true"><b></b><svg viewBox="0 0 32 16"><path d="M1 8h28m-7-6 7 6-7 6"/></svg></span>
+          <div class="route-stop">
+            <span class="route-index">02</span>
+            <span class="route-copy"><small>第二部分</small><strong>简单实践</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-side-label" aria-hidden="true">AI · AGENT · PRACTICE</div>
+      <div class="deck-footer"><span>AI 编码训练营</span><span class="slide-number" data-current="1" data-total="24"></span></div>
+      <div class="notes">封面依据《AI 编码训练营课程大纲》的标题和两部分课程安排制作。</div>
+    </section>
+
+    <section class="slide history-slide" data-title="AI 编码 Agent 的发展脉络" aria-label="AI 编码 Agent 的发展脉络">
+      <header class="history-header">
+        <div>
+          <p class="history-kicker">第一部分 · AI Agent 介绍</p>
+          <h2>AI 编码 Agent 的发展脉络</h2>
+        </div>
+        <p class="history-caveat">代表节点相互重叠，并非严格分期</p>
+      </header>
+
+      <div class="history-timeline" role="list" aria-label="六个代表性发展阶段">
+        <div class="history-row" role="listitem">
+          <span class="history-year">2017—2019</span>
+          <span class="history-node" aria-hidden="true">01</span>
+          <strong class="history-phase">架构与预训练</strong>
+          <span class="history-examples">Transformer、BERT、GPT-2</span>
+        </div>
+        <div class="history-row" role="listitem">
+          <span class="history-year">2020—2022</span>
+          <span class="history-node" aria-hidden="true">02</span>
+          <strong class="history-phase">规模化与少样本</strong>
+          <span class="history-examples">GPT-3</span>
+        </div>
+        <div class="history-row" role="listitem">
+          <span class="history-year">2022—2023</span>
+          <span class="history-node" aria-hidden="true">03</span>
+          <strong class="history-phase">对话交互</strong>
+          <span class="history-examples">ChatGPT、GPT-4</span>
+        </div>
+        <div class="history-row" role="listitem">
+          <span class="history-year">2020—2024</span>
+          <span class="history-node" aria-hidden="true">04</span>
+          <strong class="history-phase">检索与工具</strong>
+          <span class="history-examples">RAG、Function Calling</span>
+        </div>
+        <div class="history-row" role="listitem">
+          <span class="history-year">2024—2025</span>
+          <span class="history-node" aria-hidden="true">05</span>
+          <strong class="history-phase">推理能力</strong>
+          <span class="history-examples">o1、DeepSeek-R1</span>
+        </div>
+        <div class="history-row" role="listitem">
+          <span class="history-year">2024—2026</span>
+          <span class="history-node" aria-hidden="true">06</span>
+          <strong class="history-phase">编码 Agent 产品化</strong>
+          <span class="history-examples">Cursor、Claude Code、Codex Agent</span>
+        </div>
+      </div>
+
+      <div class="history-equation" aria-label="Agent 的课堂示意：模型加工具约等于 Agent">
+        <span class="equation-label">课堂示意</span>
+        <span class="equation-part"><strong>模型</strong><small>大脑</small></span>
+        <span class="equation-sign">+</span>
+        <span class="equation-part"><strong>工具</strong><small>四肢</small></span>
+        <span class="equation-sign">≈</span>
+        <span class="equation-part equation-result"><strong>Agent</strong><small>智能体</small></span>
+      </div>
+
+      <div class="history-footer">AI 编码训练营 · 发展脉络</div>
+      <div class="notes">
+        <p>本页参照《AI_Agent_Framework_Loop_v3.pptx》第一页制作。时间带是课堂叙事结构，彼此重叠；产品名称仅为代表例子，不表示首发年份。末行由原稿的 2025—2026 调整为 2024—2026，以涵盖 Cursor 在 2024 年推出的早期 Agent 功能。这里的 Codex 指 2025 年发布的编码 Agent，不是 2021 年的同名代码模型。“模型 + 工具 ≈ Agent”是帮助理解的教学类比，不对应某一产品的完整实现。</p>
+        <p>论文与模型：<a href="https://arxiv.org/abs/1706.03762">Transformer</a>、<a href="https://arxiv.org/abs/1810.04805">BERT</a>、<a href="https://openai.com/index/better-language-models/">GPT-2</a>、<a href="https://arxiv.org/abs/2005.14165">GPT-3</a>、<a href="https://arxiv.org/abs/2005.11401">RAG</a>、<a href="https://openai.com/index/learning-to-reason-with-llms/">o1</a>、<a href="https://deepseek.com/en/news/deepseek-r1/">DeepSeek-R1</a>。</p>
+        <p>交互与产品：<a href="https://openai.com/index/chatgpt/">ChatGPT</a>、<a href="https://openai.com/index/gpt-4-research/">GPT-4</a>、<a href="https://openai.com/index/function-calling-and-other-api-updates/">Function Calling</a>、<a href="https://cursor.com/changelog/0-43-x">Cursor Agent</a>、<a href="https://www.anthropic.com/news/claude-3-7-sonnet">Claude Code</a>、<a href="https://openai.com/index/introducing-codex/">Codex Agent</a>。</p>
+      </div>
+    </section>
+
+    <section class="slide sequence-slide" data-title="最小 Agent 的运行时序" aria-label="最小 Agent 的运行时序">
+      <img class="sequence-art" src="agent-sequence.svg" alt="五个参与者的时序图：用户输入后，Agent 整理上下文并请求 LLM。若 LLM 请求工具，Agent 执行工具，把结果或错误写回上下文并再次请求模型；若 LLM 不再需要调用工具，便给出最终答复，Agent 回复用户并保存本轮记录。">
+      <div class="notes">
+        <p>本页根据 <a href="../Agent_Call_Simplified.mmd">Agent_Call_Simplified.mmd</a> 重绘，保留了五个参与者与两条分支。图中的实线表示请求，虚线表示返回。</p>
+        <p>讲解顺序：用户输入本轮问题；Agent 读取历史并加入本轮输入；会话上下文返回当前上下文。Agent 将指令、当前上下文和可用工具送给 LLM。若 LLM 请求工具，Agent 执行工具，把结果或错误记入会话上下文，再带更新后的上下文调用 LLM。若 LLM 不再需要调用工具，便给出最终答复；Agent 输出给用户并保存本轮记录。保存的上下文供下一轮使用。</p>
+        <p>这是通用 Agent 工作方式的课堂示意。具体工具的内部实现、上下文管理和错误处理可能不同。</p>
+      </div>
+    </section>
+
+    <section class="slide flow-slide" data-title="AI Agent 的最小运行框架" aria-label="AI Agent 的最小运行框架">
+      <img class="flow-art" src="agent-flow.svg" alt="AI Agent 最小运行框架：Agent 组装输入和当前可见上下文，LLM 判断是否需要调用工具。若不再需要工具，给出最终答复；若需要，Agent 校验后执行工具，观察结果，更新上下文并再次请求 LLM。完整记录保存为下一轮的会话记忆。">
+      <div class="notes">
+        <p>本页依据 <a href="../AI_Agent_Flow_Optimized.drawio">AI_Agent_Flow_Optimized.drawio</a> 重绘为 16:9 放映图。主线是输入与上下文 → Agent 组装请求 → LLM 判断下一步 → 工具调用判断。若不再需要调用工具，LLM 给出最终答复；若需要，Agent 先校验参数、授权与上限，再执行工具。工具的输出、错误或状态进入本轮上下文，然后返回模型继续判断。该循环可重复 0～N 次。</p>
+        <p>左侧的系统提示词、可选规则、工具说明、会话历史与本轮输入代表可能进入当前请求的可见信息。系统工具、SKILL 描述和 MCP 工具表是原图列出的工具说明来源，不表示三者都以同一种方式直接调用。会话历史可能经过窗口截取或摘要处理。</p>
+        <p>顶部虚线表示跨轮保存记录。若出现拒绝、超时或达到运行上限，Agent 应停止并说明情况；这不等于任务完成。本图是通用 Agent 机制的课堂示意，不对应某个产品的全部实现。</p>
+      </div>
+    </section>
+
+    <section class="slide choice-slide" data-title="Claude Code 不是唯一选择" aria-label="Claude Code 不是唯一选择">
+      <img class="choice-art" src="agent-choice.svg" alt="Databricks 内部代码任务评测的成本与通过率散点图，展示不同模型、Agent 和推理设置的多种组合。右侧提示：Claude Code 不是唯一选择，用同一真实任务试跑，比较质量与成本，并体验日常工作流。">
+      <div class="notes">
+        <p>图源：Databricks 于 2026 年 7 月 8 日发布的 <a href="https://www.databricks.com/blog/benchmarking-coding-agents-databricks-multi-million-line-codebase">《Benchmarking Coding Agents on Databricks’ Multi-Million Line Codebase》</a>。本页保留用户提供的 <a href="../pareto.png">pareto.png</a> 图像；横轴为平均每任务成本，纵轴为总体通过率。每个点对应模型、编码 Agent 及推理档位的组合；红色虚线表示这次评测中的成本与表现 Pareto 前沿，不代表某个 Agent 品牌。</p>
+        <p>图中的任务来自 Databricks 自有代码库。这些数值适用于该评测条件，不能当作所有场景的产品排名；前沿上也有 Claude Code 组合。比较同一模型时，Agent 与配置的变化可能改变成本或表现，但不要把不同模型或推理档位的差异都归因于 Agent。</p>
+        <p>课程以 Claude Code 作为演示工具，也鼓励学员尝试其他编码 Agent。可用相同的真实任务比较完成质量、成本、速度和操作体验，再选择适合自己项目和工作方式的组合。</p>
+      </div>
+    </section>
+
+    <section class="slide growth-slide" data-title="Agent 会话中的消息持续累积" aria-label="Agent 会话中的消息持续累积">
+      <img class="growth-art" src="agent-message-growth-poster.png" data-gif="agent-message-growth.gif" alt="动画展示同一 Agent 会话中的消息从系统规则开始，经过多轮用户输入、工具请求、工具结果和模型答复，累积到第 13 条。画面中的省略号表示中间仍有消息记录，下一轮还会继续追加。">
+      <div class="notes">
+        <p>本页根据 <a href="../generate_agent_message_growth_gif.py">generate_agent_message_growth_gif.py</a> 生成的 GIF 制作。动画从 system 消息开始，依次追加 user、assistant 的工具请求、tool 结果和 assistant 答复，延伸到 13 条消息。右侧累计数随每条消息增长。</p>
+        <p>消息列表中间的省略号表示画面为容纳后续记录而略去显示的旧消息，旧消息仍属于同一会话；末尾的省略号表示下一轮还会继续追加。工具请求和工具结果各自占一条消息。这里的第 7 条只是示例中的一个阶段，不是会话上限。</p>
+        <p>示意的是会话记录持续累积。下一次模型请求实际收到的可见上下文可能经过窗口截取或摘要，并非每次都原样包含完整历史；具体取用方式取决于 Agent 实现。</p>
+      </div>
+    </section>
+
+    <section class="slide context-slide performance-slide" data-title="上下文变长，模型表现可能下降" aria-label="上下文变长，模型表现可能下降">
+      <img class="context-art" src="context-performance.svg" alt="概念曲线图：横轴为单次模型调用实际可见的上下文长度，纵轴为相对任务表现。曲线前段相对平稳，随 Token 增长逐渐下降，在接近上下文窗口上限时加速下降。">
+      <div class="notes">
+        <p>本页是用于讲解趋势的概念示意，不是某个模型的实测曲线。横轴指单次模型调用实际可见的输入 Token 数，不等于会话里累计保存的全部消息。Agent 可能截取、摘要或按需组织历史内容，所以前一页的消息累积不会必然使每次调用的可见上下文持续变长。</p>
+        <p>曲线用“先相对平稳、再逐渐衰退、近窗口上限时加速下降”帮助理解长上下文可能带来的表现问题。实际下降从何处开始、下降幅度和形状，会随模型、任务、信息位置及内容而变化；窗口上限也不是所有模型共同的性能断崖。</p>
+        <p>可参考长上下文评测研究 <a href="https://arxiv.org/abs/2404.06654">RULER</a> 与 <a href="https://arxiv.org/abs/2502.05167">NoLiMa</a>。这些研究提供了长上下文任务中表现下降的例证，但不意味着所有模型都遵循图中的曲线形状。</p>
+      </div>
+    </section>
+
+    <section class="slide context-slide" data-title="消息会累积，当前上下文要精选" aria-label="消息会累积，当前上下文要精选">
+      <img class="context-art" src="context-selection.svg" alt="会话记录持续增长；本轮模型可见内容需按任务组织，可能纳入目标与验收、项目规则、相关资料、必要历史和最新反馈。是否截取或摘要取决于 Agent 的实现。">
+      <div class="notes">
+        <p>本页依据 <a href="../Agent_Performance_Without_Code_Changes.md">《不修改 Agent 内部代码，如何提高使用效果》</a>中与上下文管理相关的内容提炼。它承接前两页的消息累积与性能趋势：会话里保存的记录与某一次模型调用实际可见的信息不是同一概念。右侧四项是可能纳入当前请求的信息，应按本轮任务选取，并非每次全部加载。</p>
+        <p>给 Agent 明确目标、范围和验收标准，指出权威文件或章节；长资料提供定位线索，让 Agent 按需读取。长期规则保持精简，本轮特有要求留在本轮请求中。跨轮继续时，保留必要状态、已验证结果和未解决问题。是否截取、摘要或按需加载，取决于具体产品实现。</p>
+        <p>工具定义和 Skill 说明可能进入上下文，但“模型看见了说明”不等于工具实际可用；启用工具、权限和执行环境是另一类真实能力条件。</p>
+      </div>
+    </section>
+
+    <section class="slide context-slide" data-title="四步把上下文变成可执行线索" aria-label="四步把上下文变成可执行线索">
+      <img class="context-art" src="context-practice.svg" alt="四步管理 Agent 上下文：明确本轮目标和验收标准；提供权威文件与章节；拆成可验收的小轮并交接当前状态；用失败命令、实际和期望结果等证据反馈，修复后重跑相关验证。">
+      <div class="notes">
+        <p>本页将 <a href="../Agent_Performance_Without_Code_Changes.md">《不修改 Agent 内部代码，如何提高使用效果》</a>中的实践建议浓缩为四步。第一步限定目标、范围、交付物和完成标准。第二步指向相关且可信的资料；长期有效的项目规则可精简地放在项目指令中，任务特有要求放在本轮请求。第三步把大任务拆为可独立验收的小轮，并交接已完成、已验证和待解决事项。</p>
+        <p>第四步用真实证据反馈：指出失败命令、实际输出、期望结果和相关约束，修复后重跑受影响的验证。审查结论只有反馈给 Agent 时，才成为下一轮可见上下文的一部分。工具是否可用、是否有权限及能否实际运行验证，还取决于外部环境，不能靠提示文字代替。</p>
+      </div>
+    </section>
+
+    <section class="slide startup-slide" data-title="CLAUDE.md 启动时自动进入上下文" aria-label="CLAUDE.md 启动时自动进入上下文">
+      <img class="startup-art" src="claude-context-final.svg" data-animated="claude-context-animated.svg" alt="动画演示：左侧终端逐字输入 claude 并启动 Claude Code，随后自动发现项目目录中的 CLAUDE.md；右侧简化的模型可见上下文窗口加载该文件中的项目约定。">
+      <div class="notes">
+        <p>本页以课堂练习仓库中存在适用的 <code>./CLAUDE.md</code> 为前提，演示终端输入 <code>claude</code> 后，Claude Code 在会话开始时自动读取项目指令，并在用户输入任务前将其放入初始上下文。窗口中的终端状态文字和文件正文是教学示意，不是 Claude Code 的真实界面截图，也不表示当前资料仓库实际有这个文件。</p>
+        <p>右侧只展示 <code>CLAUDE.md</code> 这一类项目指令。“01”表示本页聚焦的首批项目上下文，不表示它是模型上下文中绝对第一条信息；系统提示词、自动记忆、工具名称及 Skill 描述等也可能在会话开始时存在。项目根目录及当前目录的适用文件会在启动时加载，子目录中的文件通常在访问相关文件时按需加载。</p>
+        <p>官方依据：<a href="https://code.claude.com/docs/en/context-window">Claude Code 上下文窗口说明</a>、<a href="https://code.claude.com/docs/en/memory">Claude Code 项目指令与记忆说明</a>。实际会话可用 <code>/context</code> 查看已加载的指令文件。</p>
+      </div>
+    </section>
+
+    <section class="slide rules-slide" data-title="CLAUDE.md / AGENTS.md：写什么？" aria-label="CLAUDE.md / AGENTS.md：写什么？">
+      <img class="rules-art" src="project-instructions-final.svg" data-animated="project-instructions-animated.svg" alt="项目指令文件中的四类内容依次出现：项目与权威依据、关键目录和真实命令、项目约束与修改边界、验证方式和交付证据。一次性任务及长篇规格应放在任务消息或专门文档。">
+      <div class="notes">
+        <p>本页从 <a href="../What_Makes_A_Good_AGENTS.md">《一个实际代码仓库的 AGENTS.md 应写什么》</a> 提炼四类内容，结合 <a href="https://code.claude.com/docs/en/best-practices">Claude Code 官方最佳实践</a>：只写长期适用、项目特有、具体且可检查的约定。真实路径、构建和测试命令应取自实际项目；图中文字是内容类别，不表示本课程资料仓库中存在这些工程目录或命令。任务临时要求留在本轮消息，完整规格和长教程放在专门文档，项目指令只指向相关依据。</p>
+        <p><a href="https://code.claude.com/docs/en/memory">Claude Code 官方说明</a> 当前支持读取 <code>AGENTS.md</code>。默认情况下，若工作目录或祖先目录存在适用的 <code>CLAUDE.md</code> 或 <code>CLAUDE.local.md</code>，会优先读取这些文件；否则读取 <code>AGENTS.md</code>。若确需同时使用，可调整 Project instructions 设置或在 <code>CLAUDE.md</code> 中导入 <code>@AGENTS.md</code>。实际加载情况可在会话中用 <code>/context</code> 查看。项目指令提供的是上下文指导，并非强制执行的权限或安全配置。</p>
+      </div>
+    </section>
+
+    <section class="slide practice-slide" data-title="从零实现精简版ls命令" aria-label="第二部分：从零实现精简版ls命令">
+      <img class="practice-art" src="practice-transition-final.svg" data-animated="practice-transition-animated.svg" alt="第二部分进入简单实践：从零实现精简版ls命令。标题下方依次展示四条开发方法：需求澄清；按需求做最小实现；逐步增量开发、每步验证；测试先行、先写测试再实现。右侧终端显示 myls 的目标效果示意。">
+      <div class="notes">
+        <p>从这一页开始进入课程的实践部分，题目是“从零实现精简版ls命令”。依据 <a href="../../Outline.md">Outline.md</a>，课堂案例程序名为 <code>myls</code>。先澄清目标、范围和验收标准，再按需求做最小实现；把工作拆成可验收的小步，每步运行相关验证。</p>
+        <p>测试驱动开发（TDD）在本课程中的实践方式：根据澄清后的需求先写测试，确认测试能发现尚未实现的行为，再写最小代码使其通过，并在后续增量中持续回归。测试预期应以需求为依据。</p>
+        <p>终端中的文件名与输出只是未来目标效果的概念插图，并非一次真实运行；当前课程资料仓库不开发 <code>myls</code>。后续实现、构建和测试应发生在独立的学员练习仓库。这里的“精简版”也不表示完整复刻系统 <code>ls</code>。</p>
+      </div>
+    </section>
+
+    <section class="slide clarify-slide" data-title="先把一句话需求问清楚" aria-label="需求澄清：从一句话到可验收的交付目标">
+      <p class="clarify-kicker">实践 01 · 需求澄清</p>
+      <h2>先把一句话需求问清楚</h2>
+      <p class="clarify-subtitle">带着疑问与需求提出人沟通，明确要交付什么</p>
+
+      <div class="clarify-questions" aria-label="初始需求与待澄清的问题">
+        <div class="clarify-panel-label"><span class="clarify-panel-dot" aria-hidden="true"></span>最初拿到的题目</div>
+        <blockquote>“从零实现<br>精简版ls命令”</blockquote>
+        <p class="clarify-question-label">仅凭这句话，还不知道：</p>
+        <div class="clarify-question-grid">
+          <div class="clarify-question"><span aria-hidden="true">?</span>实现语言？</div>
+          <div class="clarify-question"><span aria-hidden="true">?</span>运行环境？</div>
+          <div class="clarify-question"><span aria-hidden="true">?</span>功能范围？</div>
+          <div class="clarify-question"><span aria-hidden="true">?</span>如何验收？</div>
+        </div>
+        <div class="clarify-talk"><span class="clarify-talk-icon" aria-hidden="true">···</span>和需求提出人沟通</div>
+      </div>
+
+      <svg class="clarify-connector" viewBox="0 0 86 120" aria-hidden="true">
+        <path d="M3 60H69" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="m55 45 16 15-16 15" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+
+      <div class="clarify-contract">
+        <div class="clarify-contract-header">
+          <span class="clarify-contract-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 16.5 13 22l12-13"/></svg></span>
+          <div><small>沟通后</small><strong>更具体的交付目标</strong></div>
+          <span class="clarify-contract-tag">边界更清晰</span>
+        </div>
+        <pre class="clarify-contract-copy" tabindex="0">交付目标：使用 C 语言实现精简版 myls，支持默认目录列表以及 -a、-l、-h、-t 四个选项，无第三方运行时依赖。
+运行环境为 Linux，使用 GCC 或 Clang 和 POSIX 目录接口。
+默认每行输出一个文件名，不实现多列布局、颜色、递归和多个路径参数。
+只接收零个或一个路径参数，默认路径为当前目录。
+-h 必须与 -l 同用，否则报参数错误；非法选项和非法参数必须返回非零退出码。
+输出字段、排序规则、时间格式和错误行为以验收契约为准。
+系统 ls 只作为部分语义的参考实现，不把所有平台相关输出直接做字节级比较。</pre>
+      </div>
+
+      <div class="clarify-footer">AI 编码训练营 · 实践篇</div>
+      <div class="notes">
+        <p>本页承接实践篇过渡页。面对“从零实现精简版ls命令”，开发者先与需求提出人澄清语言、环境、功能边界和验收标准，再形成右侧更具体的交付目标。左侧四个问题是课堂提问示意，并非完整问题清单。</p>
+        <p>右侧从“交付目标：”到“字节级比较。”逐字采用本轮提供的文字，保留原有七行，直接作为可选择、可复制的 HTML 文本呈现。它与 <a href="../../Outline.md">Outline.md</a> 的相近段落有两处不同，本页以本轮文字为准。该目标属于独立的学员练习仓库，当前课程资料仓库不实现 <code>myls</code>。</p>
+      </div>
+    </section>
+
+    <section class="slide one-click-slide" data-title="把交付目标直接交给 Agent" aria-label="一键生成的思考与可能出现的问题">
+      <img class="one-click-art one-click-before" src="one-click-before.svg" alt="交付目标直接输入 Agent，一次生成全部代码。思考：只输入目标、不约束过程，交付会怎样？">
+      <img id="one-click-risk-art" class="one-click-art one-click-after" src="one-click-after.svg" alt="可能出现六类问题：完全没有版本控制；项目结构不合适；交付目录混杂；一次写完全部功能，难审核和维护；先写代码再补测试；以及现场演示中待观察的其他问题。" aria-hidden="true">
+      <button type="button" class="one-click-reveal" aria-controls="one-click-risk-art" aria-expanded="false">
+        <span class="one-click-button-icon" aria-hidden="true">?</span>
+        <span class="one-click-button-label">揭示可能的问题</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 14 0m-6-6 6 6-6 6"/></svg>
+      </button>
+      <span id="one-click-risk-state" class="one-click-live" aria-live="polite">点击按钮，查看一键生成后值得检查的问题。</span>
+      <div class="notes">
+        <p>本页承接上一页澄清得到的交付目标，提出一个课堂实验：如果把目标直接输入编码 Agent，不规定版本控制、项目结构、开发节奏或验证方式，然后一次性要求生成全部代码，会发生什么？这张图只表示抽象流程，不展示具体代码，也不宣称下列问题一定出现。</p>
+        <p>点击“揭示可能的问题”后，重点讨论版本控制、项目结构、构建产物、一次性开发的错误与审核成本，以及先实现后补测试可能导致测试迁就既有代码的倾向。具体结果将在独立的新代码仓库中现场演示和观察；当前课程资料仓库不实现 <code>myls</code>。</p>
+      </div>
+    </section>
+
+    <section class="slide requirements-slide" data-title="需求列表" aria-label="需求列表：十个场景与约定行为">
+      <p class="spec-kicker">实践 03 · 需求评审</p>
+      <h2>需求列表</h2>
+      <div class="spec-route" aria-label="从需求分析到验收契约">
+        <span>需求分析</span><i aria-hidden="true"></i><span>需求评审</span><i aria-hidden="true"></i><strong>需求列表 · 验收契约</strong>
+      </div>
+      <div class="requirements-panel">
+        <table class="requirements-table" aria-label="需求列表">
+          <colgroup><col class="requirements-scene-col"><col></colgroup>
+          <thead><tr><th scope="col">场景</th><th scope="col">约定行为</th></tr></thead>
+          <tbody>
+            <tr><td>无路径参数</td><td>列出当前目录</td></tr>
+            <tr><td>一个目录参数</td><td>列出指定目录</td></tr>
+            <tr><td>--help</td><td>输出帮助到 stdout 并成功退出，不执行目录读取</td></tr>
+            <tr><td>普通模式</td><td>每行一个名称，隐藏项不显示，按字节序升序</td></tr>
+            <tr><td>-a</td><td>包含以 . 开头的目录项，包括 . 和 ..</td></tr>
+            <tr><td>-t</td><td>按修改时间从新到旧；时间相同时按名称升序，确保结果确定</td></tr>
+            <tr><td>-l</td><td>输出课程规定的固定字段和固定时间格式，不追求复制平台相关布局</td></tr>
+            <tr><td>-h</td><td>仅改变 -l 中的大小字段；单独使用时报参数错误</td></tr>
+            <tr><td>不存在或无权限</td><td>错误写入 stderr，返回非零，stdout 不输出伪结果</td></tr>
+            <tr><td>多个路径参数</td><td>明确拒绝并返回非零</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="spec-footer">AI 编码训练营 · 实践篇</div>
+      <div class="notes">
+        <p>本页展示需求分析与评审后得到的完整需求列表。表格文字逐项采用本轮提供的内容，并与 <a href="../../Outline.md">Outline.md</a> 中的相应列表一致。所有表格单元格为可选中、可复制的原生 HTML 文本。</p>
+        <p>这些是独立的课堂练习仓库中 <code>myls</code> 的行为目标；当前课程资料仓库只保存讲解材料，不实现程序。</p>
+      </div>
+    </section>
+
+    <section class="slide acceptance-slide" data-title="验收契约" aria-label="验收契约与验收示例">
+      <p class="spec-kicker">实践 03 · 需求评审</p>
+      <h2>验收契约</h2>
+      <div class="acceptance-rules" aria-label="七条验收契约">
+        <ul class="acceptance-list">
+          <li><strong>参数</strong>：支持短选项合并、分写和重复，如 -al、-a -l；选项须在路径前，-- 结束选项解析。路径必须是目录（允许指向目录的符号链接），普通文件报错。--help 仅允许单独使用。</li>
+          <li><strong>名称与排序</strong>：名称原样输出，每项以换行结束；含换行的名称不纳入教学验收。默认按 strcmp 升序；-t 比较修改时间的秒和纳秒，降序排列，同时间按名称升序。</li>
+          <li><strong>元数据</strong>：目录内条目使用 lstat，不跟随符号链接；悬空链接也可列出。-l 中链接仅显示名称，不追加目标；大小取 st_size，目录不递归统计。</li>
+          <li><strong>长格式</strong>：每行固定为 <code>类型权限 链接数 用户 组 大小 时间 名称</code>，字段间一个空格，不对齐、不输出 total。类型支持 - d l c b p s，未知类型用 ?；权限为九位，包含 s/S/t/T。用户、组优先显示名称，查询不到则显示十进制 ID。</li>
+          <li><strong>时间</strong>：统一 UTC，格式为 YYYY-MM-DD HH:MM:SS，不随文件新旧改变格式。</li>
+          <li><strong>大小</strong>：默认输出十进制字节数；-h 使用 1024 进制，单位为 B/K/M/G/T/P/E。不足 1024 输出整数加 B，其余保留一位小数、四舍五入；舍入达到 1024 时进位。例如 0B、1023B、1.0K、1.5K。</li>
+          <li><strong>退出与错误</strong>：成功返回 0，stderr 为空；参数或文件系统错误返回 1，stdout 为空，stderr 输出以 myls: 开头的一行说明。目录读取或任一所需元数据获取失败时整次失败，收集成功后再输出；不逐字匹配系统错误文案。</li>
+        </ul>
+      </div>
+      <div class="acceptance-examples">
+        <p class="acceptance-example-intro">验收示例：目录 demo 仅含空文件 b、a、.hidden；下表中 <code>\n</code> 表示换行。</p>
+        <table class="acceptance-example-table" aria-label="验收示例">
+          <colgroup><col class="example-command-col"><col class="example-stdout-col"><col class="example-stderr-col"><col class="example-exit-col"></colgroup>
+          <thead><tr><th scope="col">命令</th><th scope="col">stdout</th><th scope="col">stderr</th><th scope="col">退出码</th></tr></thead>
+          <tbody>
+            <tr><td>myls demo</td><td><code>a\nb\n</code></td><td>空</td><td>0</td></tr>
+            <tr><td>myls -a demo</td><td><code>.\n..\n.hidden\na\nb\n</code></td><td>空</td><td>0</td></tr>
+            <tr><td>myls -h demo</td><td>空</td><td>myls: 开头的错误说明</td><td>1</td></tr>
+            <tr><td>myls missing（路径不存在）</td><td>空</td><td>myls: 开头的错误说明</td><td>1</td></tr>
+          </tbody>
+        </table>
+        <p class="acceptance-long-example">-l 格式示例：<code>-rw-r--r-- 1 alice dev 1536 2026-01-02 03:04:05 a</code>；加 -h 后仅将 1536 改为 1.5K。测试须设置权限、大小和时间，用户与组按测试环境解析。</p>
+      </div>
+      <div class="spec-footer">AI 编码训练营 · 实践篇</div>
+      <div class="notes">
+        <p>本页逐字呈现本轮给出的七条验收契约、示例说明、四行示例表格和长格式示例。正文为可选中、可复制的原生 HTML；示例中的 <code>\n</code> 是字面的反斜杠与 n，用来表示换行，不是实际换行符。</p>
+        <p>课堂练习应在独立的新代码仓库中执行。验收规则取自课程练习规格 <a href="../../Outline.md">Outline.md</a>，系统 <code>ls</code> 只供部分语义参考。</p>
+      </div>
+    </section>
+
+    <section class="slide dev-stage-slide" data-title="从需求契约进入开发" aria-label="拿到需求列表后的五步开发流程、项目骨架、CLAUDE.md 重点和 TDD 基本循环">
+      <img class="dev-stage-art" src="dev-stage-final.svg" data-animated="dev-stage-animated.svg" alt="五步开发流程：初始化代码仓库；构建项目骨架；写 CLAUDE.md；以 build project skeleton 为信息初次提交；TDD 最小实现增量开发。右侧依次展示 myls 项目树、CLAUDE.md 的四项重点和 TDD 红、绿、重构循环：先写测试确认失败，写最少代码使测试通过，重构并保持通过，然后进入下一条可验证需求。">
+      <div class="notes">
+        <p>本页承接需求列表与验收契约，讲解独立课堂练习仓库中的开发起步顺序：先初始化 Git 仓库、建立工程骨架、写项目指令，再以 <code>build project skeleton</code> 为提交信息创建可回滚的基线，随后按 TDD 小步实现需求。右侧目录树是将来要创建的练习项目示意；当前课程资料仓库不新建 <code>myls</code> 的源码、测试或构建文件。</p>
+        <p><code>CLAUDE.md</code> 只写长期适用的项目约定：项目目标与已评审契约的真实位置，源码和测试目录及真实可运行的命令，最小实现与测试先行的开发边界，以及每步验证和交付证据。新练习仓库尚未确定契约文件路径，写入时应指向实际存在的文件；不把当前资料仓库的 <a href="../../Outline.md">Outline.md</a> 假定为练习仓库文件。</p>
+        <p>TDD 的基本循环是红、绿、重构：先针对下一条可验证需求写测试并确认它因缺少目标行为而失败；再写最少代码让测试通过；最后整理代码并保持测试通过，然后进入下一条小需求。右侧回环箭头表示这个过程会重复进行。</p>
+        <p>Git 不跟踪空目录。若初次提交需要包含 <code>include/</code>、<code>src/</code>、<code>tests/</code>，应在练习仓库中放入占位文件或最小骨架文件后提交。目录树和五步流程是教学计划，并非本仓库中已经执行过的命令或测试。</p>
+      </div>
+    </section>
+
+    <section class="slide claude-writing-slide" data-title="CLAUDE.md 怎么写" aria-label="如何写 CLAUDE.md：手写 Markdown 或使用 Claude Code 的 init 命令生成初稿后迭代">
+      <img class="writing-art writing-question" src="claude-writing-question.svg" alt="疑问开场：CLAUDE.md 应该怎么写？一份待完成的项目指令文件旁有两个尚未揭示的入口。">
+      <img id="claude-writing-methods-art" class="writing-art writing-methods" src="claude-writing-methods.svg" alt="两种写法：熟悉项目、Markdown 和项目指令写法时，可手工创建 CLAUDE.md；也可运行 Claude Code 的 /init 生成初稿，再补充提示词、人工增删改，并交给 Claude 继续优化。" aria-hidden="true">
+      <button type="button" class="writing-show-methods" aria-controls="claude-writing-methods-art" aria-expanded="false">
+        <span aria-hidden="true">?</span>查看两种写法<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+      </button>
+      <button type="button" class="writing-back-question" hidden>返回问题</button>
+      <button type="button" class="writing-open-prompt" aria-controls="claude-writing-prompt-panel" aria-expanded="false" hidden>查看示例提示词<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+      <button type="button" class="writing-open-extra" aria-controls="claude-writing-extra-panel" aria-expanded="false" hidden>其他信息<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+
+      <div id="claude-writing-prompt-panel" class="writing-prompt-overlay" role="region" aria-label="可选择复制的示例提示词" hidden>
+        <div class="writing-prompt-heading">
+          <p>/init 之后 · 补充项目要求</p>
+          <h3>给 Claude 的示例提示词</h3>
+        </div>
+        <button type="button" class="writing-copy-prompt">复制提示词</button>
+        <button type="button" class="writing-close-prompt">返回两种写法</button>
+        <pre id="claude-writing-prompt-copy" class="writing-prompt-copy" tabindex="-1"></pre>
+      </div>
+      <div id="claude-writing-extra-panel" class="writing-prompt-overlay writing-extra-overlay" role="region" aria-label="可选择复制的 CLAUDE.md 补充信息" hidden>
+        <div class="writing-prompt-heading">
+          <p>CLAUDE.md · 补充项目约定</p>
+          <h3>其他信息</h3>
+        </div>
+        <button type="button" class="writing-copy-extra">复制全部文本</button>
+        <button type="button" class="writing-close-extra">返回两种写法</button>
+        <div class="writing-extra-columns" data-no-swipe>
+          <pre class="writing-extra-copy writing-extra-left" tabindex="-1"></pre>
+          <pre class="writing-extra-copy writing-extra-right" tabindex="-1"></pre>
+        </div>
+      </div>
+      <span class="writing-live" aria-live="polite">点击按钮，查看 CLAUDE.md 的两种写法。</span>
+      <div class="notes">
+        <p>本页从“如何写 CLAUDE.md”提问。第一种方式是直接创建 Markdown 文件并手写，适合熟悉项目事实、Markdown 和项目指令写法的人。第二种方式是在 Claude Code 会话中运行 <code>/init</code> 生成初稿，再根据已澄清的需求补充提示词，人工审阅、增删改，并请 Claude 继续优化；循环到内容具体、准确且适用于当前项目。</p>
+        <p>Claude Code 官方文档说明，<a href="https://code.claude.com/docs/en/commands">/init</a> 可以生成初始 <code>CLAUDE.md</code>，<a href="https://code.claude.com/docs/en/memory">项目记忆说明</a>进一步指出它会分析现有代码库；若文件已存在，会建议改进而不是直接覆盖。官方未明确把“<code>/init + 提示词</code>”列为固定的单行命令语法，因此图中将运行命令和补充提示词画成连续两步。项目刚起步时，代码库能提供的信息有限，提示词中的交付目标和协作规则需要人工核对。</p>
+        <p>点击第二种方式的按钮后，提示词使用可选中、可复制的原生 HTML 文本。正文逐字保留本轮提供的内容，包括 <code>Red → Green → Review</code>；“构建与测试：”后原文的 U+000B 不可见字符也保留在文本数据中。此处的 <code>myls</code> 是未来独立课堂练习仓库的交付目标，本资料仓库不实现程序。</p>
+        <p>“其他信息”展开的是讲师本轮提供的开发原则、Red-Green-Review 步骤、提交纪律、构建测试命令、测试规范和禁止事项。两列均保留原文 Markdown 标记与换行，且可直接选择；“复制全部文本”按原文顺序一次复制全部内容。它是供将来补充进独立练习项目 <code>CLAUDE.md</code> 的素材，不表示这些文件或命令已经在本资料仓库创建、运行或验证。</p>
+      </div>
+    </section>
+
+    <section class="slide mode-compare-slide" data-title="同一任务，三条开工路径" aria-label="相同项目骨架与相同任务提示词下，比较普通对话、Claude Code Plan 模式和第三方 Grill Me Skill 的开工路径">
+      <img class="mode-compare-art" src="mode-compare.svg" alt="共同输入为目录结构和 CLAUDE.md，以及任务提示词：开始需求开发，需求场景：无路径参数；行为：列出当前目录。普通对话可能直接处理任务；Plan 模式先探索并提交计划，经人工审查后实施；Grill Me 通过多轮提问先明确隐含决策。">
+      <button type="button" class="mode-expected-open" aria-controls="mode-expected-panel" aria-expanded="false">期望输出</button>
+      <a class="mode-compare-source mode-compare-plan-source" href="https://code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode" target="_blank" rel="noopener noreferrer" aria-label="打开 Anthropic 官方 Plan 模式说明">Anthropic 官方说明 ↗</a>
+      <a class="mode-compare-source mode-compare-grill-source" href="https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me" target="_blank" rel="noopener noreferrer" aria-label="打开 Grill Me Skill 参考链接">Grill Me 参考链接 ↗</a>
+      <div id="mode-expected-panel" class="mode-expected-overlay" role="dialog" aria-modal="true" aria-labelledby="mode-expected-title" hidden>
+        <div class="mode-expected-card">
+          <header class="mode-expected-header">
+            <p>讲师预设 · 用于现场验收</p>
+            <h2 id="mode-expected-title">期望行为与测试场景</h2>
+          </header>
+          <button type="button" class="mode-expected-close">返回三种路径</button>
+          <div class="mode-expected-columns">
+            <div class="mode-expected-behavior">
+              <div class="mode-expected-section-title"><span>01</span><h3>期望行为</h3></div>
+              <div class="mode-expected-rule"><span aria-hidden="true">1</span><strong>包含隐藏项</strong></div>
+              <div class="mode-expected-rule"><span aria-hidden="true">2</span><strong>不包含 <code>.</code> 和 <code>..</code></strong></div>
+              <div class="mode-expected-rule"><span aria-hidden="true">3</span><strong>不做排序</strong></div>
+            </div>
+            <div class="mode-expected-tests">
+              <div class="mode-expected-section-title"><span>02</span><h3>期望测试场景</h3></div>
+              <div class="mode-expected-test-grid">
+                <div><span>01</span><strong>非空目录</strong></div>
+                <div><span>02</span><strong>空目录</strong></div>
+                <div><span>03</span><strong>包含空格的名称</strong></div>
+                <div><span>04</span><strong>在两个不同目录下测试</strong></div>
+              </div>
+            </div>
+          </div>
+          <p class="mode-expected-footnote">这些条件没有写入上方的共同任务提示词；课堂演示时用它们对照结果。</p>
+        </div>
+      </div>
+      <div class="notes">
+        <p>本页为课堂现场对照。三个演示都从同一个独立练习项目骨架（目录结构与 <code>CLAUDE.md</code>）出发，并使用同一句任务提示词：“开始需求开发，需求场景：无路径参数；行为：列出当前目录”。页面不展示项目代码，也不预告实际实现结果。</p>
+        <p>普通对话可以直接处理任务；是否主动追问遗漏的条件，要看本次 Agent 的实际行为。<a href="https://code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode">Anthropic 官方 Plan 模式说明</a>描述了先探索项目、提出计划供人审查，批准后再实施的流程。<a href="https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me">Grill Me</a> 是第三方 Skill，用多轮提问澄清任务中的隐含决策，本身不是 Claude Code 内置模式，也不直接写实现代码。</p>
+        <p>“期望输出”按钮揭示本轮讲师预设的行为与测试场景：包含隐藏项但排除 <code>.</code> 和 <code>..</code>，不做排序；测试非空目录、空目录、包含空格的名称，并在两个不同目录下测试。这些条件不是给 Agent 的共同任务提示词。讲师可在独立实践项目中展示三次对话和相应工作成果，观察它们先问了什么、何时进入代码、由谁确认假设、怎样验证。此页不代表这些演示或测试已经在当前课程资料仓库执行。</p>
+      </div>
+    </section>
+
+    <section class="slide mode-results-slide" data-title="三种路径的演示前预测" aria-label="对普通模式、Plan 模式和 Grill Me 的四维课堂预测，并说明 Grill Me、Plan 模式与 TDD 的职责分工">
+      <img class="mode-results-art" src="mode-results.svg" alt="演示前预测：比较普通模式、Plan 模式和 Grill Me 在需求澄清、关键测试覆盖、是否擅自扩展、耗时与人工介入上的可能差异。Grill Me 侧重问清要什么；Plan 模式侧重规划怎么做；TDD 用测试先行和审查验证实现。具体结果以课堂演示为准。">
+      <div class="notes">
+        <p>这一页先提出观察假设，不能把表中的倾向当成已经测得的结果。课堂上三次演示应使用同一个独立练习项目骨架、同一份 <code>CLAUDE.md</code> 和同一句任务提示词。普通模式也受项目指令中的 TDD 规则约束；三条路径的测试覆盖、范围控制和耗时最终要看实际对话、代码与验收结果。</p>
+        <p><a href="https://github.com/mattpocock/skills/blob/main/docs/productivity/grill-me.md">Grill Me 作者说明</a>及其<a href="https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md">核心 Skill</a>强调多轮盘问决策与隐含假设，直到双方形成共识；它可以给建议，但目标不是替用户敲定实现方案。<a href="https://code.claude.com/docs/en/common-workflows#plan-before-editing">Claude Code 官方 Plan 模式说明</a>强调先探索项目、形成可审阅的计划，批准后再实施。两者会有交集，页面以各自主要作用区分。</p>
+        <p>本课采用的 TDD 是 Red → Green → Review：先写能暴露缺失行为的测试，再做最小实现，最后回归和人工审查。它约束实现与验证步骤，但测试只能检查已写明且断言正确的行为，不能代替需求澄清；通用 TDD 循环可参见 <a href="https://martinfowler.com/bliki/TestDrivenDevelopment.html">Martin Fowler 的说明</a>。</p>
+      </div>
+    </section>
+
+    <section class="slide mode-choice-slide" data-title="实际开发中用什么模式" aria-label="按项目情况选择开发方法，并从工程骨架出发组合 Grill Me、Plan 模式、TDD 和可选代码审查">
+      <img class="mode-choice-art" src="mode-choice.svg" alt="实际开发中用什么模式？没有固定的最佳模式。根据需求是否清晰、项目与交付约束、人工审核成本选择，也可以组合使用。课堂实践路线：工程骨架、Grill Me 澄清需求、Plan 模式制定计划、TDD 测试先行与小步验证；可选 /code-review 审查当前改动。">
+      <div class="notes">
+        <p>这是一页从三种路径对比转向课堂实操的过渡页。这里说的“模式”是课堂上的宽泛说法：Grill Me 是第三方 Skill，Plan 是 Claude Code 的工作模式，TDD 是开发流程。根据需求清晰度、项目与交付约束和人工审核成本，选择适合自己的组合；没有固定排名，也不要把前页的预测当成实测结论。</p>
+        <p>接下来在<strong>独立的 myls 练习项目仓库</strong>中，从目录结构、<code>CLAUDE.md</code> 与构建/测试入口组成的工程骨架开始：先用 Grill Me 澄清“要什么”，再用 Plan 模式形成并审查“怎么做”，随后用本课约定的 Red → Green → Review 循环小步实现与验证。可选用 <code>/code-review</code> 复核当前改动，审查结果仍由人判断和处理。本课程资料仓库不实现 myls。</p>
+        <p>产品与方法依据：<a href="https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md">Grill Me 原项目</a>；<a href="https://code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode">Claude Code Plan 模式</a>；<a href="https://code.claude.com/docs/en/code-review-local">Claude Code 本地代码审查</a>；<a href="https://martinfowler.com/bliki/TestDrivenDevelopment.html">TDD 参考</a>。</p>
+      </div>
+    </section>
+
+    <section class="slide practice-assignment-slide" data-title="实践任务：完成后续需求开发" aria-label="依据需求列表与验收契约完成后续需求开发，并在个人分支提交">
+      <img class="practice-assignment-art" src="practice-assignment.svg" alt="实践任务：依据需求列表与验收契约完成后续需求开发。在已有基线上创建自己的分支，分支名为工号1_工号2；只在自己的新分支提交，不要提交到 develop 或 master。">
+      <a class="practice-repo-link" href="https://gitlab.zte.com.cn/person/#/admin/projects/10355114/AI_Coding_RCH_202610" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="在新标签页打开课堂实践代码仓库">https://gitlab.zte.com.cn/person/#/admin/projects/10355114/AI_Coding_RCH_202610</a>
+      <div class="notes">
+        <p>这一页布置独立练习项目中的后续开发任务。学员依据此前展示的需求列表与验收契约，继续完成后续需求开发并验证。课程资料仓库不开发或提交 <code>myls</code>。</p>
+        <p>强调分支纪律：在已有基线上创建个人分支，分支名按 <code>工号1_工号2</code> 命名，只在自己新建的分支上提交；不要直接提交到 <code>develop</code> 或 <code>master</code>。页面中的 GitLab 地址来自讲师提供的链接；制作本页时未访问仓库，也未验证登录权限或仓库内容。</p>
+      </div>
+    </section>
+
+    <section class="slide course-recap-slide" data-title="课程回顾：从理解 Agent 到可验证交付" aria-label="总结 Agent 基本概念、项目协作上下文、需求澄清与规划、测试驱动增量实现">
+      <img class="course-recap-art" src="course-recap.svg" alt="课程回顾：第一，理解 Agent 的模型、工具、上下文和运行循环；第二，用 CLAUDE.md 或 AGENTS.md 建立项目协作上下文；第三，通过需求分析、需求澄清、Grill Me 和 Plan 模式把模糊需求变成可验证任务；第四，以 Red、Green、Review 的测试驱动循环增量实现。">
+      <div class="notes">
+        <p>用这页收束全课：先理解 Agent 的基本工作循环，再为项目提供清楚、适用的协作上下文；把模糊需求分析和澄清为明确行为、验收条件及可审查的实施任务；最后用测试先行和小步回归推进实现。这里的“可验证交付”是课程方法目标，不表示课堂练习项目已在本资料仓库完成。</p>
+        <p><code>CLAUDE.md</code> 与 <code>AGENTS.md</code> 是项目指令文件，应按实际使用的 Agent 工具选择和核对加载方式；参见 <a href="https://code.claude.com/docs/en/memory">Claude Code 项目记忆说明</a>。<a href="https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md">Grill Me</a> 是第三方 Skill；<a href="https://code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode">Plan 模式</a>是 Claude Code 的工作模式。课程中的 TDD 表述为 Red → Green → Review，强调先写测试、做最小实现、回归与人工审查；通用方法可参考 <a href="https://martinfowler.com/bliki/TestDrivenDevelopment.html">TDD 介绍</a>。</p>
+      </div>
+    </section>
+
+    <section class="slide closing-slide" data-title="感谢大家参加" aria-label="结束封面：感谢大家参加 AI 编码训练营">
+      <img class="closing-art" src="closing-cover.png" alt="感谢大家参加 AI 编码训练营。从理解到实践，继续探索。相互交流，共同进步。背景是编码工作流插画。">
+      <div class="notes">
+        <p>感谢大家参加 AI 编码训练营。结束页与开场封面使用同一张编码工作流插画；收尾寄语是“从理解到实践，继续探索。相互交流，共同进步”。</p>
+      </div>
+    </section>
+
+    <nav class="deck-controls" aria-label="翻页控件">
+      <button type="button" class="deck-control" data-deck-prev aria-label="上一页" title="上一页：↑ 或 ←">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+      </button>
+      <span class="deck-counter" data-deck-counter aria-live="polite">01 / 24</span>
+      <button type="button" class="deck-control deck-control-next" data-deck-next aria-label="下一页" title="下一页：↓ 或 →">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+      </button>
+    </nav>
+  </main>
+  <script src="runtime.js"></script>
+  <script>
+    (() => {
+      const slide = document.querySelector('.growth-slide');
+      const art = slide?.querySelector('[data-gif]');
+      if (!art) return;
+      const poster = art.getAttribute('src');
+      const gif = art.getAttribute('data-gif');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let playing = false;
+      const sync = () => {
+        const shouldPlay = slide.classList.contains('is-active') && !reducedMotion.matches;
+        if (shouldPlay === playing) return;
+        playing = shouldPlay;
+        art.src = shouldPlay ? `${gif}?play=${Date.now()}` : poster;
+      };
+      new MutationObserver(sync).observe(slide, {attributes: true, attributeFilter: ['class']});
+      reducedMotion.addEventListener?.('change', sync);
+      sync();
+    })();
+    (() => {
+      const slide = document.querySelector('.startup-slide');
+      const art = slide?.querySelector('[data-animated]');
+      if (!art) return;
+      const still = art.getAttribute('src');
+      const animated = art.getAttribute('data-animated');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let playing = false;
+      const sync = () => {
+        const shouldPlay = slide.classList.contains('is-active') && !reducedMotion.matches;
+        if (shouldPlay === playing) return;
+        playing = shouldPlay;
+        art.src = shouldPlay ? `${animated}?play=${Date.now()}` : still;
+      };
+      new MutationObserver(sync).observe(slide, {attributes: true, attributeFilter: ['class']});
+      reducedMotion.addEventListener?.('change', sync);
+      sync();
+    })();
+    (() => {
+      const slide = document.querySelector('.rules-slide');
+      const art = slide?.querySelector('[data-animated]');
+      if (!art) return;
+      const still = art.getAttribute('src');
+      const animated = art.getAttribute('data-animated');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let playing = false;
+      const sync = () => {
+        const shouldPlay = slide.classList.contains('is-active') && !reducedMotion.matches;
+        if (shouldPlay === playing) return;
+        playing = shouldPlay;
+        art.src = shouldPlay ? `${animated}?play=${Date.now()}` : still;
+      };
+      new MutationObserver(sync).observe(slide, {attributes: true, attributeFilter: ['class']});
+      reducedMotion.addEventListener?.('change', sync);
+      sync();
+    })();
+    (() => {
+      const slide = document.querySelector('.practice-slide');
+      const art = slide?.querySelector('[data-animated]');
+      if (!art) return;
+      const still = art.getAttribute('src');
+      const animated = art.getAttribute('data-animated');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let playing = false;
+      const sync = () => {
+        const shouldPlay = slide.classList.contains('is-active') && !reducedMotion.matches;
+        if (shouldPlay === playing) return;
+        playing = shouldPlay;
+        art.src = shouldPlay ? `${animated}?play=${Date.now()}` : still;
+      };
+      new MutationObserver(sync).observe(slide, {attributes: true, attributeFilter: ['class']});
+      reducedMotion.addEventListener?.('change', sync);
+      sync();
+    })();
+    (() => {
+      const slide = document.querySelector('.dev-stage-slide');
+      const art = slide?.querySelector('[data-animated]');
+      if (!art) return;
+      const still = art.getAttribute('src');
+      const animated = art.getAttribute('data-animated');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let playing = false;
+      const sync = () => {
+        const shouldPlay = slide.classList.contains('is-active') && !reducedMotion.matches;
+        if (shouldPlay === playing) return;
+        playing = shouldPlay;
+        art.src = shouldPlay ? `${animated}?play=${Date.now()}` : still;
+      };
+      new MutationObserver(sync).observe(slide, {attributes: true, attributeFilter: ['class']});
+      reducedMotion.addEventListener?.('change', sync);
+      sync();
+    })();
+    (() => {
+      const slide = document.querySelector('.one-click-slide');
+      const button = slide?.querySelector('.one-click-reveal');
+      const before = slide?.querySelector('.one-click-before');
+      const after = slide?.querySelector('.one-click-after');
+      const label = button?.querySelector('.one-click-button-label');
+      const live = slide?.querySelector('.one-click-live');
+      if (!button || !before || !after || !label || !live) return;
+      const setRevealed = (revealed) => {
+        slide.classList.toggle('is-revealed', revealed);
+        button.setAttribute('aria-expanded', String(revealed));
+        before.setAttribute('aria-hidden', String(revealed));
+        after.setAttribute('aria-hidden', String(!revealed));
+        label.textContent = revealed ? '收起问题' : '揭示可能的问题';
+        live.textContent = revealed ? '已显示一键生成后可能出现的六类问题。' : '点击按钮，查看一键生成后值得检查的问题。';
+      };
+      button.addEventListener('click', () => setRevealed(!slide.classList.contains('is-revealed')));
+      button.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') event.stopPropagation();
+      });
+      const syncActivity = () => {
+        const active = slide.classList.contains('is-active');
+        button.tabIndex = active ? 0 : -1;
+        if (!active && slide.classList.contains('is-revealed')) setRevealed(false);
+      };
+      new MutationObserver(syncActivity).observe(slide, {attributes: true, attributeFilter: ['class']});
+      syncActivity();
+    })();
+    (() => {
+      const slide = document.querySelector('.claude-writing-slide');
+      if (!slide) return;
+      const questionArt = slide.querySelector('.writing-question');
+      const methodsArt = slide.querySelector('.writing-methods');
+      const showMethods = slide.querySelector('.writing-show-methods');
+      const backQuestion = slide.querySelector('.writing-back-question');
+      const openPrompt = slide.querySelector('.writing-open-prompt');
+      const openExtra = slide.querySelector('.writing-open-extra');
+      const panel = slide.querySelector('.writing-prompt-overlay');
+      const closePrompt = slide.querySelector('.writing-close-prompt');
+      const copyButton = slide.querySelector('.writing-copy-prompt');
+      const prompt = slide.querySelector('.writing-prompt-copy');
+      const extraPanel = slide.querySelector('.writing-extra-overlay');
+      const closeExtra = slide.querySelector('.writing-close-extra');
+      const copyExtraButton = slide.querySelector('.writing-copy-extra');
+      const extraLeft = slide.querySelector('.writing-extra-left');
+      const extraRight = slide.querySelector('.writing-extra-right');
+      const live = slide.querySelector('.writing-live');
+      if (!questionArt || !methodsArt || !showMethods || !backQuestion || !openPrompt || !openExtra || !panel || !closePrompt || !copyButton || !prompt || !extraPanel || !closeExtra || !copyExtraButton || !extraLeft || !extraRight || !live) return;
+
+      const promptText = [
+        '交付目标：使用 C 语言实现精简版 myls，支持默认目录列表以及 -a、-l、-h、-t 四个选项，无第三方运行时依赖。',
+        '运行环境为 Linux，使用 GCC 或 Clang 和 POSIX 目录接口。',
+        '默认每行输出一个文件名，不实现多列布局、颜色、递归和多个路径参数。',
+        '只接收零个或一个路径参数，默认路径为当前目录。',
+        '-h 必须与 -l 同用，否则报参数错误；非法选项和非法参数必须返回非零退出码。',
+        '输出字段、排序规则、时间格式和错误行为以验收契约为准。',
+        '系统 ls 只作为部分语义的参考实现，不把所有平台相关输出直接做字节级比较。',
+        '',
+        '开发原则：按已澄清的需求做最小实现，不自行扩展；一次只实现当前指派的一个任务；严格 TDD：Red → Green → Review；',
+        '构建与测试：\u000Bmake all：构建 myls、make test：构建并运行测试、make clean：清理构建产物'
+      ].join('\n');
+      prompt.textContent = promptText;
+
+      const extraInfoText = [
+        '## 开发原则（必须遵守）',
+        '- 按已澄清的需求做最小实现，不自行扩展。',
+        '- 一次只实现当前指派的一个任务，不做超出任务的改动。',
+        '- 严格 TDD 流程：Red（先写失败的测试）→ Green（最小实现使其通过）→ Review（审查后再进入下一任务）。',
+        '### TDD：Red-Green-Review 循环',
+        '1. **Red**：只新增当前行为的测试，本轮 diff 不得包含 `src/` 与 `include/` 的变更；运行确认测试因功能缺失而失败后提示用户审查，用户确认后再进行下一步',
+        '2. **Green**：人工审核断言后，做让测试通过的最小实现；当前测试与全量回归全绿后提示用户审查，用户确认后进行下一步',
+        '3. **Review + Commit**：人工审核（Red 只含测试且断言正确；Green 的接口、资源生命周期 closedir/free、错误路径与实现范围）后，以 `git commit` 提交，提交信息完整规范',
+        '分支纪律：',
+        '- Red不提交；完成Green并回归通过后再提交，所有提交始终保持全绿',
+        '- commit前必须人工确认，未审查不得提交',
+        '',
+        '## 构建与测试命令',
+        '- `make all`：构建 `build/myls`（编译选项 `-std=c11 -Wall -Wextra -Werror -pedantic`）',
+        '- `make test`：目前构建并运行 `tests/*.sh` 中的 CLI 行为测试；新增 C 单元测试时须将其接入该目标。当前没有行为测试时会明确提示；构建通过不代表功能通过。',
+        '- `make clean`：只清理明确的构建产物（构建产物不入库，.gitignore 与之对应）',
+        '## 测试规范',
+        '区分三种测试视角：',
+        ' - 单元测试直接验证可独立的 C 逻辑；',
+        ' - CLI 集成测试执行 `build/myls` 并分别断言 stdout、stderr、退出码；',
+        ' - 文件系统场景测试建立空目录、不同目录、含空格的名称等夹具，通常由同一个 CLI 测试脚本承载，不必另建测试框架。',
+        '',
+        '### 禁止事项',
+        '- 不删除、跳过或弱化既有测试来让构建变绿；测试与实现冲突时先怀疑实现',
+        '- 组合选项失败时先缩小到最小复现，不做无证据的大范围重构',
+        '- 不实现契约之外的行为（多列布局、颜色、递归、多路径支持）'
+      ].join('\n');
+      const extraSplit = extraInfoText.indexOf('\n\n## 构建与测试命令');
+      extraLeft.textContent = extraInfoText.slice(0, extraSplit + 2);
+      extraRight.textContent = extraInfoText.slice(extraSplit + 2);
+
+      let view = 'question';
+      let copyResetTimer;
+      const syncTabStops = () => {
+        const active = slide.classList.contains('is-active');
+        for (const button of [showMethods, backQuestion, openPrompt, openExtra, closePrompt, copyButton, closeExtra, copyExtraButton]) {
+          button.tabIndex = active && !button.hidden ? 0 : -1;
+        }
+        prompt.tabIndex = active && view === 'prompt' ? 0 : -1;
+        extraLeft.tabIndex = active && view === 'extra' ? 0 : -1;
+        extraRight.tabIndex = active && view === 'extra' ? 0 : -1;
+      };
+      const setView = (next) => {
+        view = next;
+        slide.classList.toggle('is-methods', next !== 'question');
+        slide.classList.toggle('is-prompt', next === 'prompt');
+        slide.classList.toggle('is-extra', next === 'extra');
+        questionArt.setAttribute('aria-hidden', String(next !== 'question'));
+        methodsArt.setAttribute('aria-hidden', String(next !== 'methods'));
+        showMethods.hidden = next !== 'question';
+        backQuestion.hidden = next !== 'methods';
+        openPrompt.hidden = next !== 'methods';
+        openExtra.hidden = next !== 'methods';
+        panel.hidden = next !== 'prompt';
+        extraPanel.hidden = next !== 'extra';
+        showMethods.setAttribute('aria-expanded', String(next !== 'question'));
+        openPrompt.setAttribute('aria-expanded', String(next === 'prompt'));
+        openExtra.setAttribute('aria-expanded', String(next === 'extra'));
+        live.textContent = next === 'question' ? '点击按钮，查看 CLAUDE.md 的两种写法。' : next === 'methods' ? '已显示手写 Markdown 和 Claude Code /init 两种写法。' : next === 'prompt' ? '已显示可选中复制的示例提示词。' : '已显示可选中复制的 CLAUDE.md 其他信息。';
+        copyButton.textContent = '复制提示词';
+        copyExtraButton.textContent = '复制全部文本';
+        clearTimeout(copyResetTimer);
+        syncTabStops();
+      };
+      showMethods.addEventListener('click', () => setView('methods'));
+      backQuestion.addEventListener('click', () => { setView('question'); showMethods.focus(); });
+      openPrompt.addEventListener('click', () => setView('prompt'));
+      openExtra.addEventListener('click', () => setView('extra'));
+      closePrompt.addEventListener('click', () => { setView('methods'); openPrompt.focus(); });
+      closeExtra.addEventListener('click', () => { setView('methods'); openExtra.focus(); });
+      copyButton.addEventListener('click', async () => {
+        try {
+          if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(promptText);
+          } else {
+            const field = document.createElement('textarea');
+            field.value = promptText;
+            field.style.position = 'fixed';
+            field.style.opacity = '0';
+            document.body.appendChild(field);
+            field.select();
+            const copied = document.execCommand('copy');
+            field.remove();
+            if (!copied) throw new Error('copy unavailable');
+          }
+          copyButton.textContent = '已复制';
+          live.textContent = '已复制完整提示词。';
+          copyResetTimer = setTimeout(() => { copyButton.textContent = '复制提示词'; }, 1800);
+        } catch (_) {
+          const selection = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(prompt);
+          selection.removeAllRanges();
+          selection.addRange(range);
+          live.textContent = '已选中提示词，请使用复制快捷键。';
+        }
+      });
+      copyExtraButton.addEventListener('click', async () => {
+        try {
+          if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(extraInfoText);
+          } else {
+            const field = document.createElement('textarea');
+            field.value = extraInfoText;
+            field.style.position = 'fixed';
+            field.style.opacity = '0';
+            document.body.appendChild(field);
+            field.select();
+            const copied = document.execCommand('copy');
+            field.remove();
+            if (!copied) throw new Error('copy unavailable');
+          }
+          copyExtraButton.textContent = '已复制';
+          live.textContent = '已复制全部 CLAUDE.md 补充信息。';
+          copyResetTimer = setTimeout(() => { copyExtraButton.textContent = '复制全部文本'; }, 1800);
+        } catch (_) {
+          const selection = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(slide.querySelector('.writing-extra-columns'));
+          selection.removeAllRanges();
+          selection.addRange(range);
+          live.textContent = '已选中补充信息，请使用复制快捷键。';
+        }
+      });
+      for (const button of [showMethods, backQuestion, openPrompt, openExtra, closePrompt, copyButton, closeExtra, copyExtraButton]) {
+        button.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') event.stopPropagation();
+        });
+      }
+      const syncActivity = () => {
+        if (!slide.classList.contains('is-active') && view !== 'question') setView('question');
+        syncTabStops();
+      };
+      new MutationObserver(syncActivity).observe(slide, {attributes: true, attributeFilter: ['class']});
+      setView('question');
+      syncActivity();
+    })();
+    (() => {
+      const slide = document.querySelector('.mode-compare-slide');
+      if (!slide) return;
+      const openButton = slide.querySelector('.mode-expected-open');
+      const overlay = slide.querySelector('.mode-expected-overlay');
+      const closeButton = slide.querySelector('.mode-expected-close');
+      const sourceLinks = [...slide.querySelectorAll('.mode-compare-source')];
+      if (!openButton || !overlay || !closeButton) return;
+      const syncTabStops = () => {
+        const active = slide.classList.contains('is-active');
+        openButton.tabIndex = active && overlay.hidden ? 0 : -1;
+        closeButton.tabIndex = active && !overlay.hidden ? 0 : -1;
+        for (const link of sourceLinks) link.tabIndex = active && overlay.hidden ? 0 : -1;
+      };
+      const setOpen = (next, returnFocus = true) => {
+        overlay.hidden = !next;
+        openButton.setAttribute('aria-expanded', String(next));
+        syncTabStops();
+        if (next) closeButton.focus();
+        else if (returnFocus) openButton.focus();
+      };
+      openButton.addEventListener('click', () => setOpen(true));
+      closeButton.addEventListener('click', () => setOpen(false));
+      overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) setOpen(false);
+      });
+      overlay.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          event.stopPropagation();
+          setOpen(false);
+        } else if (event.key === 'Tab') {
+          event.preventDefault();
+          closeButton.focus();
+        } else if (event.key === 'Enter' || event.key === ' ') {
+          event.stopPropagation();
+        }
+      });
+      openButton.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') event.stopPropagation();
+      });
+      for (const link of sourceLinks) {
+        link.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') event.stopPropagation();
+        });
+      }
+      new MutationObserver(() => {
+        if (!slide.classList.contains('is-active') && !overlay.hidden) setOpen(false, false);
+        syncTabStops();
+      }).observe(slide, {attributes: true, attributeFilter: ['class']});
+      syncTabStops();
+    })();
+    (() => {
+      const slide = document.querySelector('.practice-assignment-slide');
+      const link = slide?.querySelector('.practice-repo-link');
+      if (!link) return;
+      const syncTabStop = () => {
+        link.tabIndex = slide.classList.contains('is-active') ? 0 : -1;
+      };
+      link.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') event.stopPropagation();
+      });
+      new MutationObserver(syncTabStop).observe(slide, {attributes: true, attributeFilter: ['class']});
+      syncTabStop();
+    })();
+  </script>
+</body>
+</html>

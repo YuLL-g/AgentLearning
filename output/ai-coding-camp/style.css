@@ -1,0 +1,1041 @@
+/* tech-sharing — 技术分享 dark, code-forward */
+.tpl-tech-sharing{
+  --bg:#0d1117;--bg-soft:#161b22;--surface:#161b22;--surface-2:#1c2230;
+  --border:rgba(139,148,158,.22);--border-strong:rgba(139,148,158,.4);
+  --text-1:#e6edf3;--text-2:#8b949e;--text-3:#6e7681;
+  --accent:#7ee787;--accent-2:#79c0ff;--accent-3:#ff7b72;
+  --accent-ink:#0b1024;  /* text on --accent — 12.3:1 */
+  --grad:linear-gradient(120deg,#7ee787 0%,#79c0ff 60%,#d2a8ff 100%);
+  --radius:14px;--radius-lg:20px;
+  --shadow:0 20px 60px rgba(0,0,0,.5);
+  font-family:'Inter','Noto Sans SC',sans-serif;
+}
+.tpl-tech-sharing{background:#0d1117;color:var(--text-1)}
+.tpl-tech-sharing .slide{padding:72px 96px;background:#0d1117;color:var(--text-1)}
+.tpl-tech-sharing .slide::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(60% 50% at 90% 10%,rgba(121,192,255,.12),transparent 60%),
+  radial-gradient(50% 50% at 10% 90%,rgba(126,231,135,.08),transparent 60%);
+  pointer-events:none;z-index:0}
+.tpl-tech-sharing .slide>*{position:relative;z-index:1}
+.tpl-tech-sharing .h1{font-size:78px;line-height:1.03;font-weight:800;letter-spacing:-.03em;color:#fff}
+.tpl-tech-sharing .h2{font-size:54px;font-weight:700;letter-spacing:-.025em;color:#fff}
+.tpl-tech-sharing h3,.tpl-tech-sharing h4{color:#fff}
+.tpl-tech-sharing .kicker{color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;text-transform:none;letter-spacing:.02em}
+.tpl-tech-sharing .kicker::before{content:"> "}
+.tpl-tech-sharing .mono{font-family:'JetBrains Mono','IBM Plex Mono',monospace}
+.tpl-tech-sharing .terminal{background:#010409;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);font-family:'JetBrains Mono',monospace;font-size:15px;line-height:1.65}
+.tpl-tech-sharing .terminal .bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#161b22;border-bottom:1px solid var(--border);font-size:12px;color:var(--text-3)}
+.tpl-tech-sharing .terminal .dot{width:12px;height:12px;border-radius:50%;background:#ff5f56}
+.tpl-tech-sharing .terminal .dot:nth-child(2){background:#ffbd2e}
+.tpl-tech-sharing .terminal .dot:nth-child(3){background:#27c93f}
+.tpl-tech-sharing .terminal pre{margin:0;padding:24px 28px;color:#e6edf3;overflow:auto;max-height:440px}
+.tpl-tech-sharing .kw{color:#ff7b72}
+.tpl-tech-sharing .fn{color:#d2a8ff}
+.tpl-tech-sharing .str{color:#a5d6ff}
+.tpl-tech-sharing .cmt{color:#8b949e;font-style:italic}
+.tpl-tech-sharing .num{color:#79c0ff}
+.tpl-tech-sharing .card{background:var(--surface);border:1px solid var(--border);box-shadow:none}
+.tpl-tech-sharing .card-accent{border-top:3px solid var(--accent)}
+.tpl-tech-sharing .pill{background:var(--surface-2);color:var(--text-2);border-color:var(--border)}
+.tpl-tech-sharing .pill-accent{background:rgba(126,231,135,.12);color:var(--accent);border-color:rgba(126,231,135,.35)}
+.tpl-tech-sharing .tag{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--surface-2);border:1px solid var(--border);color:var(--text-2)}
+.tpl-tech-sharing .agenda-row{display:flex;align-items:baseline;gap:24px;padding:18px 0;border-bottom:1px dashed var(--border);font-family:'JetBrains Mono',monospace}
+.tpl-tech-sharing .agenda-row .num{color:var(--accent);flex:none;width:48px}
+.tpl-tech-sharing .agenda-row .t{color:#fff;font-size:24px;flex:1;font-family:'Inter',sans-serif;font-weight:600}
+.tpl-tech-sharing .agenda-row .d{color:var(--text-3);font-size:13px}
+.tpl-tech-sharing .speaker{display:flex;align-items:center;gap:14px;margin-top:28px}
+.tpl-tech-sharing .speaker .av{width:56px;height:56px;border-radius:50%;background:var(--grad)}
+.tpl-tech-sharing .speaker b{display:block;color:#fff;font-size:18px}
+.tpl-tech-sharing .speaker span{color:var(--text-3);font-size:13px;font-family:'JetBrains Mono',monospace}
+.tpl-tech-sharing .lede{color:var(--text-2)}
+
+/* AI 编码训练营：在 tech-sharing 模板上统一课程配色。 */
+.tpl-tech-sharing{
+  --bg:#071423;
+  --bg-soft:#0c1d30;
+  --surface:#10263b;
+  --surface-2:#15334c;
+  --text-1:#f5f8fc;
+  --text-2:#b8cadb;
+  --text-3:#88a1b8;
+  --accent:#72d2ff;
+  --accent-2:#ffc17b;
+  --accent-ink:#071423;
+  --grad:linear-gradient(120deg,#72d2ff,#ffc17b);
+  --cover-white:#f5f8fc;
+  --cover-gold:#ffc17b;
+  --cover-cyan:#72d2ff;
+  --cover-glass:rgba(5,20,37,.68);
+  --cover-glass-border:rgba(180,218,245,.22);
+  font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif;
+}
+.tpl-tech-sharing .slide{background:var(--bg)}
+.tpl-tech-sharing .cover-slide{padding:0;isolation:isolate}
+.tpl-tech-sharing .cover-slide::before{display:none}
+.tpl-tech-sharing .cover-image{
+  position:absolute!important;
+  inset:0;
+  width:100%;
+  height:100%;
+  margin:0;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  aspect-ratio:auto;
+  z-index:0!important;
+  pointer-events:none;
+}
+.tpl-tech-sharing .cover-image img{width:100%;height:100%;object-fit:cover}
+.tpl-tech-sharing .cover-shade{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(3,13,27,.88) 0%,rgba(3,13,27,.71) 31%,rgba(3,13,27,.18) 67%,rgba(3,13,27,.1) 100%),linear-gradient(0deg,rgba(3,13,27,.6),transparent 26%);
+}
+.tpl-tech-sharing .cover-content{
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:100%;
+  padding:90px 116px 124px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+}
+.tpl-tech-sharing .cover-topline{
+  display:flex;
+  align-items:center;
+  gap:19px;
+  color:var(--cover-white);
+  font-family:'JetBrains Mono',Menlo,monospace;
+  font-size:17px;
+  font-weight:600;
+  letter-spacing:.16em;
+}
+.tpl-tech-sharing .cover-topline-separator{width:1px;height:24px;background:var(--cover-glass-border)}
+.tpl-tech-sharing .cover-topline span:last-child{font-family:inherit;font-size:16px;letter-spacing:.08em;color:var(--text-2)}
+.tpl-tech-sharing .cover-mark{display:grid;grid-template-columns:repeat(2,7px);gap:4px;transform:rotate(-8deg)}
+.tpl-tech-sharing .cover-mark i{width:7px;height:7px;border-radius:2px;background:var(--cover-cyan)}
+.tpl-tech-sharing .cover-mark i:nth-child(2),.tpl-tech-sharing .cover-mark i:nth-child(3){background:var(--cover-gold)}
+.tpl-tech-sharing .cover-heading{max-width:800px}
+.tpl-tech-sharing .cover-kicker{
+  margin:0 0 18px;
+  color:var(--cover-gold);
+  font-size:23px;
+  font-weight:700;
+  letter-spacing:.2em;
+}
+.tpl-tech-sharing .cover-heading h1{
+  margin:0;
+  color:var(--cover-white);
+  font-size:122px;
+  font-weight:800;
+  letter-spacing:-.055em;
+  line-height:1.12;
+  text-shadow:0 8px 35px rgba(0,0,0,.22);
+}
+.tpl-tech-sharing .cover-heading h1 span{color:var(--cover-cyan)}
+.tpl-tech-sharing .cover-description{
+  max-width:720px;
+  margin:30px 0 0;
+  color:var(--text-2);
+  font-size:27px;
+  line-height:1.6;
+  font-weight:400;
+}
+.tpl-tech-sharing .cover-description code{color:var(--cover-gold);font-size:.95em}
+.tpl-tech-sharing .cover-route{
+  display:flex;
+  align-items:center;
+  gap:21px;
+  min-width:744px;
+  padding:20px 26px;
+  background:var(--cover-glass);
+  border:1px solid var(--cover-glass-border);
+  border-radius:18px;
+  box-shadow:0 18px 44px rgba(0,0,0,.17);
+  backdrop-filter:blur(13px);
+}
+.tpl-tech-sharing .route-stop{display:flex;align-items:center;gap:16px;white-space:nowrap}
+.tpl-tech-sharing .route-index{color:var(--cover-gold);font:700 34px/1 'JetBrains Mono',Menlo,monospace}
+.tpl-tech-sharing .route-copy{display:flex;flex-direction:column;gap:1px}
+.tpl-tech-sharing .route-copy small{font-size:14px;color:var(--text-3);letter-spacing:.12em}
+.tpl-tech-sharing .route-copy strong{font-size:24px;color:var(--cover-white);font-weight:650}
+.tpl-tech-sharing .route-link{display:flex;align-items:center;gap:4px;color:var(--cover-cyan)}
+.tpl-tech-sharing .route-link b{display:block;width:50px;height:1px;background:var(--cover-glass-border)}
+.tpl-tech-sharing .route-link svg{width:29px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tpl-tech-sharing .cover-side-label{
+  position:absolute;
+  right:43px;
+  top:365px;
+  z-index:2;
+  color:rgba(245,248,252,.65);
+  font:500 13px/1 'JetBrains Mono',Menlo,monospace;
+  letter-spacing:.25em;
+  writing-mode:vertical-rl;
+}
+.tpl-tech-sharing .cover-slide > .cover-side-label{position:absolute}
+.tpl-tech-sharing .cover-slide > .deck-footer{position:absolute}
+.tpl-tech-sharing .cover-slide .deck-footer{left:116px;right:116px;bottom:38px;color:rgba(245,248,252,.59);font-size:15px;letter-spacing:.04em}
+.tpl-tech-sharing .cover-slide .deck-footer .slide-number{display:none}
+
+.tpl-tech-sharing .deck-controls{
+  position:absolute;
+  z-index:30;
+  right:78px;
+  bottom:70px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:7px;
+  color:var(--cover-white);
+  background:rgba(3,16,30,.78);
+  border:1px solid rgba(214,236,250,.25);
+  border-radius:999px;
+  box-shadow:0 14px 36px rgba(0,0,0,.28);
+  backdrop-filter:blur(12px);
+}
+.tpl-tech-sharing .deck-control{
+  display:grid;
+  place-items:center;
+  width:52px;
+  height:52px;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  color:var(--cover-white);
+  background:transparent;
+  cursor:pointer;
+  transition:background .2s ease,color .2s ease,opacity .2s ease;
+}
+.tpl-tech-sharing .deck-control:hover:not(:disabled),.tpl-tech-sharing .deck-control:focus-visible{background:rgba(114,210,255,.16);color:var(--cover-cyan)}
+.tpl-tech-sharing .deck-control:focus-visible{outline:2px solid var(--cover-cyan);outline-offset:2px}
+.tpl-tech-sharing .deck-control:disabled{opacity:.36;cursor:default}
+.tpl-tech-sharing .deck-control svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.tpl-tech-sharing .deck-counter{min-width:88px;text-align:center;color:var(--text-2);font:600 15px/1 'JetBrains Mono',Menlo,monospace;letter-spacing:.05em}
+
+/* 第二页：发展脉络。时间轴是本页主视觉，保留原稿的六个代表节点。 */
+.tpl-tech-sharing .history-slide{
+  padding:78px 116px 112px;
+  justify-content:flex-start;
+  background:radial-gradient(860px 600px at 95% 5%,rgba(26,100,141,.20),transparent 72%),radial-gradient(550px 420px at 0% 90%,rgba(246,172,95,.07),transparent 72%),var(--bg);
+}
+.tpl-tech-sharing .history-slide::before{display:none}
+.tpl-tech-sharing .history-header{
+  width:100%;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:50px;
+  margin-bottom:42px;
+}
+.tpl-tech-sharing .history-kicker{
+  margin:0 0 12px;
+  color:var(--cover-cyan);
+  font-size:19px;
+  font-weight:600;
+  letter-spacing:.11em;
+}
+.tpl-tech-sharing .history-header h2{
+  margin:0;
+  color:var(--cover-white);
+  font-size:66px;
+  line-height:1.16;
+  font-weight:760;
+  letter-spacing:-.035em;
+}
+.tpl-tech-sharing .history-caveat{
+  flex:none;
+  margin:0 0 11px;
+  color:var(--text-3);
+  font-size:21px;
+  line-height:1.4;
+}
+.tpl-tech-sharing .history-timeline{
+  position:relative;
+  width:100%;
+  display:grid;
+  grid-template-rows:repeat(6,96px);
+}
+.tpl-tech-sharing .history-timeline::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:283px;
+  top:47px;
+  bottom:47px;
+  width:3px;
+  border-radius:3px;
+  background:linear-gradient(180deg,var(--cover-gold),var(--cover-cyan) 50%,var(--cover-gold));
+  box-shadow:0 0 18px rgba(114,210,255,.23);
+}
+.tpl-tech-sharing .history-row{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:250px 70px 540px 1fr;
+  align-items:center;
+  min-width:0;
+}
+.tpl-tech-sharing .history-row::after{
+  content:"";
+  position:absolute;
+  left:321px;
+  right:0;
+  bottom:0;
+  height:1px;
+  background:linear-gradient(90deg,rgba(168,206,231,.18),rgba(168,206,231,.055));
+}
+.tpl-tech-sharing .history-row:last-child::after{display:none}
+.tpl-tech-sharing .history-year{
+  color:var(--cover-gold);
+  font:700 27px/1 'JetBrains Mono',Menlo,monospace;
+  letter-spacing:-.025em;
+  white-space:nowrap;
+}
+.tpl-tech-sharing .history-node{
+  position:relative;
+  z-index:2;
+  display:grid;
+  place-items:center;
+  width:54px;
+  height:54px;
+  margin-left:7px;
+  border:2px solid var(--cover-cyan);
+  border-radius:50%;
+  background:var(--bg);
+  color:var(--cover-cyan);
+  box-shadow:0 0 0 9px var(--bg),0 0 28px rgba(114,210,255,.13);
+  font:700 16px/1 'JetBrains Mono',Menlo,monospace;
+}
+.tpl-tech-sharing .history-row:last-child .history-node{
+  border-color:var(--cover-gold);
+  color:var(--bg);
+  background:var(--cover-gold);
+  box-shadow:0 0 0 9px var(--bg),0 0 34px rgba(255,193,123,.32);
+}
+.tpl-tech-sharing .history-phase{
+  min-width:0;
+  color:var(--cover-white);
+  font-size:32px;
+  line-height:1.24;
+  font-weight:670;
+  white-space:nowrap;
+}
+.tpl-tech-sharing .history-row:last-child .history-phase{color:var(--cover-gold)}
+.tpl-tech-sharing .history-examples{
+  min-width:0;
+  color:var(--text-2);
+  font-size:27px;
+  line-height:1.3;
+  white-space:nowrap;
+}
+.tpl-tech-sharing .history-equation{
+  width:1400px;
+  display:flex;
+  align-items:center;
+  gap:28px;
+  min-height:100px;
+  margin-top:31px;
+  padding-top:27px;
+  border-top:2px solid rgba(255,193,123,.27);
+  color:var(--cover-white);
+}
+.tpl-tech-sharing .equation-label{
+  align-self:center;
+  padding-right:25px;
+  border-right:1px solid rgba(255,193,123,.27);
+  color:var(--cover-gold);
+  font-size:19px;
+  font-weight:700;
+  letter-spacing:.08em;
+  white-space:nowrap;
+}
+.tpl-tech-sharing .equation-part{display:inline-flex;align-items:baseline;gap:8px;white-space:nowrap}
+.tpl-tech-sharing .equation-part strong{font-size:38px;line-height:1.1;font-weight:740}
+.tpl-tech-sharing .equation-part small{color:var(--text-3);font-size:22px}
+.tpl-tech-sharing .equation-sign{color:var(--cover-cyan);font:500 39px/1 'JetBrains Mono',Menlo,monospace}
+.tpl-tech-sharing .equation-result strong{color:var(--cover-gold)}
+.tpl-tech-sharing .history-footer{
+  position:absolute;
+  left:116px;
+  bottom:37px;
+  color:var(--text-3);
+  font-size:15px;
+  letter-spacing:.04em;
+}
+.tpl-tech-sharing .history-slide > .history-footer{position:absolute}
+
+/* 第三页：与放映画布同尺寸的可缩放 SVG 时序图。 */
+.tpl-tech-sharing .sequence-slide{padding:0;background:var(--bg)}
+.tpl-tech-sharing .sequence-slide::before{display:none}
+.tpl-tech-sharing .sequence-slide > .sequence-art{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:contain;
+}
+
+/* 第四页：根据 draw.io 流程图重绘的 16:9 放映图。 */
+.tpl-tech-sharing .flow-slide{padding:0;background:var(--bg)}
+.tpl-tech-sharing .flow-slide::before{display:none}
+.tpl-tech-sharing .flow-slide > .flow-art{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:contain;
+}
+
+/* 编码 Agent 选择：保留原始散点图，并用侧栏承载结论。 */
+.tpl-tech-sharing .choice-slide{padding:0;background:var(--bg)}
+.tpl-tech-sharing .choice-slide::before{display:none}
+.tpl-tech-sharing .choice-slide > .choice-art{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:contain;
+}
+
+/* 消息累积动画随放映切入而从头播放。 */
+.tpl-tech-sharing .growth-slide{padding:0;background:#0a1221}
+.tpl-tech-sharing .growth-slide::before{display:none}
+.tpl-tech-sharing .growth-slide > .growth-art{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:contain;
+  pointer-events:none;
+}
+
+/* 上下文主题的全幅图。 */
+.tpl-tech-sharing .context-slide{padding:0;background:var(--bg)}
+.tpl-tech-sharing .context-slide::before{display:none}
+.tpl-tech-sharing .context-slide > .context-art{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:contain;
+}
+
+/* Claude Code 启动演示：SVG 自行播放并停留在完成帧。 */
+.tpl-tech-sharing .startup-slide{padding:0;background:var(--bg)}
+.tpl-tech-sharing .startup-slide::before{display:none}
+.tpl-tech-sharing .startup-slide > .startup-art{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:contain;
+  pointer-events:none;
+}
+
+/* 项目指令内容：逐条出现，结束后停留在完整概览。 */
+.tpl-tech-sharing .rules-slide{padding:0;background:var(--bg)}
+.tpl-tech-sharing .rules-slide::before{display:none}
+.tpl-tech-sharing .rules-slide > .rules-art{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:contain;
+  pointer-events:none;
+}
+
+/* 实践篇过渡：标题与终端目标示意依次进入。 */
+.tpl-tech-sharing .practice-slide{padding:0;background:var(--bg)}
+.tpl-tech-sharing .practice-slide::before{display:none}
+.tpl-tech-sharing .practice-slide > .practice-art{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:contain;
+  pointer-events:none;
+}
+
+/* 需求澄清：原始提问与可复制的交付目标并置。 */
+.tpl-tech-sharing .clarify-slide{
+  padding:0;
+  background:radial-gradient(880px 650px at 88% 13%,rgba(28,91,121,.21),transparent 68%),var(--bg);
+}
+.tpl-tech-sharing .clarify-slide::before{display:none}
+.tpl-tech-sharing .clarify-slide > .clarify-kicker{
+  position:absolute;left:116px;top:67px;margin:0;
+  color:var(--cover-cyan);font-size:21px;font-weight:700;letter-spacing:.13em;
+}
+.tpl-tech-sharing .clarify-slide > h2{
+  position:absolute;left:116px;top:111px;margin:0;
+  color:var(--cover-white);font-size:64px;line-height:1.18;font-weight:760;letter-spacing:-.035em;
+}
+.tpl-tech-sharing .clarify-slide > .clarify-subtitle{
+  position:absolute;left:118px;top:203px;margin:0;
+  color:var(--text-2);font-size:26px;line-height:1.4;
+}
+.tpl-tech-sharing .clarify-slide > .clarify-questions{
+  position:absolute;left:116px;top:268px;width:537px;height:657px;
+  border:2px solid #3c5f74;border-radius:26px;
+  background:linear-gradient(155deg,#102e44 0%,#0c2337 80%);
+  box-shadow:0 20px 58px rgba(0,0,0,.24);
+}
+.tpl-tech-sharing .clarify-panel-label{
+  position:absolute;left:29px;top:27px;display:flex;align-items:center;gap:12px;
+  color:#a6bfd0;font-size:22px;font-weight:650;
+}
+.tpl-tech-sharing .clarify-panel-dot{width:11px;height:11px;border-radius:50%;background:var(--cover-gold);box-shadow:0 0 0 6px rgba(255,193,123,.11)}
+.tpl-tech-sharing .clarify-questions blockquote{
+  position:absolute;left:28px;top:79px;width:477px;height:146px;margin:0;padding:26px 29px;
+  border:1px solid rgba(255,193,123,.42);border-radius:19px;
+  background:rgba(255,193,123,.075);color:var(--cover-white);
+  font-size:42px;line-height:1.28;font-weight:700;letter-spacing:-.025em;
+}
+.tpl-tech-sharing .clarify-question-label{
+  position:absolute;left:29px;top:257px;margin:0;color:#a6bfd0;font-size:23px;
+}
+.tpl-tech-sharing .clarify-question-grid{
+  position:absolute;left:28px;top:307px;width:477px;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:15px;
+}
+.tpl-tech-sharing .clarify-question{
+  display:flex;align-items:center;gap:11px;min-height:90px;padding:0 17px;
+  border:1px solid #42657b;border-radius:15px;background:#14364b;
+  color:#eaf5fb;font-size:24px;font-weight:660;white-space:nowrap;
+}
+.tpl-tech-sharing .clarify-question span{
+  display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:50%;
+  background:rgba(114,210,255,.13);color:var(--cover-cyan);
+  font:700 23px/1 'JetBrains Mono',Menlo,monospace;
+}
+.tpl-tech-sharing .clarify-questions > .clarify-talk{
+  position:absolute;left:28px;right:28px;bottom:29px;height:72px;
+  display:flex;align-items:center;justify-content:center;gap:13px;
+  border:1px solid rgba(255,193,123,.45);border-radius:15px;
+  background:rgba(255,193,123,.11);color:var(--cover-gold);
+  font-size:25px;font-weight:700;
+}
+.tpl-tech-sharing .clarify-talk-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:rgba(255,193,123,.16);font:800 29px/1 'JetBrains Mono',Menlo,monospace;letter-spacing:-.14em;padding-bottom:9px}
+.tpl-tech-sharing .clarify-slide > .clarify-connector{
+  position:absolute;left:661px;top:548px;width:83px;height:120px;
+  max-width:none;color:var(--cover-cyan);filter:drop-shadow(0 0 10px rgba(114,210,255,.3));
+  pointer-events:none;
+}
+.tpl-tech-sharing .clarify-slide > .clarify-contract{
+  position:absolute;left:746px;top:268px;width:1058px;height:657px;
+  border:2px solid #426b81;border-radius:26px;
+  background:linear-gradient(140deg,#102b40,#0b2134 84%);
+  box-shadow:0 24px 65px rgba(0,0,0,.29);
+}
+.tpl-tech-sharing .clarify-contract-header{
+  height:87px;display:flex;align-items:center;gap:18px;padding:0 37px;
+  border-bottom:1px solid rgba(146,190,214,.25);
+}
+.tpl-tech-sharing .clarify-contract-mark{
+  display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:13px;
+  background:rgba(114,210,255,.14);color:var(--cover-cyan);
+}
+.tpl-tech-sharing .clarify-contract-mark svg{width:29px;height:29px;fill:none;stroke:currentColor;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.tpl-tech-sharing .clarify-contract-header small{display:block;color:var(--cover-cyan);font-size:18px;line-height:1.2;font-weight:650}
+.tpl-tech-sharing .clarify-contract-header strong{display:block;margin-top:3px;color:var(--cover-white);font-size:29px;line-height:1.2;font-weight:700}
+.tpl-tech-sharing .clarify-contract-tag{margin-left:auto;padding:9px 14px;border:1px solid rgba(255,193,123,.3);border-radius:999px;color:var(--cover-gold);font-size:18px;white-space:nowrap}
+.tpl-tech-sharing .clarify-contract-copy{
+  position:absolute;left:38px;right:38px;top:111px;margin:0;padding:0;
+  color:#e4eff7;font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif;
+  font-size:27px;line-height:1.85;font-weight:460;
+  white-space:pre-wrap;overflow-wrap:anywhere;user-select:text;-webkit-user-select:text;
+  background:transparent;border:0;outline:0;
+}
+.tpl-tech-sharing .clarify-contract-copy:focus-visible{outline:2px solid var(--cover-cyan);outline-offset:10px;border-radius:4px}
+.tpl-tech-sharing .clarify-slide > .clarify-footer{
+  position:absolute;left:116px;bottom:36px;color:var(--text-3);font-size:18px;letter-spacing:.03em;
+}
+@keyframes clarify-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes clarify-across{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:translateX(0)}}
+.tpl-tech-sharing .clarify-slide .clarify-question,.tpl-tech-sharing .clarify-slide .clarify-talk,.tpl-tech-sharing .clarify-slide .clarify-connector,.tpl-tech-sharing .clarify-slide .clarify-contract{opacity:0}
+.tpl-tech-sharing .clarify-slide.is-active .clarify-question:nth-child(1){animation:clarify-rise .42s ease .25s both}
+.tpl-tech-sharing .clarify-slide.is-active .clarify-question:nth-child(2){animation:clarify-rise .42s ease .46s both}
+.tpl-tech-sharing .clarify-slide.is-active .clarify-question:nth-child(3){animation:clarify-rise .42s ease .67s both}
+.tpl-tech-sharing .clarify-slide.is-active .clarify-question:nth-child(4){animation:clarify-rise .42s ease .88s both}
+.tpl-tech-sharing .clarify-slide.is-active .clarify-talk{animation:clarify-rise .43s ease 1.17s both}
+.tpl-tech-sharing .clarify-slide.is-active .clarify-connector{animation:clarify-across .42s ease 1.45s both}
+.tpl-tech-sharing .clarify-slide.is-active .clarify-contract{animation:clarify-across .55s ease 1.72s both}
+
+/* 实践 02：一键生成的抽象流程与单击揭示的风险。 */
+.tpl-tech-sharing .one-click-slide{padding:0;isolation:isolate}
+.tpl-tech-sharing .one-click-slide::before{display:none}
+.tpl-tech-sharing .one-click-slide > .one-click-art{
+  position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain;
+  z-index:1;pointer-events:none;
+  transition:opacity .36s ease,visibility .36s ease;
+}
+.tpl-tech-sharing .one-click-slide > .one-click-before{opacity:1;visibility:visible}
+.tpl-tech-sharing .one-click-slide > .one-click-after{opacity:0;visibility:hidden}
+.tpl-tech-sharing .one-click-slide.is-revealed > .one-click-before{opacity:0;visibility:hidden}
+.tpl-tech-sharing .one-click-slide.is-revealed > .one-click-after{opacity:1;visibility:visible}
+.tpl-tech-sharing .one-click-slide > .one-click-reveal{
+  position:absolute;left:738px;top:837px;width:444px;height:78px;z-index:3;
+  display:flex;align-items:center;justify-content:center;gap:18px;
+  border:1px solid #ffdbac;border-radius:18px;
+  color:#102333;background:linear-gradient(115deg,#ffd39e,#ffc17b);
+  box-shadow:0 17px 35px rgba(0,0,0,.22),0 0 0 6px rgba(255,193,123,.06);
+  font:750 28px/1.2 'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif;
+  cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,filter .18s ease;
+}
+.tpl-tech-sharing .one-click-reveal:hover{transform:translateY(-3px);filter:brightness(1.06);box-shadow:0 23px 40px rgba(0,0,0,.3),0 0 0 8px rgba(255,193,123,.11)}
+.tpl-tech-sharing .one-click-reveal:active{transform:translateY(0)}
+.tpl-tech-sharing .one-click-reveal:focus-visible{outline:4px solid var(--cover-cyan);outline-offset:5px}
+.tpl-tech-sharing .one-click-button-icon{
+  display:grid;place-items:center;width:38px;height:38px;border-radius:50%;
+  background:#122c3c;color:#ffd39e;font:800 28px/1 'JetBrains Mono',Menlo,monospace;
+}
+.tpl-tech-sharing .one-click-reveal svg{width:24px;height:24px;fill:none;stroke:#102333;stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s ease}
+.tpl-tech-sharing .one-click-slide.is-revealed .one-click-reveal svg{transform:rotate(180deg)}
+.tpl-tech-sharing .one-click-slide > .one-click-live{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+
+/* 实践 03：原生 HTML 需求表与验收契约，全部文字可直接选中。 */
+.tpl-tech-sharing .requirements-slide,.tpl-tech-sharing .acceptance-slide{padding:0;isolation:isolate}
+.tpl-tech-sharing .requirements-slide > .spec-kicker,.tpl-tech-sharing .acceptance-slide > .spec-kicker{
+  position:absolute;left:116px;top:84px;margin:0;color:var(--cover-cyan);
+  font-size:25px;font-weight:700;letter-spacing:.075em;
+}
+.tpl-tech-sharing .requirements-slide > h2,.tpl-tech-sharing .acceptance-slide > h2{
+  position:absolute;left:116px;top:133px;margin:0;color:var(--cover-white);
+  font-size:68px;line-height:1.18;font-weight:760;letter-spacing:-.025em;
+}
+.tpl-tech-sharing .spec-route{
+  position:absolute;right:116px;top:102px;display:flex;align-items:center;gap:16px;
+  padding:13px 19px;border:1px solid #466982;border-radius:999px;
+  background:#102b40;color:#a8c6d7;font-size:21px;font-weight:600;
+}
+.tpl-tech-sharing .spec-route i{
+  display:block;width:21px;height:2px;background:#7094a8;position:relative;
+}
+.tpl-tech-sharing .spec-route i::after{
+  content:"";position:absolute;right:0;top:-4px;width:8px;height:8px;
+  border-top:2px solid #7094a8;border-right:2px solid #7094a8;transform:rotate(45deg);
+}
+.tpl-tech-sharing .spec-route strong{color:var(--cover-gold);font-weight:700}
+.tpl-tech-sharing .requirements-panel{
+  position:absolute;left:116px;top:266px;width:1688px;height:661px;
+  overflow:hidden;border:2px solid #426b82;border-radius:24px;
+  background:linear-gradient(145deg,#102c41,#0b2134);
+  box-shadow:0 25px 65px rgba(0,0,0,.25);
+}
+.tpl-tech-sharing .requirements-table{
+  width:100%;height:100%;border-collapse:collapse;table-layout:fixed;
+  color:#e8f2f8;font-size:27px;line-height:1.2;user-select:text;-webkit-user-select:text;
+}
+.tpl-tech-sharing .requirements-scene-col{width:323px}
+.tpl-tech-sharing .requirements-table th,.tpl-tech-sharing .requirements-table td{
+  text-align:left;vertical-align:middle;padding:9px 29px;white-space:nowrap;
+  border-bottom:1px solid rgba(126,176,202,.25);
+}
+.tpl-tech-sharing .requirements-table thead{height:63px;background:#153a51}
+.tpl-tech-sharing .requirements-table thead th{color:#aaddf1;font-size:25px;font-weight:700}
+.tpl-tech-sharing .requirements-table tbody tr{height:59px}
+.tpl-tech-sharing .requirements-table tbody tr:nth-child(even){background:rgba(114,210,255,.035)}
+.tpl-tech-sharing .requirements-table tbody tr:last-child td{border-bottom:0}
+.tpl-tech-sharing .requirements-table tbody td:first-child{color:#ffc17b;font-weight:700}
+.tpl-tech-sharing .requirements-table tbody td+td{border-left:1px solid rgba(126,176,202,.17)}
+.tpl-tech-sharing .spec-footer{
+  position:absolute;left:116px;bottom:36px;color:var(--text-3);
+  font-size:19px;letter-spacing:.03em;
+}
+.tpl-tech-sharing .acceptance-rules,.tpl-tech-sharing .acceptance-examples{
+  position:absolute;top:236px;height:691px;overflow:hidden;
+  border:2px solid #426b82;border-radius:24px;
+  background:linear-gradient(145deg,#102c41,#0b2134);
+  box-shadow:0 25px 65px rgba(0,0,0,.25);
+  user-select:text;-webkit-user-select:text;
+}
+.tpl-tech-sharing .acceptance-rules{
+  left:116px;width:940px;padding:27px 31px;
+  border-top:5px solid #72d2ff;
+}
+.tpl-tech-sharing .acceptance-list{list-style:none;margin:0;padding:0}
+.tpl-tech-sharing .acceptance-list li{
+  position:relative;margin:0 0 11px;padding-left:22px;
+  color:#dcebf4;font-size:23px;line-height:1.36;font-weight:450;
+  overflow-wrap:anywhere;
+}
+.tpl-tech-sharing .acceptance-list li:last-child{margin-bottom:0}
+.tpl-tech-sharing .acceptance-list li::before{
+  content:"";position:absolute;left:0;top:.57em;width:9px;height:9px;
+  border-radius:50%;background:var(--cover-cyan);
+}
+.tpl-tech-sharing .acceptance-list strong{color:#ffc17b;font-weight:750}
+.tpl-tech-sharing .acceptance-list code,.tpl-tech-sharing .acceptance-examples code{
+  color:#a9e4ff;background:rgba(114,210,255,.075);border-radius:4px;
+  font-family:'JetBrains Mono','SFMono-Regular',Menlo,monospace;font-size:.88em;
+  white-space:normal;overflow-wrap:anywhere;
+}
+.tpl-tech-sharing .acceptance-examples{
+  left:1083px;width:721px;padding:24px 25px;
+  border-top:5px solid #ffc17b;
+}
+.tpl-tech-sharing .acceptance-example-intro{
+  margin:0 0 18px;color:#edf5fa;font-size:21px;line-height:1.4;font-weight:600;
+}
+.tpl-tech-sharing .acceptance-example-table{
+  width:100%;border-collapse:collapse;table-layout:fixed;
+  border:1px solid rgba(154,199,221,.36);border-radius:10px;
+  color:#e7f0f7;font-size:21px;line-height:1.3;
+}
+.tpl-tech-sharing .example-command-col{width:29%}
+.tpl-tech-sharing .example-stdout-col{width:34%}
+.tpl-tech-sharing .example-stderr-col{width:26%}
+.tpl-tech-sharing .example-exit-col{width:11%}
+.tpl-tech-sharing .acceptance-example-table th,.tpl-tech-sharing .acceptance-example-table td{
+  text-align:left;vertical-align:top;padding:10px 8px;
+  border-bottom:1px solid rgba(154,199,221,.29);
+  overflow-wrap:anywhere;
+}
+.tpl-tech-sharing .acceptance-example-table th{background:#173a50;color:#aaddf1;font-size:19px;font-weight:700}
+.tpl-tech-sharing .acceptance-example-table tr:last-child td{border-bottom:0}
+.tpl-tech-sharing .acceptance-example-table tbody tr:nth-child(even){background:rgba(114,210,255,.035)}
+.tpl-tech-sharing .acceptance-example-table td:last-child,.tpl-tech-sharing .acceptance-example-table th:last-child{text-align:center}
+.tpl-tech-sharing .acceptance-example-table code{font-size:19px}
+.tpl-tech-sharing .acceptance-long-example{
+  margin:23px 0 0;color:#dcebf4;font-size:21px;line-height:1.43;
+  overflow-wrap:anywhere;
+}
+
+/* 实践 04：开发起步的时间轴、工程骨架与项目指令。 */
+.tpl-tech-sharing .dev-stage-slide{padding:0;isolation:isolate}
+.tpl-tech-sharing .dev-stage-slide::before{display:none}
+.tpl-tech-sharing .dev-stage-slide > .dev-stage-art{
+  position:absolute;inset:0;width:100%;height:100%;max-width:none;
+  object-fit:contain;pointer-events:none;
+}
+
+/* 实践 05：CLAUDE.md 的两种写法与可选择复制的提示词。 */
+.tpl-tech-sharing .claude-writing-slide{padding:0;isolation:isolate}
+.tpl-tech-sharing .claude-writing-slide::before{display:none}
+.tpl-tech-sharing .claude-writing-slide > .writing-art{
+  position:absolute;inset:0;width:100%;height:100%;max-width:none;
+  object-fit:contain;z-index:1;pointer-events:none;
+  transition:opacity .35s ease,visibility .35s ease,filter .35s ease;
+}
+.tpl-tech-sharing .claude-writing-slide > .writing-question{opacity:1;visibility:visible}
+.tpl-tech-sharing .claude-writing-slide > .writing-methods{opacity:0;visibility:hidden}
+.tpl-tech-sharing .claude-writing-slide.is-methods > .writing-question{opacity:0;visibility:hidden}
+.tpl-tech-sharing .claude-writing-slide.is-methods > .writing-methods{opacity:1;visibility:visible}
+.tpl-tech-sharing .claude-writing-slide.is-prompt > .writing-methods,.tpl-tech-sharing .claude-writing-slide.is-extra > .writing-methods{opacity:.2;filter:blur(7px)}
+.tpl-tech-sharing .claude-writing-slide [hidden]{display:none!important}
+.tpl-tech-sharing .writing-show-methods,.tpl-tech-sharing .writing-open-prompt,.tpl-tech-sharing .writing-open-extra{
+  position:absolute;z-index:3;height:76px;display:flex;align-items:center;justify-content:center;gap:16px;
+  border:1px solid #ffdbac;border-radius:18px;color:#102333;
+  background:linear-gradient(115deg,#ffd39e,#ffc17b);
+  box-shadow:0 17px 35px rgba(0,0,0,.24),0 0 0 6px rgba(255,193,123,.06);
+  font:750 27px/1.2 'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif;
+  cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,filter .18s ease;
+}
+.tpl-tech-sharing .writing-show-methods{left:754px;top:826px;width:412px}
+.tpl-tech-sharing .writing-show-methods > span{
+  width:37px;height:37px;border-radius:50%;display:grid;place-items:center;
+  background:#123043;color:#ffd6a7;font:800 27px/1 'JetBrains Mono',Menlo,monospace;
+}
+.tpl-tech-sharing .writing-open-prompt{left:1004px;top:815px;width:367px;height:70px;font-size:25px}
+.tpl-tech-sharing .writing-open-extra{
+  left:1391px;top:815px;width:367px;height:70px;font-size:25px;
+  background:#173c51;color:#d7f1ff;border-color:#6b9fb5;
+  box-shadow:0 17px 35px rgba(0,0,0,.2),0 0 0 6px rgba(114,210,255,.035);
+}
+.tpl-tech-sharing .writing-show-methods svg,.tpl-tech-sharing .writing-open-prompt svg,.tpl-tech-sharing .writing-open-extra svg{
+  width:24px;height:24px;fill:none;stroke:#102333;stroke-width:2.7;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.tpl-tech-sharing .writing-open-extra svg{stroke:#d7f1ff}
+.tpl-tech-sharing .writing-show-methods:hover,.tpl-tech-sharing .writing-open-prompt:hover,.tpl-tech-sharing .writing-open-extra:hover{
+  transform:translateY(-3px);filter:brightness(1.05);
+  box-shadow:0 22px 40px rgba(0,0,0,.3),0 0 0 8px rgba(255,193,123,.1);
+}
+.tpl-tech-sharing .writing-show-methods:active,.tpl-tech-sharing .writing-open-prompt:active,.tpl-tech-sharing .writing-open-extra:active{transform:translateY(0)}
+.tpl-tech-sharing .writing-back-question{
+  position:absolute;z-index:3;right:116px;top:174px;width:200px;height:55px;
+  border:1px solid rgba(114,210,255,.62);border-radius:14px;
+  background:#123146;color:#b5e7fc;
+  font:650 21px/1.2 'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif;
+  cursor:pointer;
+}
+.tpl-tech-sharing .writing-back-question:hover{background:#1a4057}
+.tpl-tech-sharing .writing-show-methods:focus-visible,.tpl-tech-sharing .writing-open-prompt:focus-visible,.tpl-tech-sharing .writing-open-extra:focus-visible,.tpl-tech-sharing .writing-back-question:focus-visible,.tpl-tech-sharing .writing-copy-prompt:focus-visible,.tpl-tech-sharing .writing-close-prompt:focus-visible,.tpl-tech-sharing .writing-copy-extra:focus-visible,.tpl-tech-sharing .writing-close-extra:focus-visible{
+  outline:4px solid #72d2ff;outline-offset:5px;
+}
+.tpl-tech-sharing .writing-prompt-overlay{
+  position:absolute;left:116px;top:228px;width:1688px;height:699px;z-index:5;
+  border:2px solid #608da5;border-radius:27px;
+  background:linear-gradient(145deg,#102f45 0%,#0a2134 72%);
+  box-shadow:0 28px 78px rgba(0,0,0,.48);
+  user-select:text;-webkit-user-select:text;
+}
+.tpl-tech-sharing .writing-prompt-overlay::before{
+  content:"";position:absolute;left:0;right:0;top:108px;height:1px;
+  background:rgba(145,194,215,.34);
+}
+.tpl-tech-sharing .writing-prompt-heading{position:absolute;left:42px;top:22px}
+.tpl-tech-sharing .writing-prompt-heading p{
+  margin:0;color:#72d2ff;font-size:18px;line-height:1.25;font-weight:700;letter-spacing:.09em;
+}
+.tpl-tech-sharing .writing-prompt-heading h3{
+  margin:5px 0 0;color:#f5f8fc;font-size:34px;line-height:1.2;font-weight:750;
+}
+.tpl-tech-sharing .writing-copy-prompt,.tpl-tech-sharing .writing-close-prompt,.tpl-tech-sharing .writing-copy-extra,.tpl-tech-sharing .writing-close-extra{
+  position:absolute;top:30px;height:50px;border-radius:12px;
+  font:700 20px/1.2 'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif;
+  cursor:pointer;
+}
+.tpl-tech-sharing .writing-copy-prompt,.tpl-tech-sharing .writing-copy-extra{
+  right:288px;width:184px;background:#ffc17b;color:#102333;border:1px solid #ffddae;
+}
+.tpl-tech-sharing .writing-copy-prompt:hover,.tpl-tech-sharing .writing-copy-extra:hover{background:#ffd09a}
+.tpl-tech-sharing .writing-close-prompt,.tpl-tech-sharing .writing-close-extra{
+  right:37px;width:226px;background:#173c51;color:#d7f1ff;border:1px solid #5e92a8;
+}
+.tpl-tech-sharing .writing-close-prompt:hover,.tpl-tech-sharing .writing-close-extra:hover{background:#24546b}
+.tpl-tech-sharing .writing-prompt-copy{
+  position:absolute;left:42px;right:42px;top:137px;bottom:34px;
+  margin:0;padding:0;overflow:hidden;border:0;background:transparent;
+  color:#e9f3f8;font:450 28px/1.56 'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif;
+  white-space:pre-wrap;overflow-wrap:anywhere;user-select:text;-webkit-user-select:text;
+}
+.tpl-tech-sharing .writing-prompt-copy::selection{background:#437994;color:#fff}
+.tpl-tech-sharing .writing-prompt-copy:focus-visible{outline:2px solid #72d2ff;outline-offset:7px;border-radius:4px}
+.tpl-tech-sharing .writing-extra-columns{
+  position:absolute;left:32px;right:32px;top:122px;bottom:25px;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;
+}
+.tpl-tech-sharing .writing-extra-copy{
+  width:100%;height:100%;margin:0;padding:15px 18px;overflow:auto;
+  border:1px solid rgba(132,183,206,.34);border-radius:16px;
+  background:rgba(2,17,30,.33);color:#eaf2f8;
+  font:450 20px/1.28 'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif;
+  white-space:pre-wrap;overflow-wrap:anywhere;user-select:text;-webkit-user-select:text;
+}
+.tpl-tech-sharing .writing-extra-copy::first-line{color:#ffc17b;font-weight:700}
+.tpl-tech-sharing .writing-extra-copy::selection{background:#437994;color:#fff}
+.tpl-tech-sharing .writing-extra-copy:focus-visible{outline:2px solid #72d2ff;outline-offset:4px}
+.tpl-tech-sharing .writing-live{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+
+/* 实践 06：同一项目和提示词下的三条开工路径。 */
+.tpl-tech-sharing .mode-compare-slide{padding:0;isolation:isolate}
+.tpl-tech-sharing .mode-compare-slide::before{display:none}
+.tpl-tech-sharing .mode-compare-slide > .mode-compare-art{
+  position:absolute;inset:0;width:100%;height:100%;max-width:none;
+  object-fit:contain;pointer-events:none;
+}
+.tpl-tech-sharing .mode-compare-slide [hidden]{display:none!important}
+.tpl-tech-sharing .mode-expected-open{
+  position:absolute;left:663px;top:333px;z-index:3;width:151px;height:40px;
+  border:1px solid #ffd59d;border-radius:10px;
+  background:linear-gradient(115deg,#ffd39e,#ffc17b);color:#102333;
+  box-shadow:0 7px 18px rgba(0,0,0,.18);
+  font:750 19px/1 'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif;
+  cursor:pointer;transition:transform .18s ease,filter .18s ease;
+}
+.tpl-tech-sharing .mode-expected-open:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.tpl-tech-sharing .mode-expected-open:focus-visible,.tpl-tech-sharing .mode-expected-close:focus-visible{
+  outline:3px solid #72d2ff;outline-offset:4px;
+}
+.tpl-tech-sharing .mode-compare-source{
+  position:absolute;top:837px;z-index:3;min-height:37px;
+  display:inline-flex;align-items:center;padding:0 11px;
+  border:1px solid rgba(147,191,255,.43);border-radius:9px;
+  background:rgba(28,63,85,.69);color:#bdd6ff;
+  font:650 20px/1.2 'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif;
+  white-space:nowrap;text-decoration:none;
+}
+.tpl-tech-sharing .mode-compare-plan-source{left:725px}
+.tpl-tech-sharing .mode-compare-grill-source{
+  left:1304px;border-color:rgba(255,193,123,.43);
+  background:rgba(86,64,43,.34);color:#ffd39e;
+}
+.tpl-tech-sharing .mode-compare-source:hover{
+  background:#214e69;color:#eaf5ff;text-decoration:none;
+}
+.tpl-tech-sharing .mode-compare-grill-source:hover{background:#59462d;color:#fff0d8}
+.tpl-tech-sharing .mode-compare-source:focus-visible{outline:3px solid #72d2ff;outline-offset:4px}
+.tpl-tech-sharing .mode-expected-overlay{
+  position:absolute;inset:0;z-index:10;
+  background:linear-gradient(180deg,transparent 0 43%,rgba(3,13,25,.68) 43% 100%);
+}
+.tpl-tech-sharing .mode-expected-card{
+  position:absolute;left:336px;top:486px;width:1248px;height:408px;
+  border:2px solid #6c9cb2;border-radius:25px;
+  background:linear-gradient(145deg,#12364b 0%,#0a2033 76%);
+  box-shadow:0 28px 82px rgba(0,0,0,.55);
+  animation:mode-expected-in .28s ease-out both;
+}
+@keyframes mode-expected-in{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.tpl-tech-sharing .mode-expected-header{position:absolute;left:39px;top:22px}
+.tpl-tech-sharing .mode-expected-header p{
+  margin:0 0 5px;color:#72d2ff;font-size:18px;font-weight:700;letter-spacing:.07em;
+}
+.tpl-tech-sharing .mode-expected-header h2{
+  margin:0;color:#f5f8fc;font-size:37px;line-height:1.15;font-weight:760;
+}
+.tpl-tech-sharing .mode-expected-close{
+  position:absolute;right:32px;top:30px;width:190px;height:51px;
+  border:1px solid #6595aa;border-radius:12px;
+  background:#173c51;color:#d7f1ff;
+  font:700 20px/1.2 'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif;
+  cursor:pointer;
+}
+.tpl-tech-sharing .mode-expected-close:hover{background:#25516a}
+.tpl-tech-sharing .mode-expected-columns{
+  position:absolute;left:32px;right:32px;top:116px;height:220px;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;
+}
+.tpl-tech-sharing .mode-expected-behavior,.tpl-tech-sharing .mode-expected-tests{
+  min-width:0;padding:16px 21px;
+  border:1px solid rgba(132,183,206,.4);border-radius:17px;
+  background:rgba(2,17,30,.36);
+}
+.tpl-tech-sharing .mode-expected-section-title{
+  display:flex;align-items:center;gap:13px;margin-bottom:12px;
+}
+.tpl-tech-sharing .mode-expected-section-title span{
+  display:grid;place-items:center;width:37px;height:31px;
+  border-radius:8px;background:#20475a;color:#72d2ff;
+  font:750 17px/1 'JetBrains Mono',Menlo,monospace;
+}
+.tpl-tech-sharing .mode-expected-tests .mode-expected-section-title span{
+  background:#514333;color:#ffc17b;
+}
+.tpl-tech-sharing .mode-expected-section-title h3{
+  margin:0;color:#f5f8fc;font-size:25px;line-height:1.1;font-weight:730;
+}
+.tpl-tech-sharing .mode-expected-rule{
+  display:flex;align-items:center;gap:15px;height:44px;margin:5px 0;
+  color:#eaf3f8;font-size:25px;
+}
+.tpl-tech-sharing .mode-expected-rule > span{
+  display:grid;place-items:center;flex:none;width:29px;height:29px;
+  border-radius:8px;background:#1a5360;color:#a7ecdc;
+  font:750 17px/1 'JetBrains Mono',Menlo,monospace;
+}
+.tpl-tech-sharing .mode-expected-rule:nth-of-type(3) > span,
+.tpl-tech-sharing .mode-expected-rule:nth-of-type(4) > span{
+  background:#5a4935;color:#ffd39e;
+}
+.tpl-tech-sharing .mode-expected-rule strong{font-weight:680}
+.tpl-tech-sharing .mode-expected-rule code{
+  font:750 24px/1 'JetBrains Mono',Menlo,monospace;color:#ffc17b;
+}
+.tpl-tech-sharing .mode-expected-test-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;
+}
+.tpl-tech-sharing .mode-expected-test-grid > div{
+  min-width:0;height:65px;display:flex;align-items:center;gap:9px;padding:7px 12px;
+  border:1px solid rgba(255,193,123,.3);border-radius:11px;background:#143348;
+}
+.tpl-tech-sharing .mode-expected-test-grid span{
+  flex:none;color:#ffc17b;font:700 16px/1 'JetBrains Mono',Menlo,monospace;
+}
+.tpl-tech-sharing .mode-expected-test-grid strong{
+  min-width:0;color:#eaf3f8;font-size:20px;line-height:1.18;font-weight:650;
+}
+.tpl-tech-sharing .mode-expected-footnote{
+  position:absolute;left:39px;right:39px;bottom:15px;margin:0;
+  padding-top:12px;border-top:1px solid rgba(132,183,206,.35);
+  color:#b9d2de;font-size:20px;line-height:1.28;
+}
+
+/* 实践 07：三条路径的四维预测与 Grill Me / Plan / TDD 分工。 */
+.tpl-tech-sharing .mode-results-slide{padding:0;isolation:isolate}
+.tpl-tech-sharing .mode-results-slide::before{display:none}
+.tpl-tech-sharing .mode-results-slide > .mode-results-art{
+  position:absolute;inset:0;width:100%;height:100%;max-width:none;
+  object-fit:contain;pointer-events:none;
+}
+
+/* 实践 08：从方法选择过渡到独立练习项目的组合流程。 */
+.tpl-tech-sharing .mode-choice-slide{padding:0;isolation:isolate}
+.tpl-tech-sharing .mode-choice-slide::before{display:none}
+.tpl-tech-sharing .mode-choice-slide > .mode-choice-art{
+  position:absolute;inset:0;width:100%;height:100%;max-width:none;
+  object-fit:contain;pointer-events:none;
+}
+
+/* 实践 09：独立练习任务与个人分支规则。 */
+.tpl-tech-sharing .practice-assignment-slide{padding:0;isolation:isolate}
+.tpl-tech-sharing .practice-assignment-slide::before{display:none}
+.tpl-tech-sharing .practice-assignment-slide > .practice-assignment-art{
+  position:absolute;inset:0;width:100%;height:100%;max-width:none;
+  object-fit:contain;pointer-events:none;
+}
+.tpl-tech-sharing .practice-repo-link{
+  position:absolute;left:153px;top:880px;width:1510px;height:55px;
+  display:flex;align-items:center;z-index:1;
+  background:#103247;color:#e9f5fb;
+  font:500 24px/1.2 'JetBrains Mono','SFMono-Regular',Menlo,monospace;
+  letter-spacing:0;white-space:nowrap;text-decoration:none;
+  user-select:text;
+}
+.tpl-tech-sharing .practice-repo-link:hover{
+  color:#fff;text-decoration:underline;text-underline-offset:5px;
+}
+.tpl-tech-sharing .practice-repo-link:focus-visible{
+  outline:3px solid #72d2ff;outline-offset:3px;border-radius:4px;
+}
+
+/* 课程回顾：理解 Agent、建立上下文、澄清需求、TDD 增量实现。 */
+.tpl-tech-sharing .course-recap-slide{padding:0;isolation:isolate}
+.tpl-tech-sharing .course-recap-slide::before{display:none}
+.tpl-tech-sharing .course-recap-slide > .course-recap-art{
+  position:absolute;inset:0;width:100%;height:100%;max-width:none;
+  object-fit:contain;pointer-events:none;
+}
+
+/* 结束封面：与开场插画呼应。 */
+.tpl-tech-sharing .closing-slide{padding:0;isolation:isolate}
+.tpl-tech-sharing .closing-slide::before{display:none}
+.tpl-tech-sharing .closing-slide > .closing-art{
+  position:absolute;inset:0;width:100%;height:100%;max-width:none;
+  object-fit:contain;pointer-events:none;
+}
+
+@media (prefers-reduced-motion:reduce){
+  .tpl-tech-sharing .deck-control{transition:none}
+  .tpl-tech-sharing .clarify-slide .clarify-question,.tpl-tech-sharing .clarify-slide .clarify-talk,.tpl-tech-sharing .clarify-slide .clarify-connector,.tpl-tech-sharing .clarify-slide .clarify-contract{opacity:1;animation:none!important}
+  .tpl-tech-sharing .one-click-art,.tpl-tech-sharing .one-click-reveal{transition:none!important}
+  .tpl-tech-sharing .claude-writing-slide > .writing-art,.tpl-tech-sharing .writing-show-methods,.tpl-tech-sharing .writing-open-prompt,.tpl-tech-sharing .writing-open-extra{transition:none!important}
+  .tpl-tech-sharing .mode-expected-open{transition:none!important}
+  .tpl-tech-sharing .mode-expected-card{animation:none!important}
+}
+@media print{
+  .tpl-tech-sharing .clarify-slide .clarify-question,.tpl-tech-sharing .clarify-slide .clarify-talk,.tpl-tech-sharing .clarify-slide .clarify-connector,.tpl-tech-sharing .clarify-slide .clarify-contract{opacity:1!important;animation:none!important}
+  .tpl-tech-sharing .one-click-slide > .one-click-before,.tpl-tech-sharing .one-click-slide > .one-click-reveal{display:none!important}
+  .tpl-tech-sharing .one-click-slide > .one-click-after{opacity:1!important;visibility:visible!important}
+  .tpl-tech-sharing .claude-writing-slide > .writing-question,.tpl-tech-sharing .claude-writing-slide button,.tpl-tech-sharing .claude-writing-slide > .writing-prompt-overlay{display:none!important}
+  .tpl-tech-sharing .claude-writing-slide > .writing-methods{opacity:1!important;visibility:visible!important}
+  .tpl-tech-sharing .mode-expected-open,.tpl-tech-sharing .mode-expected-overlay{display:none!important}
+}

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="writing-title writing-desc">
+  <title id="writing-title">CLAUDE.md 的两种写法</title>
+  <desc id="writing-desc">方法一是熟悉项目、Markdown 和项目指令规则后手写。方法二是在 Claude Code 中先运行 /init，再提供目标与约束，让 AI 起草，并由人增删改、交回 AI 优化，循环迭代。</desc>
+  <defs>
+    <radialGradient id="writing-bg" cx="80%" cy="25%" r="85%">
+      <stop offset="0" stop-color="#17465e" stop-opacity=".45"/>
+      <stop offset=".58" stop-color="#0b2940" stop-opacity=".19"/>
+      <stop offset="1" stop-color="#071423" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="writing-panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12344b"/>
+      <stop offset="1" stop-color="#0a2033"/>
+    </linearGradient>
+    <filter id="writing-shadow" x="-15%" y="-18%" width="130%" height="145%">
+      <feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#000" flood-opacity=".27"/>
+    </filter>
+    <filter id="writing-glow" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+    <style><![CDATA[
+      .sans{font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif}
+      .mono{font-family:'JetBrains Mono','SFMono-Regular',Menlo,monospace}
+    ]]></style>
+  </defs>
+  <rect width="1920" height="1080" fill="#071423"/>
+  <rect width="1920" height="1080" fill="url(#writing-bg)"/>
+  <circle cx="1530" cy="590" r="532" fill="none" stroke="#72d2ff" stroke-opacity=".055" stroke-width="2"/>
+  <circle cx="1530" cy="590" r="375" fill="none" stroke="#72d2ff" stroke-opacity=".07" stroke-width="2"/>
+  <text x="116" y="105" class="sans" fill="#72d2ff" font-size="25" font-weight="700" letter-spacing="3">实践 05 · 写项目指令</text>
+  <rect x="116" y="128" width="107" height="5" rx="2.5" fill="#ffc17b"/>
+  <text x="116" y="204" class="sans" fill="#f5f8fc" font-size="71" font-weight="760" letter-spacing="-1.5">CLAUDE.md，该怎么写？</text>
+  <text x="119" y="260" class="sans" fill="#b8cadb" font-size="28">两条路径都要由人审核，让内容贴合真实项目。</text>
+  
+  <g filter="url(#writing-shadow)">
+    <rect x="116" y="307" width="813" height="600" rx="26" fill="url(#writing-panel)" stroke="#4b7588" stroke-width="2"/>
+    <rect x="958" y="307" width="846" height="600" rx="26" fill="url(#writing-panel)" stroke="#8c7459" stroke-width="2"/>
+  </g>
+
+  <rect x="146" y="338" width="68" height="46" rx="13" fill="#173f53" stroke="#72d2ff" stroke-opacity=".45"/>
+  <text x="180" y="369" class="mono" fill="#72d2ff" font-size="24" font-weight="760" text-anchor="middle">01</text>
+  <text x="232" y="372" class="sans" fill="#f5f8fc" font-size="35" font-weight="730">直接手写 Markdown</text>
+  <path d="M150 406H895" stroke="#4a6e82" stroke-width="1.4"/>
+
+  <g>
+    <rect x="159" y="447" width="305" height="327" rx="20" fill="#0a2235" stroke="#6096a9" stroke-width="1.8"/>
+    <path d="M179 468h222l43 43v238a10 10 0 0 1-10 10H179a10 10 0 0 1-10-10V478a10 10 0 0 1 10-10Z" fill="#183c51" stroke="#72d2ff" stroke-opacity=".48" stroke-width="1.6"/>
+    <path d="M401 469v36a9 9 0 0 0 9 9h34" fill="#28546b" stroke="#72d2ff" stroke-opacity=".55" stroke-width="1.6"/>
+    <text x="195" y="547" class="mono" fill="#aee7ff" font-size="26" font-weight="700"># CLAUDE.md</text>
+    <path d="M195 587h197M195 615h168M195 643h190M195 671h144M195 699h171" stroke="#6a9eb2" stroke-opacity=".7" stroke-width="7" stroke-linecap="round"/>
+    <rect x="194" y="719" width="122" height="26" rx="8" fill="#1d5060"/>
+    <text x="255" y="738" class="mono" fill="#aee7ff" font-size="17" text-anchor="middle">.md</text>
+  </g>
+  <text x="504" y="468" class="sans" fill="#ffc17b" font-size="24" font-weight="700">适合已经熟悉：</text>
+  <circle cx="514" cy="522" r="8" fill="#72d2ff"/>
+  <text x="538" y="531" class="sans" fill="#f5f8fc" font-size="27">项目目标与约束</text>
+  <circle cx="514" cy="590" r="8" fill="#72d2ff"/>
+  <text x="538" y="599" class="sans" fill="#f5f8fc" font-size="27">Markdown 语法</text>
+  <circle cx="514" cy="658" r="8" fill="#72d2ff"/>
+  <text x="538" y="667" class="sans" fill="#f5f8fc" font-size="27">CLAUDE.md 写入规则</text>
+  <path d="M505 714h342" stroke="#486b80" stroke-width="1.4"/>
+  <text x="506" y="760" class="sans" fill="#a6c8d8" font-size="23">创建文件 → 手写内容 → 自行维护</text>
+
+  <rect x="990" y="338" width="68" height="46" rx="13" fill="#3b382f" stroke="#ffc17b" stroke-opacity=".5"/>
+  <text x="1024" y="369" class="mono" fill="#ffc17b" font-size="24" font-weight="760" text-anchor="middle">02</text>
+  <text x="1076" y="372" class="sans" fill="#f5f8fc" font-size="35" font-weight="730">/init 起草，人工迭代</text>
+  <path d="M992 406H1769" stroke="#6c685e" stroke-width="1.4"/>
+  <rect x="1004" y="437" width="754" height="127" rx="18" fill="#061a2b" stroke="#647885" stroke-width="1.6"/>
+  <path d="M1029 467h10" stroke="#72d2ff" stroke-width="3" stroke-linecap="round"/>
+  <text x="1053" y="475" class="mono" fill="#b8e8ff" font-size="26" font-weight="680">/init</text>
+  <text x="1138" y="475" class="sans" fill="#adc7d6" font-size="21">先生成项目指令初稿</text>
+  <path d="M1031 508h692" stroke="#29495c" stroke-width="1.2"/>
+  <text x="1031" y="545" class="sans" fill="#ffc17b" font-size="23" font-weight="650">再给出提示词，让 AI 按目标起草和修订</text>
+
+  <g>
+    <rect x="1004" y="617" width="174" height="103" rx="15" fill="#1b4152" stroke="#72d2ff" stroke-opacity=".47"/>
+    <circle cx="1032" cy="643" r="7" fill="#72d2ff"/>
+    <text x="1048" y="650" class="mono" fill="#9fe1ff" font-size="18" font-weight="700">01</text>
+    <text x="1020" y="686" class="sans" fill="#f5f8fc" font-size="23" font-weight="650">描述需求</text>
+    <path d="M1184 667h24m-8-7 8 7-8 7" fill="none" stroke="#7fa9bd" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <rect x="1214" y="617" width="174" height="103" rx="15" fill="#1b4152" stroke="#72d2ff" stroke-opacity=".47"/>
+    <circle cx="1242" cy="643" r="7" fill="#72d2ff"/>
+    <text x="1258" y="650" class="mono" fill="#9fe1ff" font-size="18" font-weight="700">02</text>
+    <text x="1230" y="686" class="sans" fill="#f5f8fc" font-size="23" font-weight="650">AI 起草</text>
+    <path d="M1394 667h24m-8-7 8 7-8 7" fill="none" stroke="#7fa9bd" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <rect x="1424" y="617" width="174" height="103" rx="15" fill="#3b3940" stroke="#ffc17b" stroke-opacity=".57"/>
+    <circle cx="1452" cy="643" r="7" fill="#ffc17b"/>
+    <text x="1468" y="650" class="mono" fill="#ffd39e" font-size="18" font-weight="700">03</text>
+    <text x="1440" y="686" class="sans" fill="#f5f8fc" font-size="23" font-weight="650">人工增删改</text>
+    <path d="M1604 667h24m-8-7 8 7-8 7" fill="none" stroke="#7fa9bd" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <rect x="1634" y="617" width="124" height="103" rx="15" fill="#1b4152" stroke="#72d2ff" stroke-opacity=".47"/>
+    <circle cx="1659" cy="643" r="7" fill="#72d2ff"/>
+    <text x="1675" y="650" class="mono" fill="#9fe1ff" font-size="18" font-weight="700">04</text>
+    <text x="1650" y="685" class="sans" fill="#f5f8fc" font-size="22" font-weight="650">AI 优化</text>
+  </g>
+  <path d="M1696 730v28q0 12-12 12h-485q-12 0-12-12v-28m-8 9 8-9 8 9" fill="none" stroke="#8daebc" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="1326" y="756" width="231" height="29" rx="13" fill="#132f43"/>
+  <text x="1441" y="777" class="sans" text-anchor="middle" fill="#b6ceda" font-size="19">循环到内容符合项目实际</text>
+
+  <text x="116" y="1005" class="sans" fill="#88a1b8" font-size="21">AI 编码训练营 · 实践篇</text>
+</svg>

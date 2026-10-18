@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title description">
+  <title id="title">把交付目标直接交给 Agent，会怎样？</title>
+  <desc id="description">点击按钮后揭示六类可能的问题：没有版本控制、结构不合适、交付目录混杂、一次写完全部功能、先写代码再补测试，以及现场演示中待观察的其他问题。</desc>
+  <defs>
+    <radialGradient id="glow" cx="81%" cy="33%" r="84%">
+      <stop offset="0" stop-color="#164963" stop-opacity=".47"/>
+      <stop offset=".55" stop-color="#0a2941" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#071423" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102c41"/>
+      <stop offset="1" stop-color="#091e31"/>
+    </linearGradient>
+    <linearGradient id="agent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#245a70"/>
+      <stop offset="1" stop-color="#0d304a"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="25" flood-color="#000" flood-opacity=".27"/>
+    </filter>
+    <filter id="halo" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <style><![CDATA[
+      .cn{font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif}
+      .mono{font-family:'JetBrains Mono','SFMono-Regular',Menlo,monospace}
+    ]]></style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#071423"/>
+  <rect width="1920" height="1080" fill="url(#glow)"/>
+  <circle cx="1615" cy="528" r="460" fill="none" stroke="#72d2ff" stroke-opacity=".045" stroke-width="2"/>
+  <circle cx="1615" cy="528" r="335" fill="none" stroke="#72d2ff" stroke-opacity=".06" stroke-width="2"/>
+
+  <text x="116" y="113" class="cn" fill="#72d2ff" font-size="26" font-weight="700" letter-spacing="2.5">实践 02 · 一键生成</text>
+  <rect x="116" y="141" width="112" height="5" rx="2.5" fill="#ffc17b"/>
+  <text x="116" y="227" class="cn" fill="#f5f8fc" font-size="73" font-weight="760" letter-spacing="-2">把交付目标直接交给 Agent，会怎样？</text>
+  <text x="119" y="285" class="cn" fill="#a9c3d4" font-size="28">不加限制、不再澄清，直接请求它完成整个实现。</text>
+
+  <g filter="url(#shadow)">
+    <rect x="116" y="329" width="1688" height="598" rx="30" fill="url(#panel)" stroke="#386079" stroke-width="2"/>
+  </g>
+  
+  <text x="157" y="382" class="cn" fill="#c9e2ef" font-size="26" font-weight="650">一键生成后，重点检查这些问题</text>
+  <rect x="1507" y="348" width="242" height="48" rx="24" fill="#3d342b" stroke="#9a7550" stroke-width="1.4"/>
+  <circle cx="1536" cy="372" r="6" fill="#ffc17b"/>
+  <text x="1555" y="380" class="cn" fill="#ffc17b" font-size="21" font-weight="600">可能出现的风险</text>
+
+  <g>
+    <rect x="156" y="419" width="484" height="178" rx="22" fill="#123249" stroke="#4a7188" stroke-width="1.7"/>
+    <rect x="179" y="441" width="55" height="36" rx="10" fill="#72d2ff" fill-opacity=".12" stroke="#72d2ff" stroke-opacity=".42"/>
+    <text x="206" y="466" class="mono" fill="#72d2ff" font-size="20" font-weight="700" text-anchor="middle">01</text>
+    <circle cx="600" cy="459" r="6" fill="#72d2ff" fill-opacity=".75"/>
+    <text x="180" y="525" class="cn" fill="#f5f8fc" font-size="31" font-weight="700">完全没有版本控制</text>
+    <text x="181" y="568" class="cn" fill="#b6cedd" font-size="23">缺少可回溯的提交记录</text>
+  </g>
+  <g>
+    <rect x="718" y="419" width="484" height="178" rx="22" fill="#123249" stroke="#4a7188" stroke-width="1.7"/>
+    <rect x="741" y="441" width="55" height="36" rx="10" fill="#72d2ff" fill-opacity=".12" stroke="#72d2ff" stroke-opacity=".42"/>
+    <text x="768" y="466" class="mono" fill="#72d2ff" font-size="20" font-weight="700" text-anchor="middle">02</text>
+    <circle cx="1162" cy="459" r="6" fill="#72d2ff" fill-opacity=".75"/>
+    <text x="742" y="525" class="cn" fill="#f5f8fc" font-size="31" font-weight="700">项目结构不合适</text>
+    <text x="743" y="568" class="cn" fill="#b6cedd" font-size="23">源码、测试与文档位置不清</text>
+  </g>
+  <g>
+    <rect x="1280" y="419" width="484" height="178" rx="22" fill="#123249" stroke="#4a7188" stroke-width="1.7"/>
+    <rect x="1303" y="441" width="55" height="36" rx="10" fill="#72d2ff" fill-opacity=".12" stroke="#72d2ff" stroke-opacity=".42"/>
+    <text x="1330" y="466" class="mono" fill="#72d2ff" font-size="20" font-weight="700" text-anchor="middle">03</text>
+    <circle cx="1724" cy="459" r="6" fill="#72d2ff" fill-opacity=".75"/>
+    <text x="1304" y="525" class="cn" fill="#f5f8fc" font-size="31" font-weight="700">交付目录混杂</text>
+    <text x="1305" y="568" class="cn" fill="#b6cedd" font-size="23">构建产物混入交付目录</text>
+  </g>
+  <g>
+    <rect x="156" y="617" width="484" height="178" rx="22" fill="#123249" stroke="#4a7188" stroke-width="1.7"/>
+    <rect x="179" y="639" width="55" height="36" rx="10" fill="#ffc17b" fill-opacity=".12" stroke="#ffc17b" stroke-opacity=".42"/>
+    <text x="206" y="664" class="mono" fill="#ffc17b" font-size="20" font-weight="700" text-anchor="middle">04</text>
+    <circle cx="600" cy="657" r="6" fill="#ffc17b" fill-opacity=".75"/>
+    <text x="180" y="723" class="cn" fill="#f5f8fc" font-size="31" font-weight="700">一次写完全部功能</text>
+    <text x="181" y="766" class="cn" fill="#b6cedd" font-size="23">易出错，代码难审核、难维护</text>
+  </g>
+  <g>
+    <rect x="718" y="617" width="484" height="178" rx="22" fill="#123249" stroke="#4a7188" stroke-width="1.7"/>
+    <rect x="741" y="639" width="55" height="36" rx="10" fill="#ffc17b" fill-opacity=".12" stroke="#ffc17b" stroke-opacity=".42"/>
+    <text x="768" y="664" class="mono" fill="#ffc17b" font-size="20" font-weight="700" text-anchor="middle">05</text>
+    <circle cx="1162" cy="657" r="6" fill="#ffc17b" fill-opacity=".75"/>
+    <text x="742" y="723" class="cn" fill="#f5f8fc" font-size="31" font-weight="700">先写代码，再补测试</text>
+    <text x="743" y="766" class="cn" fill="#b6cedd" font-size="23">测试可能迁就实现，只求变绿</text>
+  </g>
+  <g>
+    <rect x="1280" y="617" width="484" height="178" rx="22" fill="#123249" stroke="#4a7188" stroke-width="1.7"/>
+    <rect x="1303" y="639" width="55" height="36" rx="10" fill="#ffc17b" fill-opacity=".12" stroke="#ffc17b" stroke-opacity=".42"/>
+    <text x="1330" y="664" class="mono" fill="#ffc17b" font-size="20" font-weight="700" text-anchor="middle">…</text>
+    <circle cx="1724" cy="657" r="6" fill="#ffc17b" fill-opacity=".75"/>
+    <text x="1304" y="723" class="cn" fill="#f5f8fc" font-size="31" font-weight="700">还有更多问题？</text>
+    <text x="1305" y="766" class="cn" fill="#b6cedd" font-size="23">留待现场演示继续观察</text>
+  </g>
+  <text x="116" y="1005" class="cn" fill="#88a1b8" font-size="21">AI 编码训练营 · 实践篇</text>
+</svg>

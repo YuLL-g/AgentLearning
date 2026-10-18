@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="selection-title selection-desc">
+  <title id="selection-title">消息会累积，当前上下文要精选</title>
+  <desc id="selection-desc">会话记录可以持续增长，但本轮模型看到的内容需要按任务组织。可选取本轮目标和验收、项目规则、相关资料定位、必要历史与最新反馈；具体是否截取或摘要取决于 Agent 实现。</desc>
+  <defs>
+    <radialGradient id="bg-glow" cx="94%" cy="7%" r="88%">
+      <stop offset="0" stop-color="#174662" stop-opacity=".67"/>
+      <stop offset=".55" stop-color="#0b2a42" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#071423" stop-opacity="0"/>
+    </radialGradient>
+    <marker id="cyan-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M1 1 9 5 1 9Z" fill="#72d2ff"/></marker>
+    <style>
+      .sans{font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif}
+      .kicker{fill:#72d2ff;font-size:19px;font-weight:650;letter-spacing:3px}
+      .title{fill:#f5f8fc;font-size:64px;font-weight:760;letter-spacing:-2px}
+      .subtitle{fill:#b8cadb;font-size:25px}
+      .panel-title{fill:#f5f8fc;font-size:31px;font-weight:700}
+      .row-role{font-size:19px;font-weight:700}
+      .row-copy{fill:#e9f2f8;font-size:23px;font-weight:540}
+      .target-title{fill:#f5f8fc;font-size:27px;font-weight:690}
+      .target-detail{fill:#b8cadb;font-size:21px}
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#071423"/>
+  <rect width="1920" height="1080" fill="url(#bg-glow)"/>
+  <text x="116" y="95" class="sans kicker">第一部分 · CONTEXT MANAGEMENT</text>
+  <text x="116" y="174" class="sans title">消息会累积，当前上下文要精选</text>
+  <text x="116" y="220" class="sans subtitle">会话记录 ≠ 本轮模型必然看到的全部内容</text>
+
+  <rect x="116" y="266" width="1688" height="670" rx="25" fill="#0a2034" fill-opacity=".76" stroke="#35546c" stroke-opacity=".78" stroke-width="2"/>
+
+  <!-- 会话历史：多轮记录不断增加 -->
+  <rect x="145" y="298" width="535" height="608" rx="23" fill="#10283d" stroke="#52738b" stroke-width="2"/>
+  <text x="169" y="348" class="sans panel-title">会话记录</text>
+  <rect x="490" y="317" width="163" height="36" rx="18" fill="#1b4653"/>
+  <text x="571" y="342" class="sans" fill="#68dfcf" font-size="19" font-weight="700" text-anchor="middle">持续增长 · 13+</text>
+  <rect x="168" y="383" width="489" height="58" rx="11" fill="#222c4d" stroke="#a487d5" stroke-width="1.5"/>
+  <rect x="168" y="458" width="489" height="58" rx="11" fill="#153a47" stroke="#68dfcf" stroke-width="1.5"/>
+  <rect x="168" y="533" width="489" height="58" rx="11" fill="#17334d" stroke="#72bfff" stroke-width="1.5"/>
+  <rect x="168" y="608" width="489" height="58" rx="11" fill="#443326" stroke="#ffc17b" stroke-width="1.5"/>
+  <rect x="168" y="683" width="489" height="58" rx="11" fill="#172d42" stroke="#4c667e" stroke-width="1.5" stroke-dasharray="8 7"/>
+  <rect x="168" y="758" width="489" height="58" rx="11" fill="#443326" stroke="#ffc17b" stroke-width="1.5"/>
+  <rect x="168" y="833" width="489" height="58" rx="11" fill="#153a47" stroke="#68dfcf" stroke-width="1.5"/>
+  <text x="187" y="421" class="sans row-role" fill="#c9a2f1">system</text><text x="326" y="421" class="sans row-copy">长期规则</text>
+  <text x="187" y="496" class="sans row-role" fill="#68dfcf">user</text><text x="326" y="496" class="sans row-copy">第 1 轮问题</text>
+  <text x="187" y="571" class="sans row-role" fill="#72bfff">assistant</text><text x="326" y="571" class="sans row-copy">工具请求</text>
+  <text x="187" y="646" class="sans row-role" fill="#ffc17b">tool</text><text x="326" y="646" class="sans row-copy">执行结果</text>
+  <text x="187" y="721" class="sans" fill="#91a9bc" font-size="29" font-weight="700">…</text><text x="326" y="721" class="sans" fill="#9eb3c5" font-size="22">中间还有更多轮次</text>
+  <text x="187" y="796" class="sans row-role" fill="#ffc17b">tool</text><text x="326" y="796" class="sans row-copy">最新反馈</text>
+  <text x="187" y="871" class="sans row-role" fill="#68dfcf">user</text><text x="326" y="871" class="sans row-copy">本轮任务</text>
+
+  <!-- 按任务组织，而非假设全部原样送入模型 -->
+  <path d="M681 604 H714" fill="none" stroke="#72d2ff" stroke-width="4" marker-end="url(#cyan-arrow)"/>
+  <rect x="728" y="372" width="300" height="474" rx="24" fill="#113044" stroke="#72d2ff" stroke-width="2.4"/>
+  <text x="878" y="425" class="sans panel-title" text-anchor="middle">按任务组织</text>
+  <circle cx="878" cy="502" r="45" fill="#153f56" stroke="#72d2ff" stroke-width="2"/>
+  <path d="M851 482 H905 L889 503 V521 L867 534 V503 Z" fill="none" stroke="#72d2ff" stroke-width="3.5" stroke-linejoin="round"/>
+  <rect x="753" y="570" width="250" height="50" rx="11" fill="#1a4258"/>
+  <rect x="753" y="635" width="250" height="50" rx="11" fill="#1a4258"/>
+  <rect x="753" y="700" width="250" height="50" rx="11" fill="#1a4258"/>
+  <text x="878" y="603" class="sans" fill="#e8f4fb" font-size="22" font-weight="600" text-anchor="middle">定位相关资料</text>
+  <text x="878" y="668" class="sans" fill="#e8f4fb" font-size="22" font-weight="600" text-anchor="middle">保留必要状态</text>
+  <text x="878" y="733" class="sans" fill="#e8f4fb" font-size="22" font-weight="600" text-anchor="middle">减少无关与冲突</text>
+  <text x="878" y="805" class="sans" fill="#8fb5ca" font-size="20" text-anchor="middle">截取或摘要取决于实现</text>
+  <path d="M1029 604 H1076" fill="none" stroke="#72d2ff" stroke-width="4" marker-end="url(#cyan-arrow)"/>
+
+  <!-- 本轮可能纳入的可见信息 -->
+  <rect x="1090" y="298" width="685" height="608" rx="23" fill="#10283d" stroke="#52738b" stroke-width="2"/>
+  <text x="1117" y="348" class="sans panel-title">本轮模型可能看到</text>
+  <text x="1739" y="345" class="sans" fill="#72d2ff" font-size="18" text-anchor="end">当前可见信息</text>
+  <rect x="1116" y="383" width="633" height="102" rx="14" fill="#173c50" stroke="#72d2ff" stroke-opacity=".7" stroke-width="1.5"/>
+  <rect x="1116" y="500" width="633" height="102" rx="14" fill="#28334a" stroke="#c9a2f1" stroke-opacity=".7" stroke-width="1.5"/>
+  <rect x="1116" y="617" width="633" height="102" rx="14" fill="#3c3129" stroke="#ffc17b" stroke-opacity=".7" stroke-width="1.5"/>
+  <rect x="1116" y="734" width="633" height="102" rx="14" fill="#153b42" stroke="#68dfcf" stroke-opacity=".7" stroke-width="1.5"/>
+  <circle cx="1153" cy="433" r="16" fill="#72d2ff"/><text x="1153" y="440" class="sans" fill="#071423" font-size="18" font-weight="800" text-anchor="middle">1</text>
+  <circle cx="1153" cy="550" r="16" fill="#c9a2f1"/><text x="1153" y="557" class="sans" fill="#071423" font-size="18" font-weight="800" text-anchor="middle">2</text>
+  <circle cx="1153" cy="667" r="16" fill="#ffc17b"/><text x="1153" y="674" class="sans" fill="#071423" font-size="18" font-weight="800" text-anchor="middle">3</text>
+  <circle cx="1153" cy="784" r="16" fill="#68dfcf"/><text x="1153" y="791" class="sans" fill="#071423" font-size="18" font-weight="800" text-anchor="middle">4</text>
+  <text x="1192" y="426" class="sans target-title">本轮目标与验收</text><text x="1192" y="459" class="sans target-detail">范围、交付物、完成标准</text>
+  <text x="1192" y="543" class="sans target-title">精简的项目规则</text><text x="1192" y="576" class="sans target-detail">长期约定与本轮要求分开</text>
+  <text x="1192" y="660" class="sans target-title">相关资料与定位</text><text x="1192" y="693" class="sans target-detail">权威文件、章节、必要片段</text>
+  <text x="1192" y="777" class="sans target-title">必要历史与反馈</text><text x="1192" y="810" class="sans target-detail">已验证结果、未解决问题</text>
+  <text x="1740" y="878" class="sans" fill="#72d2ff" font-size="21" font-weight="650" text-anchor="end">→ 支持下一步判断</text>
+
+  <text x="116" y="990" class="sans" fill="#ffc17b" font-size="28" font-weight="700">会话记录可持续累积；本轮可见内容按任务组织</text>
+  <text x="116" y="1036" class="sans" fill="#89a4ba" font-size="20">课堂示意：是否截取、摘要或加载，取决于具体 Agent 的实现。</text>
+</svg>

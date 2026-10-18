@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="performance-title performance-desc">
+  <title id="performance-title">上下文变长，模型表现可能下降</title>
+  <desc id="performance-desc">概念曲线：横轴是单次模型调用实际可见的上下文 Token 数，纵轴是相对任务表现。曲线前段近乎平稳，中段逐步下降，在接近上下文窗口上限时明显变陡。曲线不是特定模型的实测数据，实际拐点因模型、任务和上下文内容而异。</desc>
+  <defs>
+    <radialGradient id="chart-glow" cx="91%" cy="7%" r="87%">
+      <stop offset="0" stop-color="#194660" stop-opacity=".62"/>
+      <stop offset=".53" stop-color="#0b293f" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#071423" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="curve-color" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#72d2ff"/>
+      <stop offset=".46" stop-color="#72d2ff"/>
+      <stop offset=".70" stop-color="#ffc17b"/>
+      <stop offset="1" stop-color="#ff8e78"/>
+    </linearGradient>
+    <linearGradient id="curve-fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#72d2ff" stop-opacity=".17"/>
+      <stop offset="1" stop-color="#72d2ff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="soft-glow" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="11"/>
+    </filter>
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M1 1 9 5 1 9Z" fill="#a8c0d2"/></marker>
+    <style>
+      .sans{font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC',Arial,sans-serif}
+      .kicker{fill:#72d2ff;font-size:19px;font-weight:650;letter-spacing:3px}
+      .title{fill:#f5f8fc;font-size:64px;font-weight:760;letter-spacing:-2px}
+      .subtitle{fill:#b8cadb;font-size:25px}
+      .grid{stroke:#527087;stroke-opacity:.29;stroke-width:1.5;stroke-dasharray:6 9}
+      .axis{fill:none;stroke:#a8c0d2;stroke-width:3;marker-end:url(#axis-arrow)}
+      .tick{fill:#9eb6c8;font-size:20px}
+      .phase{font-size:22px;font-weight:700}
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#071423"/>
+  <rect width="1920" height="1080" fill="url(#chart-glow)"/>
+  <text x="116" y="95" class="sans kicker">第一部分 · CONTEXT MANAGEMENT</text>
+  <text x="116" y="174" class="sans title">上下文变长，模型表现可能下降</text>
+  <text x="116" y="220" class="sans subtitle">先相对平稳，再逐步衰退；接近上下文窗口上限时下降加快</text>
+
+  <rect x="116" y="264" width="1688" height="666" rx="25" fill="#0a2034" fill-opacity=".79" stroke="#35546c" stroke-opacity=".8" stroke-width="2"/>
+
+  <!-- 三段概念区间；不对应固定 Token 阈值。 -->
+  <rect x="270" y="345" width="580" height="460" fill="#164355" fill-opacity=".19"/>
+  <rect x="850" y="345" width="510" height="460" fill="#5a4932" fill-opacity=".14"/>
+  <rect x="1360" y="345" width="305" height="460" fill="#6f352f" fill-opacity=".20"/>
+  <path d="M850 345 V805 M1360 345 V805" class="grid" stroke-opacity=".55"/>
+  <path d="M270 425 H1665 M270 520 H1665 M270 615 H1665 M270 710 H1665" class="grid"/>
+  <path d="M550 345 V805 M1120 345 V805" class="grid"/>
+
+  <rect x="346" y="365" width="300" height="48" rx="24" fill="#173e50" stroke="#72d2ff" stroke-opacity=".52"/>
+  <rect x="946" y="365" width="300" height="48" rx="24" fill="#3f382e" stroke="#ffc17b" stroke-opacity=".55"/>
+  <rect x="1386" y="365" width="250" height="48" rx="24" fill="#4b302e" stroke="#ff9b7b" stroke-opacity=".6"/>
+  <text x="496" y="397" class="sans phase" fill="#72d2ff" text-anchor="middle">前段 · 相对平稳</text>
+  <text x="1096" y="397" class="sans phase" fill="#ffc17b" text-anchor="middle">中段 · 逐步衰退</text>
+  <text x="1511" y="397" class="sans phase" fill="#ff9b7b" text-anchor="middle">近极限 · 加速下降</text>
+
+  <path d="M270 805 V333" class="axis"/>
+  <path d="M270 805 H1692" class="axis"/>
+  <text x="190" y="576" class="sans" fill="#e4edf5" font-size="25" font-weight="650" text-anchor="middle" transform="rotate(-90 190 576)">相对任务表现 · Model Performance</text>
+  <text x="241" y="454" class="sans tick" text-anchor="end">高</text>
+  <text x="241" y="626" class="sans tick" text-anchor="end">中</text>
+  <text x="241" y="794" class="sans tick" text-anchor="end">低</text>
+  <text x="270" y="849" class="sans tick" text-anchor="middle">0</text>
+  <text x="850" y="849" class="sans tick" text-anchor="middle">Token 增长</text>
+  <text x="1665" y="849" class="sans" fill="#ffab8c" font-size="21" font-weight="650" text-anchor="middle">窗口上限</text>
+  <text x="967" y="894" class="sans" fill="#e4edf5" font-size="27" font-weight="650" text-anchor="middle">单次模型调用的可见上下文长度（Token） · Context Length</text>
+
+  <!-- 前段近乎水平，随后下降；尾部在窗口边界前变陡。 -->
+  <path d="M280 446 C470 443 675 444 850 451 C1015 457 1150 479 1270 518 C1390 557 1480 609 1545 667 C1600 718 1635 758 1665 779 L1665 805 H280 Z" fill="url(#curve-fill)"/>
+  <path d="M280 446 C470 443 675 444 850 451 C1015 457 1150 479 1270 518 C1390 557 1480 609 1545 667 C1600 718 1635 758 1665 779" fill="none" stroke="url(#curve-color)" stroke-width="34" stroke-opacity=".24" filter="url(#soft-glow)"/>
+  <path d="M280 446 C470 443 675 444 850 451 C1015 457 1150 479 1270 518 C1390 557 1480 609 1545 667 C1600 718 1635 758 1665 779" fill="none" stroke="url(#curve-color)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M1665 413 V805" fill="none" stroke="#ff9b7b" stroke-width="2.5" stroke-opacity=".78" stroke-dasharray="9 9"/>
+  <circle cx="850" cy="451" r="10" fill="#72d2ff" stroke="#0a2034" stroke-width="4"/>
+  <circle cx="1270" cy="518" r="10" fill="#ffc17b" stroke="#0a2034" stroke-width="4"/>
+  <circle cx="1665" cy="779" r="11" fill="#ff9b7b" stroke="#0a2034" stroke-width="4"/>
+
+  <text x="116" y="989" class="sans" fill="#ffc17b" font-size="26" font-weight="700">横轴是本次调用的可见输入，并非会话累计消息数</text>
+  <text x="116" y="1036" class="sans" fill="#89a4ba" font-size="20">概念示意，非实测曲线；拐点与下降幅度因模型、任务及上下文内容而异。</text>
+</svg>
