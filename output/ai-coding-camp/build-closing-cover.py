@@ -36,7 +36,7 @@ cn_small = font(
         "/System/Library/Fonts/STHeiti Medium.ttc",
         "/System/Library/Fonts/Hiragino Sans GB.ttc",
     ],
-    31,
+    34,
 )
 cn_footer = font(
     [
@@ -61,15 +61,30 @@ mono_kicker = font(
 )
 
 
-def draw_chinese_line(draw: ImageDraw.ImageDraw, text: str, x: int, y: int, fill: tuple[int, int, int, int]) -> None:
-    """Place full-width punctuation at the same visual baseline as the Hanzi."""
-    cursor = float(x)
+def draw_motto_row(
+    draw: ImageDraw.ImageDraw,
+    y: int,
+    number: str,
+    left: str,
+    right: str,
+    accent: tuple[int, int, int, int],
+) -> None:
+    """Render matching four-character halves with a baseline-aligned comma."""
+    draw.rounded_rectangle(
+        (116, y, 751, y + 74), radius=15,
+        fill=(13, 42, 61, 204), outline=(*accent[:3], 105), width=2,
+    )
+    draw.rounded_rectangle((116, y + 14, 122, y + 60), radius=3, fill=accent)
+    draw.text((145, y + 24), number, font=mono, fill=accent, anchor="lt")
+    draw.line((186, y + 17, 186, y + 57), fill=(*accent[:3], 95), width=2)
+    text_y = y + 20
+    draw.text((207, text_y), left, font=cn_small, fill=(228, 240, 247, 255), anchor="lt")
+    comma_height = cn_small.getbbox("，", anchor="lt")[3]
     hanzi_height = cn_small.getbbox("进", anchor="lt")[3]
-    for char in text:
-        glyph_height = cn_small.getbbox(char, anchor="lt")[3]
-        punctuation_shift = hanzi_height - glyph_height if char in "，。" else 0
-        draw.text((round(cursor), y + punctuation_shift), char, font=cn_small, fill=fill, anchor="lt")
-        cursor += draw.textlength(char, font=cn_small)
+    draw.text((354, text_y + hanzi_height - comma_height), "，", font=cn_small, fill=accent, anchor="lt")
+    draw.text((401, text_y), right, font=cn_small, fill=accent, anchor="lt")
+    draw.line((693, y + 37, 718, y + 37), fill=(*accent[:3], 170), width=3)
+    draw.line((709, y + 28, 718, y + 37, 709, y + 46), fill=(*accent[:3], 170), width=3)
 
 base = Image.open(HERE / "cover.png").convert("RGBA")
 base = base.resize(SIZE, Image.Resampling.LANCZOS)
@@ -121,8 +136,8 @@ base = Image.alpha_composite(base, glow)
 draw.text((108, 427), "感谢大家", font=cn_font, fill=white, stroke_width=1, anchor="lt")
 draw.text((108, 552), "参加", font=cn_large, fill=cyan, stroke_width=1, anchor="lt")
 draw.rounded_rectangle((425, 667, 592, 671), radius=2, fill=amber)
-draw_chinese_line(draw, "从理解到实践，继续探索。", 116, 752, soft)
-draw_chinese_line(draw, "相互交流，共同进步", 116, 810, soft)
+draw_motto_row(draw, 723, "01", "理解原理", "动手实践", amber)
+draw_motto_row(draw, 809, "02", "相互交流", "共同进步", cyan)
 
 draw.line((116, 954, 488, 954), fill=(161, 204, 227, 92), width=2)
 draw.text((116, 978), "AI 编码训练营", font=cn_footer, fill=(204, 222, 233, 200), anchor="lt")
